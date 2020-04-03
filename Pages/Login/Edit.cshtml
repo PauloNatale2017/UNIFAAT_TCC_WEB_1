@@ -1,0 +1,123 @@
+﻿@page
+@model ROSESHIELD.WEB.EditModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Edit Accounts Users</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME COMPLETO</label>
+            </div>
+
+            <div class="col-sm-6">
+                <input asp-for="userAccounts.NomeCompleto" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="userAccounts.NomeCompleto" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>IDADE</label>
+
+            </div>
+            <div class="col-6">
+                <input asp-for="userAccounts.Idade" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="userAccounts.Idade" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>ENDEREÇO</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="userAccounts.Endereco" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="userAccounts.Endereco" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>CONTATO</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="userAccounts.Contato" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="userAccounts.Contato" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>CPF</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="userAccounts.Cpf" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="userAccounts.Cpf" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <hr />
+        <div class="form-group row">
+            <div class="col-3">
+                <label>DIGITE SEU USUARIO</label>
+            </div>
+            <div class="col-7">
+                <input asp-for="userAccounts.UsuarioAccesso.EmailUser" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+                <span asp-validation-for="userAccounts.UsuarioAccesso.EmailUser" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label>DIGITE UMA SENHA</label>
+            </div>
+            <div class="col-7">
+                <input asp-for="userAccounts.UsuarioAccesso.Password" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+                <span asp-validation-for="userAccounts.UsuarioAccesso.Password" class="text-danger"></span>
+            </div>
+        </div>
+        <hr />
+
+
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Index" class="btn btn-success form-control">Back To List</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
