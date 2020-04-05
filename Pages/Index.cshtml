@@ -1,12 +1,75 @@
 ﻿@page
 @model IndexModel.Salvar
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "MAPA";
 }
 
-    <div class="text-center">
-        <label class="form-control" asp-for="firstname"></label>
-        <label asp-for="firstname" class="form-control"></label>
-        <h1 class="display-4">BEM VINDO AO SISTEMA DE SEGURANÇA ROSE SHIELD</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">bSistema focado no auxilio de mulheres que sofreram ou estão sofrendo qualquer tipo de abuso</a>.</p>
+
+<script src="~/js/jquery-3.2.1.js"></script>
+<script src="~/js/angular.js"></script>
+<script src="~/js/crossfilter.js"></script>
+<script src="~/js/fusioncharts.js"></script>
+<script src="~/js/angular-fusioncharts.js"></script>
+<script src="~/js/angular-fusioncharts.min.js"></script>
+<script src="~/js/fusioncharts.theme.fusion.js"></script>
+<script src="~/js/fusioncharts.maps.js"></script>
+<script src="~/js/ng-map.min.js"></script>
+<script src="~/js/angular-block-ui.js"></script>
+<link href="~/css/angular-block-ui.css" rel="stylesheet" />
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4dGA5XSdaUitw4DBVX3lyqqo9LyApmiE&sensor=true">
+</script>
+
+<body ng-controller="CtrlMapsInfracoes">
+    <div class="container" style="background-color:red;width:100%;height:800px">
+
+        <div class="row">
+            <div class="col-sx-12" style="width:100%;height:200px;background-color:white;display:flex">
+                <div style="background-color:white;width: 36%;height: 194px;padding: 2px 2px 2px 2px;">
+
+                    <div id="chartPie">FusionCharts XT will load here!</div>
+
+                    @*<div fusioncharts
+        width="{{ ConfigBaseBairros.width}}"
+        height="{{ ConfigBaseBairros.height}}"
+        type="{{ConfigBaseBairros.Type}}"
+        dataSource="{{ConfigBaseBairros.Source}}"></div>*@
+                </div>
+                <div style="background-color:white;width: 72%;height: 194px;padding: 2px 2px 2px 2px;">
+
+                    <div id="chartColumn">FusionCharts XT will load here!</div>
+
+                  
+
+                    @*<div fusioncharts
+        width="{{ ConfigBaseBairros.width}}"
+        height="{{ ConfigBaseBairros.height}}"
+        type="{{ConfigBaseBairros.Type}}"
+        dataSource="{{ConfigBaseBairros.Source}}"></div>*@
+                @*</div>
+                <div style="background-color:white;width: 36%;height: 194px;padding: 2px 2px 2px 2px;">*@
+                    @*<div fusioncharts
+                         width="{{ ConfigBaseBairros.width}}"
+                         height="{{ ConfigBaseBairros.height}}"
+                         type="{{ConfigBaseBairros.Type}}"
+                         dataSource="{{ConfigBaseBairros.Source}}"></div>*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="map_canvas" class="col-xl-12" style="width:100%;height:350px">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12" style="width:100%;height:250px;background-color:white;">
+            </div>
+        </div>
+
     </div>
+</body>
+
+
+@section Scripts{
+    <script src="~/js/IndexAngular.js"></script>
+}

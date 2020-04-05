@@ -24,11 +24,18 @@
     ".NETCoreApp,Version=v3.1": {
       "ROSESHIELD.WEB/1.0.0": {
         "dependencies": {
+          "Angular.UI.Bootstrap": "2.5.0",
+          "Angular.UI.Utils": "0.2.3",
+          "AngularJS.Cookies": "1.7.9",
+          "AngularJS.Core": "1.7.9",
+          "AngularJS.Messages": "1.7.9",
+          "Microsoft.AspNet.Mvc": "5.2.7",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.3",
           "Microsoft.EntityFrameworkCore": "3.1.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.3",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.3",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.1",
+          "angular-ui-grid": "4.8.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -305,6 +312,76 @@
         },
         "compile": {
           "ROSESHIELD.WEB.dll": {}
+        }
+      },
+      "angular-ui-grid/4.8.1": {},
+      "Angular.UI.Bootstrap/2.5.0": {},
+      "Angular.UI.Utils/0.2.3": {},
+      "AngularJS.Cookies/1.7.9": {
+        "dependencies": {
+          "AngularJS.Core": "1.7.9"
+        }
+      },
+      "AngularJS.Core/1.7.9": {},
+      "AngularJS.Messages/1.7.9": {
+        "dependencies": {
+          "AngularJS.Core": "1.7.9"
+        }
+      },
+      "Microsoft.AspNet.Mvc/5.2.7": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.7",
+          "Microsoft.AspNet.WebPages": "3.2.7"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Mvc.dll": {
+            "assemblyVersion": "5.2.7.0",
+            "fileVersion": "5.2.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/3.2.7": {
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/3.2.7": {
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "3.2.7",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "lib/net45/System.Web.Helpers.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          },
+          "lib/net45/System.Web.WebPages.Deployment.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          },
+          "lib/net45/System.Web.WebPages.Razor.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          },
+          "lib/net45/System.Web.WebPages.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.61128.0"
+          }
+        },
+        "compile": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -1055,6 +1132,17 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
+        }
+      },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.20105.407"
+          }
+        },
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
       "Microsoft.Win32.Primitives/4.3.0": {
@@ -3796,6 +3884,69 @@
       "serviceable": false,
       "sha512": ""
     },
+    "angular-ui-grid/4.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D1qGVqVQ0FoazPDemjjIei/RqNUJdrUWlc+yhKzpp30Fx/VMWDHund6SQbwd4m2hhGbJ9s/fH0wMVGGv/ttOCA==",
+      "path": "angular-ui-grid/4.8.1",
+      "hashPath": "angular-ui-grid.4.8.1.nupkg.sha512"
+    },
+    "Angular.UI.Bootstrap/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-402jIttam/Zawp6FjzsZmzKinfw9ivuEjRafWf6B43pfaDrd0/5K0TOpFnFh9dfhX5wUKr7R44wSfLe2ZEXbow==",
+      "path": "angular.ui.bootstrap/2.5.0",
+      "hashPath": "angular.ui.bootstrap.2.5.0.nupkg.sha512"
+    },
+    "Angular.UI.Utils/0.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mSHPtR087hxu0Z63BzRtNPfhEe1Ni+/OYa2O7CgSKlG/JFXUIX/HvVua0CoEg+R/PI6TOl1j8HwgGO3oKuK7EA==",
+      "path": "angular.ui.utils/0.2.3",
+      "hashPath": "angular.ui.utils.0.2.3.nupkg.sha512"
+    },
+    "AngularJS.Cookies/1.7.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-39HCmTVVF8x0E/fOmkBls4ddwJzaz4uC8Z8Pt0TGJ1a2aa5cUHXIOLEh2xsn9FLojGIuaReDslPrZ7cQ10CViA==",
+      "path": "angularjs.cookies/1.7.9",
+      "hashPath": "angularjs.cookies.1.7.9.nupkg.sha512"
+    },
+    "AngularJS.Core/1.7.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AfzRl7IW4WIU0UnpU1Gj/Ksi8RuOWFj187u29S2Vo1xUdH/Vrz2z0CAC5jfKrh4LSkKxjCdH28w2NeiJpXruYQ==",
+      "path": "angularjs.core/1.7.9",
+      "hashPath": "angularjs.core.1.7.9.nupkg.sha512"
+    },
+    "AngularJS.Messages/1.7.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ImO8Z3EHbH+htQ23HkbzgjF+ze15tc5FSt6JFZQEqhkeJ03W315ZdGO6yk7OUZGo1R9AEC0ZNOfcYkwUoT2ZuA==",
+      "path": "angularjs.messages/1.7.9",
+      "hashPath": "angularjs.messages.1.7.9.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Mvc/5.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-m3hUsn48k6Qb5El9A8naTwGTLCdSQKGSpGweqIfiVKltGJzAJJxuXvhhaQQtLCGg3i5V88iGjz0JG72/tlFKlg==",
+      "path": "microsoft.aspnet.mvc/5.2.7",
+      "hashPath": "microsoft.aspnet.mvc.5.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Razor/3.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BpWEZ+Ys7g9VAkbAfpG5jr5A1fKcmadCCXv3fYfps5YfTVABJIGV4uc9yvmXKxsNsjL+BzDld2gs+xtgT2gg1g==",
+      "path": "microsoft.aspnet.razor/3.2.7",
+      "hashPath": "microsoft.aspnet.razor.3.2.7.nupkg.sha512"
+    },
+    "Microsoft.AspNet.WebPages/3.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2jwZFB7PvY+tbdz0ZP4iEo7gMrJxkCQUzoGLh6swUc6ZXl6DoKyDslmGcC/j9PFmJXCRMVIqtRorlPSMU2DuRA==",
+      "path": "microsoft.aspnet.webpages/3.2.7",
+      "hashPath": "microsoft.aspnet.webpages.3.2.7.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -4117,6 +4268,13 @@
       "sha512": "sha512-U+ud8PSdPOxnRMPNZcuppp5vS+PbY2nzHVNvcD1u/RYzG8jXVtrwlDkFLazbEsR7/8uym2UbdvQ5qKEcSkzPXA==",
       "path": "microsoft.visualstudio.web.codegenerators.mvc/3.1.1",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.3.1.1.nupkg.sha512"
+    },
+    "Microsoft.Web.Infrastructure/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "path": "microsoft.web.infrastructure/1.0.0",
+      "hashPath": "microsoft.web.infrastructure.1.0.0.nupkg.sha512"
     },
     "Microsoft.Win32.Primitives/4.3.0": {
       "type": "package",

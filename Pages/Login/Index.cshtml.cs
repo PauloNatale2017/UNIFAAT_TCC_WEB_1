@@ -20,12 +20,26 @@ namespace ROSESHIELD.WEB
         }
 
         public IEnumerable<UserAccounts> Logins { get; set; }
-        public IEnumerable<Login> usuarioLogin { get; set; }
+        public IEnumerable<Login> UsuarioLogin { get; set; }
 
         public async Task OnGet()
         {
             Logins = await _db.UserAccounts.ToListAsync();           
-            usuarioLogin = await _db.Login.ToListAsync();
+            UsuarioLogin = await _db.Login.ToListAsync();
+        }
+
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            var entity = await _db.UserAccounts.FindAsync(id);
+            if(entity == null)
+            {
+                return NotFound();
+            }
+
+            _db.UserAccounts.Remove(entity);
+            await _db.SaveChangesAsync();
+
+            return RedirectToPage("Index");
         }
     }
 }

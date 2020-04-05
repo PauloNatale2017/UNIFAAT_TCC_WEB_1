@@ -5,7 +5,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 <br />
-<h2 class="text-info">Create new Accounts Users</h2>
+<h2 class="text-info">CADASTRO BASICO DE ACESSO.</h2>
 <br />
 
 <div class="border container" style="padding:30px;">
@@ -16,11 +16,11 @@
             </div>
 
             <div class="col-sm-6">
-                <input asp-for="userAccounts.NomeCompleto" class="form-control" />
+                <input asp-for="UserAccounts.NomeCompleto" class="form-control" />
             </div>
             <br />
             <div class="col-sm-4">               
-                <span asp-validation-for="userAccounts.NomeCompleto" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.NomeCompleto" class="text-danger"></span>
             </div>           
 
         </div>
@@ -31,10 +31,10 @@
 
             </div>
             <div class="col-6">
-                <input asp-for="userAccounts.Idade" class="form-control" />
+                <input asp-for="UserAccounts.Idade" class="form-control" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="userAccounts.Idade" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.Idade" class="text-danger"></span>
             </div>
 
         </div>
@@ -44,10 +44,10 @@
                 <label>ENDEREÇO</label>
             </div>
             <div class="col-6">
-                <input asp-for="userAccounts.Endereco" class="form-control" />
+                <input asp-for="UserAccounts.Endereco" class="form-control" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="userAccounts.Endereco" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.Endereco" class="text-danger"></span>
             </div>
         </div>
 
@@ -56,10 +56,10 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-6">
-                <input asp-for="userAccounts.Contato" class="form-control" />
+                <input asp-for="UserAccounts.Contato" class="form-control" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="userAccounts.Contato" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.Contato" class="text-danger"></span>
             </div>
         </div>
 
@@ -68,10 +68,10 @@
                 <label>CPF</label>
             </div>
             <div class="col-6">
-                <input asp-for="userAccounts.Cpf" class="form-control" />
+                <input asp-for="UserAccounts.Cpf" class="form-control" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="userAccounts.Cpf" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.Cpf" class="text-danger"></span>
             </div>
         </div>
 
@@ -82,10 +82,10 @@
                 <label>DIGITE SEU USUARIO</label>
             </div>
             <div class="col-7">
-                <input asp-for="userAccounts.UsuarioAccesso.EmailUser" class="form-control" />
+                <input asp-for="UserAccounts.UsuarioAccesso.EmailUser" class="form-control" />
             </div>
             <div class="col-sm-3">
-                <span asp-validation-for="userAccounts.UsuarioAccesso.EmailUser" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.UsuarioAccesso.EmailUser" class="text-danger"></span>
             </div>
         </div>
 
@@ -94,10 +94,10 @@
                 <label>DIGITE UMA SENHA</label>
             </div>
             <div class="col-7">
-                <input asp-for="userAccounts.UsuarioAccesso.Password" class="form-control" />
+                <input asp-for="UserAccounts.UsuarioAccesso.Password" class="form-control" />
             </div>
             <div class="col-sm-3">
-                <span asp-validation-for="userAccounts.UsuarioAccesso.Password" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.UsuarioAccesso.Password" class="text-danger"></span>
             </div>
         </div>
         <hr />

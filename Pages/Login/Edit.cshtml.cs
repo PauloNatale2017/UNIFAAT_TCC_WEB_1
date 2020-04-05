@@ -21,14 +21,14 @@ namespace ROSESHIELD.WEB
         }
 
         [BindProperty]
-        public UserAccounts userAccounts { get; set; }
+        public UserAccounts UserAccounts { get; set; }
 
-        public IEnumerable<Login> usuarioLogin { get; set; }
+        public IEnumerable<Login> UsuarioLogin { get; set; }
 
         public async Task OnGet(int id)
         {
-            userAccounts = await _db.UserAccounts.FindAsync(id);
-            usuarioLogin =  await _db.Login.ToListAsync();
+            UserAccounts = await _db.UserAccounts.FindAsync(id);
+            UsuarioLogin =  await _db.Login.ToListAsync();
          
         }
 
@@ -37,11 +37,12 @@ namespace ROSESHIELD.WEB
         {
             if(ModelState.IsValid)
             {
-                var atualiza = await _db.UserAccounts.FindAsync(userAccounts.Id);
-                atualiza.Idade = userAccounts.Idade;
+                var atualiza = await _db.UserAccounts.FindAsync(UserAccounts.Id);
+                atualiza.Idade = UserAccounts.Idade;
                 await _db.SaveChangesAsync();
+                return RedirectToPage("Index");
             }
-            return Page();
+            return RedirectToPage();
 
         }
     }

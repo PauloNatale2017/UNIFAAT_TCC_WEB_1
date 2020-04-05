@@ -27,6 +27,7 @@ namespace ROSESHIELD.WEB
         {
             string a = Configuration.GetConnectionString("Conn").ToString();
             services.AddDbContext<AplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("Conn")));
+            services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
@@ -53,6 +54,7 @@ namespace ROSESHIELD.WEB
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }

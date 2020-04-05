@@ -2,6 +2,71 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "angular-ui-grid/4.8.1": {
+        "type": "package"
+      },
+      "Angular.UI.Bootstrap/2.5.0": {
+        "type": "package"
+      },
+      "Angular.UI.Utils/0.2.3": {
+        "type": "package"
+      },
+      "AngularJS.Cookies/1.7.9": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.7.9"
+        }
+      },
+      "AngularJS.Core/1.7.9": {
+        "type": "package"
+      },
+      "AngularJS.Messages/1.7.9": {
+        "type": "package",
+        "dependencies": {
+          "AngularJS.Core": "1.7.9"
+        }
+      },
+      "Microsoft.AspNet.Mvc/5.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "[3.2.7, 3.3.0)",
+          "Microsoft.AspNet.WebPages": "[3.2.7, 3.3.0)"
+        },
+        "compile": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Mvc.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/3.2.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/3.2.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "[3.2.7, 3.3.0)",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Helpers.dll": {},
+          "lib/net45/System.Web.WebPages.Deployment.dll": {},
+          "lib/net45/System.Web.WebPages.Razor.dll": {},
+          "lib/net45/System.Web.WebPages.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -752,6 +817,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
+        }
+      },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
       "Microsoft.Win32.Primitives/4.3.0": {
@@ -2567,6 +2641,376 @@
     }
   },
   "libraries": {
+    "angular-ui-grid/4.8.1": {
+      "sha512": "D1qGVqVQ0FoazPDemjjIei/RqNUJdrUWlc+yhKzpp30Fx/VMWDHund6SQbwd4m2hhGbJ9s/fH0wMVGGv/ttOCA==",
+      "type": "package",
+      "path": "angular-ui-grid/4.8.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "angular-ui-grid.4.8.1.nupkg.sha512",
+        "angular-ui-grid.nuspec",
+        "content/Content/css/ui-grid.cellnav.css",
+        "content/Content/css/ui-grid.cellnav.min.css",
+        "content/Content/css/ui-grid.core.css",
+        "content/Content/css/ui-grid.core.min.css",
+        "content/Content/css/ui-grid.edit.css",
+        "content/Content/css/ui-grid.edit.min.css",
+        "content/Content/css/ui-grid.empty-base-layer.css",
+        "content/Content/css/ui-grid.empty-base-layer.min.css",
+        "content/Content/css/ui-grid.expandable.css",
+        "content/Content/css/ui-grid.expandable.min.css",
+        "content/Content/css/ui-grid.exporter.css",
+        "content/Content/css/ui-grid.exporter.min.css",
+        "content/Content/css/ui-grid.grouping.css",
+        "content/Content/css/ui-grid.grouping.min.css",
+        "content/Content/css/ui-grid.importer.css",
+        "content/Content/css/ui-grid.importer.min.css",
+        "content/Content/css/ui-grid.move-columns.css",
+        "content/Content/css/ui-grid.move-columns.min.css",
+        "content/Content/css/ui-grid.pagination.css",
+        "content/Content/css/ui-grid.pagination.min.css",
+        "content/Content/css/ui-grid.pinning.css",
+        "content/Content/css/ui-grid.pinning.min.css",
+        "content/Content/css/ui-grid.resize-columns.css",
+        "content/Content/css/ui-grid.resize-columns.min.css",
+        "content/Content/css/ui-grid.row-edit.css",
+        "content/Content/css/ui-grid.row-edit.min.css",
+        "content/Content/css/ui-grid.selection.css",
+        "content/Content/css/ui-grid.selection.min.css",
+        "content/Content/css/ui-grid.tree-base.css",
+        "content/Content/css/ui-grid.tree-base.min.css",
+        "content/Content/css/ui-grid.tree-view.css",
+        "content/Content/css/ui-grid.tree-view.min.css",
+        "content/Content/css/ui-grid.validate.css",
+        "content/Content/css/ui-grid.validate.min.css",
+        "content/Content/fonts/ui-grid.eot",
+        "content/Content/fonts/ui-grid.svg",
+        "content/Content/fonts/ui-grid.ttf",
+        "content/Content/fonts/ui-grid.woff",
+        "content/Content/less/animation.less",
+        "content/Content/less/body.less",
+        "content/Content/less/bootstrap/bootstrap.less",
+        "content/Content/less/cell.less",
+        "content/Content/less/cellNav.less",
+        "content/Content/less/cellnav/less/cellNav.less",
+        "content/Content/less/colMovable.less",
+        "content/Content/less/column-resizer.less",
+        "content/Content/less/core.less",
+        "content/Content/less/edit.less",
+        "content/Content/less/edit/less/edit.less",
+        "content/Content/less/elements.less",
+        "content/Content/less/empty-base-layer/less/emptyBaseLayer.less",
+        "content/Content/less/emptyBaseLayer.less",
+        "content/Content/less/expandable.less",
+        "content/Content/less/expandable/less/expandable.less",
+        "content/Content/less/exporter.less",
+        "content/Content/less/exporter/less/exporter.less",
+        "content/Content/less/footer.less",
+        "content/Content/less/goups.less",
+        "content/Content/less/grid.less",
+        "content/Content/less/grouping.less",
+        "content/Content/less/grouping/less/grouping.less",
+        "content/Content/less/header.less",
+        "content/Content/less/icons.less",
+        "content/Content/less/importer.less",
+        "content/Content/less/importer/less/importer.less",
+        "content/Content/less/main.less",
+        "content/Content/less/menu.less",
+        "content/Content/less/move-columns/less/colMovable.less",
+        "content/Content/less/pagination.less",
+        "content/Content/less/pagination/less/pagination.less",
+        "content/Content/less/pinning.less",
+        "content/Content/less/pinning/less/pinning.less",
+        "content/Content/less/resize-columns/less/column-resizer.less",
+        "content/Content/less/row-edit/less/rowEdit.less",
+        "content/Content/less/rowEdit.less",
+        "content/Content/less/rtl.less",
+        "content/Content/less/selection.less",
+        "content/Content/less/selection/less/selection.less",
+        "content/Content/less/sorting.less",
+        "content/Content/less/tree-base.less",
+        "content/Content/less/tree-base/less/tree-base.less",
+        "content/Content/less/tree-view.less",
+        "content/Content/less/tree-view/less/tree-view.less",
+        "content/Content/less/validate.less",
+        "content/Content/less/validate/less/validate.less",
+        "content/Content/less/variables.less",
+        "content/Content/ui-grid.css",
+        "content/Content/ui-grid.min.css",
+        "content/Scripts/i18n/ui-grid.auto-resize.js",
+        "content/Scripts/i18n/ui-grid.auto-resize.min.js",
+        "content/Scripts/i18n/ui-grid.cellnav.js",
+        "content/Scripts/i18n/ui-grid.cellnav.min.js",
+        "content/Scripts/i18n/ui-grid.core.js",
+        "content/Scripts/i18n/ui-grid.core.min.js",
+        "content/Scripts/i18n/ui-grid.edit.js",
+        "content/Scripts/i18n/ui-grid.edit.min.js",
+        "content/Scripts/i18n/ui-grid.empty-base-layer.js",
+        "content/Scripts/i18n/ui-grid.empty-base-layer.min.js",
+        "content/Scripts/i18n/ui-grid.expandable.js",
+        "content/Scripts/i18n/ui-grid.expandable.min.js",
+        "content/Scripts/i18n/ui-grid.exporter.js",
+        "content/Scripts/i18n/ui-grid.exporter.min.js",
+        "content/Scripts/i18n/ui-grid.grouping.js",
+        "content/Scripts/i18n/ui-grid.grouping.min.js",
+        "content/Scripts/i18n/ui-grid.importer.js",
+        "content/Scripts/i18n/ui-grid.importer.min.js",
+        "content/Scripts/i18n/ui-grid.infinite-scroll.js",
+        "content/Scripts/i18n/ui-grid.infinite-scroll.min.js",
+        "content/Scripts/i18n/ui-grid.language.all.js",
+        "content/Scripts/i18n/ui-grid.language.all.min.js",
+        "content/Scripts/i18n/ui-grid.language.ar.js",
+        "content/Scripts/i18n/ui-grid.language.ar.min.js",
+        "content/Scripts/i18n/ui-grid.language.bg.js",
+        "content/Scripts/i18n/ui-grid.language.bg.min.js",
+        "content/Scripts/i18n/ui-grid.language.cs.js",
+        "content/Scripts/i18n/ui-grid.language.cs.min.js",
+        "content/Scripts/i18n/ui-grid.language.da.js",
+        "content/Scripts/i18n/ui-grid.language.da.min.js",
+        "content/Scripts/i18n/ui-grid.language.de.js",
+        "content/Scripts/i18n/ui-grid.language.de.min.js",
+        "content/Scripts/i18n/ui-grid.language.es-ct.js",
+        "content/Scripts/i18n/ui-grid.language.es-ct.min.js",
+        "content/Scripts/i18n/ui-grid.language.es.js",
+        "content/Scripts/i18n/ui-grid.language.es.min.js",
+        "content/Scripts/i18n/ui-grid.language.fa.js",
+        "content/Scripts/i18n/ui-grid.language.fa.min.js",
+        "content/Scripts/i18n/ui-grid.language.fi.js",
+        "content/Scripts/i18n/ui-grid.language.fi.min.js",
+        "content/Scripts/i18n/ui-grid.language.fr.js",
+        "content/Scripts/i18n/ui-grid.language.fr.min.js",
+        "content/Scripts/i18n/ui-grid.language.he.js",
+        "content/Scripts/i18n/ui-grid.language.he.min.js",
+        "content/Scripts/i18n/ui-grid.language.hy.js",
+        "content/Scripts/i18n/ui-grid.language.hy.min.js",
+        "content/Scripts/i18n/ui-grid.language.is.js",
+        "content/Scripts/i18n/ui-grid.language.is.min.js",
+        "content/Scripts/i18n/ui-grid.language.it.js",
+        "content/Scripts/i18n/ui-grid.language.it.min.js",
+        "content/Scripts/i18n/ui-grid.language.ja.js",
+        "content/Scripts/i18n/ui-grid.language.ja.min.js",
+        "content/Scripts/i18n/ui-grid.language.ko.js",
+        "content/Scripts/i18n/ui-grid.language.ko.min.js",
+        "content/Scripts/i18n/ui-grid.language.nl.js",
+        "content/Scripts/i18n/ui-grid.language.nl.min.js",
+        "content/Scripts/i18n/ui-grid.language.no.js",
+        "content/Scripts/i18n/ui-grid.language.no.min.js",
+        "content/Scripts/i18n/ui-grid.language.pl.js",
+        "content/Scripts/i18n/ui-grid.language.pl.min.js",
+        "content/Scripts/i18n/ui-grid.language.pt-br.js",
+        "content/Scripts/i18n/ui-grid.language.pt-br.min.js",
+        "content/Scripts/i18n/ui-grid.language.pt.js",
+        "content/Scripts/i18n/ui-grid.language.pt.min.js",
+        "content/Scripts/i18n/ui-grid.language.ro.js",
+        "content/Scripts/i18n/ui-grid.language.ro.min.js",
+        "content/Scripts/i18n/ui-grid.language.rs-lat.js",
+        "content/Scripts/i18n/ui-grid.language.rs-lat.min.js",
+        "content/Scripts/i18n/ui-grid.language.ru.js",
+        "content/Scripts/i18n/ui-grid.language.ru.min.js",
+        "content/Scripts/i18n/ui-grid.language.sk.js",
+        "content/Scripts/i18n/ui-grid.language.sk.min.js",
+        "content/Scripts/i18n/ui-grid.language.sv.js",
+        "content/Scripts/i18n/ui-grid.language.sv.min.js",
+        "content/Scripts/i18n/ui-grid.language.ta.js",
+        "content/Scripts/i18n/ui-grid.language.ta.min.js",
+        "content/Scripts/i18n/ui-grid.language.tr.js",
+        "content/Scripts/i18n/ui-grid.language.tr.min.js",
+        "content/Scripts/i18n/ui-grid.language.ua.js",
+        "content/Scripts/i18n/ui-grid.language.ua.min.js",
+        "content/Scripts/i18n/ui-grid.language.zh-cn.js",
+        "content/Scripts/i18n/ui-grid.language.zh-cn.min.js",
+        "content/Scripts/i18n/ui-grid.language.zh-tw.js",
+        "content/Scripts/i18n/ui-grid.language.zh-tw.min.js",
+        "content/Scripts/i18n/ui-grid.move-columns.js",
+        "content/Scripts/i18n/ui-grid.move-columns.min.js",
+        "content/Scripts/i18n/ui-grid.pagination.js",
+        "content/Scripts/i18n/ui-grid.pagination.min.js",
+        "content/Scripts/i18n/ui-grid.pinning.js",
+        "content/Scripts/i18n/ui-grid.pinning.min.js",
+        "content/Scripts/i18n/ui-grid.resize-columns.js",
+        "content/Scripts/i18n/ui-grid.resize-columns.min.js",
+        "content/Scripts/i18n/ui-grid.row-edit.js",
+        "content/Scripts/i18n/ui-grid.row-edit.min.js",
+        "content/Scripts/i18n/ui-grid.saveState.js",
+        "content/Scripts/i18n/ui-grid.saveState.min.js",
+        "content/Scripts/i18n/ui-grid.selection.js",
+        "content/Scripts/i18n/ui-grid.selection.min.js",
+        "content/Scripts/i18n/ui-grid.tree-base.js",
+        "content/Scripts/i18n/ui-grid.tree-base.min.js",
+        "content/Scripts/i18n/ui-grid.tree-view.js",
+        "content/Scripts/i18n/ui-grid.tree-view.min.js",
+        "content/Scripts/i18n/ui-grid.validate.js",
+        "content/Scripts/i18n/ui-grid.validate.min.js",
+        "content/Scripts/ui-grid.auto-resize.js",
+        "content/Scripts/ui-grid.auto-resize.min.js",
+        "content/Scripts/ui-grid.base.js",
+        "content/Scripts/ui-grid.base.min.js",
+        "content/Scripts/ui-grid.cellnav.js",
+        "content/Scripts/ui-grid.cellnav.min.js",
+        "content/Scripts/ui-grid.core.js",
+        "content/Scripts/ui-grid.core.min.js",
+        "content/Scripts/ui-grid.edit.js",
+        "content/Scripts/ui-grid.edit.min.js",
+        "content/Scripts/ui-grid.empty-base-layer.js",
+        "content/Scripts/ui-grid.empty-base-layer.min.js",
+        "content/Scripts/ui-grid.expandable.js",
+        "content/Scripts/ui-grid.expandable.min.js",
+        "content/Scripts/ui-grid.exporter.js",
+        "content/Scripts/ui-grid.exporter.min.js",
+        "content/Scripts/ui-grid.grouping.js",
+        "content/Scripts/ui-grid.grouping.min.js",
+        "content/Scripts/ui-grid.importer.js",
+        "content/Scripts/ui-grid.importer.min.js",
+        "content/Scripts/ui-grid.infinite-scroll.js",
+        "content/Scripts/ui-grid.infinite-scroll.min.js",
+        "content/Scripts/ui-grid.js",
+        "content/Scripts/ui-grid.min.js",
+        "content/Scripts/ui-grid.move-columns.js",
+        "content/Scripts/ui-grid.move-columns.min.js",
+        "content/Scripts/ui-grid.pagination.js",
+        "content/Scripts/ui-grid.pagination.min.js",
+        "content/Scripts/ui-grid.pinning.js",
+        "content/Scripts/ui-grid.pinning.min.js",
+        "content/Scripts/ui-grid.resize-columns.js",
+        "content/Scripts/ui-grid.resize-columns.min.js",
+        "content/Scripts/ui-grid.row-edit.js",
+        "content/Scripts/ui-grid.row-edit.min.js",
+        "content/Scripts/ui-grid.saveState.js",
+        "content/Scripts/ui-grid.saveState.min.js",
+        "content/Scripts/ui-grid.selection.js",
+        "content/Scripts/ui-grid.selection.min.js",
+        "content/Scripts/ui-grid.tree-base.js",
+        "content/Scripts/ui-grid.tree-base.min.js",
+        "content/Scripts/ui-grid.tree-view.js",
+        "content/Scripts/ui-grid.tree-view.min.js",
+        "content/Scripts/ui-grid.validate.js",
+        "content/Scripts/ui-grid.validate.min.js"
+      ]
+    },
+    "Angular.UI.Bootstrap/2.5.0": {
+      "sha512": "402jIttam/Zawp6FjzsZmzKinfw9ivuEjRafWf6B43pfaDrd0/5K0TOpFnFh9dfhX5wUKr7R44wSfLe2ZEXbow==",
+      "type": "package",
+      "path": "angular.ui.bootstrap/2.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "angular.ui.bootstrap.2.5.0.nupkg.sha512",
+        "angular.ui.bootstrap.nuspec",
+        "content/Content/ui-bootstrap-csp.css",
+        "content/Scripts/angular-ui/ui-bootstrap-tpls.js",
+        "content/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
+        "content/Scripts/angular-ui/ui-bootstrap.js",
+        "content/Scripts/angular-ui/ui-bootstrap.min.js"
+      ]
+    },
+    "Angular.UI.Utils/0.2.3": {
+      "sha512": "mSHPtR087hxu0Z63BzRtNPfhEe1Ni+/OYa2O7CgSKlG/JFXUIX/HvVua0CoEg+R/PI6TOl1j8HwgGO3oKuK7EA==",
+      "type": "package",
+      "path": "angular.ui.utils/0.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "angular.ui.utils.0.2.3.nupkg.sha512",
+        "angular.ui.utils.nuspec",
+        "content/Scripts/angular-ui/ui-utils-ieshiv.js",
+        "content/Scripts/angular-ui/ui-utils-ieshiv.min.js",
+        "content/Scripts/angular-ui/ui-utils.js",
+        "content/Scripts/angular-ui/ui-utils.min.js"
+      ]
+    },
+    "AngularJS.Cookies/1.7.9": {
+      "sha512": "39HCmTVVF8x0E/fOmkBls4ddwJzaz4uC8Z8Pt0TGJ1a2aa5cUHXIOLEh2xsn9FLojGIuaReDslPrZ7cQ10CViA==",
+      "type": "package",
+      "path": "angularjs.cookies/1.7.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "angularjs.cookies.1.7.9.nupkg.sha512",
+        "angularjs.cookies.nuspec",
+        "content/Scripts/angular-cookies.js",
+        "content/Scripts/angular-cookies.min.js",
+        "content/Scripts/angular-cookies.min.js.map"
+      ]
+    },
+    "AngularJS.Core/1.7.9": {
+      "sha512": "AfzRl7IW4WIU0UnpU1Gj/Ksi8RuOWFj187u29S2Vo1xUdH/Vrz2z0CAC5jfKrh4LSkKxjCdH28w2NeiJpXruYQ==",
+      "type": "package",
+      "path": "angularjs.core/1.7.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "angularjs.core.1.7.9.nupkg.sha512",
+        "angularjs.core.nuspec",
+        "content/Scripts/angular-mocks.js",
+        "content/Scripts/angular.js",
+        "content/Scripts/angular.min.js",
+        "content/Scripts/angular.min.js.map"
+      ]
+    },
+    "AngularJS.Messages/1.7.9": {
+      "sha512": "ImO8Z3EHbH+htQ23HkbzgjF+ze15tc5FSt6JFZQEqhkeJ03W315ZdGO6yk7OUZGo1R9AEC0ZNOfcYkwUoT2ZuA==",
+      "type": "package",
+      "path": "angularjs.messages/1.7.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "angularjs.messages.1.7.9.nupkg.sha512",
+        "angularjs.messages.nuspec",
+        "content/Scripts/angular-messages.js",
+        "content/Scripts/angular-messages.min.js",
+        "content/Scripts/angular-messages.min.js.map"
+      ]
+    },
+    "Microsoft.AspNet.Mvc/5.2.7": {
+      "sha512": "m3hUsn48k6Qb5El9A8naTwGTLCdSQKGSpGweqIfiVKltGJzAJJxuXvhhaQQtLCGg3i5V88iGjz0JG72/tlFKlg==",
+      "type": "package",
+      "path": "microsoft.aspnet.mvc/5.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Web.config.install.xdt",
+        "Content/Web.config.uninstall.xdt",
+        "lib/net45/System.Web.Mvc.dll",
+        "lib/net45/System.Web.Mvc.xml",
+        "microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
+        "microsoft.aspnet.mvc.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Razor/3.2.7": {
+      "sha512": "BpWEZ+Ys7g9VAkbAfpG5jr5A1fKcmadCCXv3fYfps5YfTVABJIGV4uc9yvmXKxsNsjL+BzDld2gs+xtgT2gg1g==",
+      "type": "package",
+      "path": "microsoft.aspnet.razor/3.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/System.Web.Razor.dll",
+        "lib/net45/System.Web.Razor.xml",
+        "microsoft.aspnet.razor.3.2.7.nupkg.sha512",
+        "microsoft.aspnet.razor.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebPages/3.2.7": {
+      "sha512": "2jwZFB7PvY+tbdz0ZP4iEo7gMrJxkCQUzoGLh6swUc6ZXl6DoKyDslmGcC/j9PFmJXCRMVIqtRorlPSMU2DuRA==",
+      "type": "package",
+      "path": "microsoft.aspnet.webpages/3.2.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Web.config.install.xdt",
+        "Content/Web.config.uninstall.xdt",
+        "lib/net45/System.Web.Helpers.dll",
+        "lib/net45/System.Web.Helpers.xml",
+        "lib/net45/System.Web.WebPages.Deployment.dll",
+        "lib/net45/System.Web.WebPages.Deployment.xml",
+        "lib/net45/System.Web.WebPages.Razor.dll",
+        "lib/net45/System.Web.WebPages.Razor.xml",
+        "lib/net45/System.Web.WebPages.dll",
+        "lib/net45/System.Web.WebPages.xml",
+        "microsoft.aspnet.webpages.3.2.7.nupkg.sha512",
+        "microsoft.aspnet.webpages.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -3795,6 +4239,18 @@
         "lib/netstandard2.0/bootstrap4_identitygeneratorfilesconfig.json",
         "microsoft.visualstudio.web.codegenerators.mvc.3.1.1.nupkg.sha512",
         "microsoft.visualstudio.web.codegenerators.mvc.nuspec"
+      ]
+    },
+    "Microsoft.Web.Infrastructure/1.0.0": {
+      "sha512": "FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "type": "package",
+      "path": "microsoft.web.infrastructure/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.Web.Infrastructure.dll",
+        "microsoft.web.infrastructure.1.0.0.nupkg.sha512",
+        "microsoft.web.infrastructure.nuspec"
       ]
     },
     "Microsoft.Win32.Primitives/4.3.0": {
@@ -8272,11 +8728,18 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Angular.UI.Bootstrap >= 2.5.0",
+      "Angular.UI.Utils >= 0.2.3",
+      "AngularJS.Cookies >= 1.7.9",
+      "AngularJS.Core >= 1.7.9",
+      "AngularJS.Messages >= 1.7.9",
+      "Microsoft.AspNet.Mvc >= 5.2.7",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 3.1.3",
       "Microsoft.EntityFrameworkCore >= 3.1.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.3",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.3",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
+      "angular-ui-grid >= 4.8.1"
     ]
   },
   "packageFolders": {
@@ -8287,11 +8750,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\paulo\\source\\repos\\ROSESHIELD.WEB\\ROSESHIELD.WEB.csproj",
+      "projectUniqueName": "C:\\Users\\paulo\\OneDrive\\Área de Trabalho\\REPOSITOR_TCC\\WEB_C\\ROSESHIELD.WEB.csproj",
       "projectName": "ROSESHIELD.WEB",
-      "projectPath": "C:\\Users\\paulo\\source\\repos\\ROSESHIELD.WEB\\ROSESHIELD.WEB.csproj",
+      "projectPath": "C:\\Users\\paulo\\OneDrive\\Área de Trabalho\\REPOSITOR_TCC\\WEB_C\\ROSESHIELD.WEB.csproj",
       "packagesPath": "C:\\Users\\paulo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\paulo\\source\\repos\\ROSESHIELD.WEB\\obj\\",
+      "outputPath": "C:\\Users\\paulo\\OneDrive\\Área de Trabalho\\REPOSITOR_TCC\\WEB_C\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -8323,6 +8786,30 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "Angular.UI.Bootstrap": {
+            "target": "Package",
+            "version": "[2.5.0, )"
+          },
+          "Angular.UI.Utils": {
+            "target": "Package",
+            "version": "[0.2.3, )"
+          },
+          "AngularJS.Cookies": {
+            "target": "Package",
+            "version": "[1.7.9, )"
+          },
+          "AngularJS.Core": {
+            "target": "Package",
+            "version": "[1.7.9, )"
+          },
+          "AngularJS.Messages": {
+            "target": "Package",
+            "version": "[1.7.9, )"
+          },
+          "Microsoft.AspNet.Mvc": {
+            "target": "Package",
+            "version": "[5.2.7, )"
+          },
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
             "target": "Package",
             "version": "[3.1.3, )"
@@ -8344,6 +8831,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[3.1.1, )"
+          },
+          "angular-ui-grid": {
+            "target": "Package",
+            "version": "[4.8.1, )"
           }
         },
         "imports": [
@@ -8367,5 +8858,47 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.AspNet.Mvc 5.2.7' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.AspNet.Mvc",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.AspNet.Razor 3.2.7' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.AspNet.Razor",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.AspNet.WebPages 3.2.7' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.AspNet.WebPages",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.Web.Infrastructure 1.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.Web.Infrastructure",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

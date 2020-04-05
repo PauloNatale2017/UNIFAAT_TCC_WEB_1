@@ -14,7 +14,7 @@ namespace ROSESHIELD.WEB
         private readonly AplicationDbContext _db;
         
         [BindProperty]
-        public UserAccounts userAccounts { get; set; }
+        public UserAccounts UserAccounts { get; set; }
 
         public CreateAccountsModel(AplicationDbContext db)
         {
@@ -29,7 +29,7 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
-                await _db.UserAccounts.AddAsync(userAccounts);
+                await _db.UserAccounts.AddAsync(UserAccounts);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
             }
