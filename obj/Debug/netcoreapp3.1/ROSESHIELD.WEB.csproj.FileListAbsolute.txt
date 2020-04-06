@@ -839,3 +839,12 @@ C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcorea
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Oficiais\Oficiais.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Oficiais\CreateOficiais.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Oficiais\EditOficiais.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Ong\Ong.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Ong\CreateOng.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Ong\EditOng.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Parceiro\Parceiro.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Parceiro\EditParceiro.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Parceiro\CreateParceiro.cshtml.g.cs

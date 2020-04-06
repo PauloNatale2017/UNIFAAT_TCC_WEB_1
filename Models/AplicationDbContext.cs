@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ROSESHIELD.WEB.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,18 @@ namespace ROSESHIELD.WEB.Models
 
         }
 
-        public DbSet<Entities.Login> Login { get; set; }
-        public DbSet<Entities.UserAccounts> UserAccounts { get; set; }
+        public DbSet<Login> Login { get; set; }
+        public DbSet<UserAccounts> UserAccounts { get; set; }
+        public DbSet<Oficiais> Oficiais { get; set; }
+        public DbSet<Ong> Ong { get; set; }
+        public DbSet<UsuarioOng> UsuarioOng { get; set; }
+        public DbSet<OngPerfil> OngPerfil { get; set; }
+
+        public DbSet<Parceiro> Parceiro { get; set; }
+        public DbSet<ParceiroEmpregos> ParceiroEmpregos { get; set; }
+
+
+
 
     }
 }

@@ -24,11 +24,8 @@
 
   <ItemGroup>
     <Folder Include="Pages\Completo\" />
-    <Folder Include="Pages\Profissional\" />
-    <Folder Include="Pages\Oficiais\" />
-    <Folder Include="Pages\Parceiro\" />
     <Folder Include="Pages\Perfil\" />
-    <Folder Include="Pages\Ong\" />
+    <Folder Include="Pages\Profissional\" />
   </ItemGroup>
 
 

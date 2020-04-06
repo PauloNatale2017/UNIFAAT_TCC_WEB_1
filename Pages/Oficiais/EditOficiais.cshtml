@@ -1,0 +1,150 @@
+﻿@page
+@model ROSESHIELD.WEB.EditOficiaisModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">EDITAR CADASTROS</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <input type="hidden" asp-for="Oficiais.Id" />
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME COMPLETO</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Oficiais.Nome" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Oficiais.Nome" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME DEPARTAMENTO</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Oficiais.NomeDepartamento" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Oficiais.NomeDepartamento" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>PONTO FOCAL</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Oficiais.PontoFocalDeContato" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Oficiais.PontoFocalDeContato" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>CONTATO</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Oficiais.Contato" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Oficiais.Contato" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>ENDEREÇO</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Oficiais.Endereco" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Oficiais.Endereco" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>EMAIL/DEP</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Oficiais.Email" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Oficiais.Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>NOTIFICAÇÃO</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Oficiais.Notificacao" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Oficiais.Notificacao" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label>HORARIO DE ATENDIMENTO</label>
+            </div>
+            <div class="col-7">
+                <input asp-for="Oficiais.Horario" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+                <span asp-validation-for="Oficiais.Horario" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label>NUMERO DO BO</label>
+            </div>
+            <div class="col-7">
+                <input asp-for="Oficiais.NumeroBO" class="form-control" />
+            </div>
+            <div class="col-sm-3">
+                <span asp-validation-for="Oficiais.NumeroBO" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="UPDATE" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Oficiais" class="btn btn-success form-control">BACK TO LIST</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

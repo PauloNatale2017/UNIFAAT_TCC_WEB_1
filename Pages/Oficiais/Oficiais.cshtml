@@ -1,0 +1,78 @@
+﻿@page
+@model ROSESHIELD.WEB.OficiaisModel
+@{
+    ViewData["Title"] = "Oficiais";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .btn {
+        cursor: pointer !important;
+    }
+</style>
+
+<br />
+<div class="container row p-0 m-0">
+
+    <div class="col-8">
+        <h2 class="text-info">LISTA DE OFICIAIS/DEPARTAMENTOS</h2>
+    </div>
+
+    <div class="col-4">
+        <a asp-page="/Oficiais/CreateOficiais" class="btn btn-info form-control ">CADASTRAR OFICIAIS/DEPARTAMENTOS</a>
+    </div>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.Oficiais.Count() > 0)
+            {
+                <table id="users" class="table table-striped table-bordered flex-nowrap" style="width:100%;">
+                    <tr class="table-secondary">
+                        <th>
+                            <label>OFICIAL</label>
+                        </th>
+                        <th>
+                            <label>DEPARTAMENTO</label>
+                        </th>
+                        <th>
+                            <label>CONTATO</label>
+                        </th>
+                        <th>
+                            <label>ATUAÇÃO</label>
+                        </th>
+                        <th>
+                            <label>HORARIOS DE ATENDIMENTO</label>
+                        </th>
+                        
+                    </tr>
+                    @foreach (var item in Model.Oficiais)
+                    {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.Nome)</td>
+                    <td>@Html.DisplayFor(m => item.NomeDepartamento)</td>
+                    <td>@Html.DisplayFor(m => item.Contato)</td>
+                    <td>@Html.DisplayFor(m => item.AbrangenciaDeAtuacao)</td>
+                    <td>@Html.DisplayFor(m => item.Horario)</td>
+                    <td>
+                        <button asp-page-handler="DELETE" asp-route-id="@item.Id" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE USUARIO?')" class="btn btn-danger btn-sm">DELETE</button>
+                        <a asp-page="EditOficiais" asp-route-id="@item.Id" class="btn btn-success btn-sm">EDIT</a>
+                    </td>
+                </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+                <p>NENHUM USUARIO CADASTRADO...</p>
+            }
+        </form>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    <script src="~/js/usersAccount.js"></script>
+}
