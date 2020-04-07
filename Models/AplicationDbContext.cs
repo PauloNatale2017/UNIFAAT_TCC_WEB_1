@@ -20,9 +20,9 @@ namespace ROSESHIELD.WEB.Models
         public DbSet<Ong> Ong { get; set; }
         public DbSet<UsuarioOng> UsuarioOng { get; set; }
         public DbSet<OngPerfil> OngPerfil { get; set; }
-
         public DbSet<Parceiro> Parceiro { get; set; }
         public DbSet<ParceiroEmpregos> ParceiroEmpregos { get; set; }
+        public DbSet<Profissional> Profissional { get; set; }
 
 
 

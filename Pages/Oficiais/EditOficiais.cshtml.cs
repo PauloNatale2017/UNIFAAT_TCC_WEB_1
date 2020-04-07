@@ -30,10 +30,19 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
-                var atualiza = await _db.Oficiais.FindAsync(Oficiais.Id);
-                atualiza.Nome = Oficiais.Nome;
+
+                if (Oficiais.Id == 0)
+                {
+                    _db.Oficiais.Add(Oficiais);
+                }
+                else
+                {
+                    _db.Oficiais.Update(Oficiais);
+                }
+
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Oficiais");
+          
             }
             return RedirectToPage();
 

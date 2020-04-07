@@ -9,38 +9,38 @@ using ROSESHIELD.WEB.Models;
 
 namespace ROSESHIELD.WEB
 {
-    public class EditParceiroModel : PageModel
+    public class EditProfissionalModel : PageModel
     {
         private readonly AplicationDbContext _db;
 
         [BindProperty]
-        public Parceiro Parceiro { get; set; }
+        public Profissional Profissional { get; set; }
 
-        public EditParceiroModel(AplicationDbContext db)
+        public EditProfissionalModel(AplicationDbContext db)
         {
             _db = db;
         }
         public async Task OnGet(int id)
         {
-            Parceiro = await _db.Parceiro.FindAsync(id);
+            Profissional = await _db.Profissional.FindAsync(id);
         }
 
         public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
-
-                if (Parceiro.Id == 0)
+                if (Profissional.Id == 0)
                 {
-                    _db.Parceiro.Add(Parceiro);
+                    _db.Profissional.Add(Profissional);
                 }
                 else
                 {
-                    _db.Parceiro.Update(Parceiro);
+                    _db.Profissional.Update(Profissional);
                 }
 
                 await _db.SaveChangesAsync();
-                return RedirectToPage("Parceiro");
+                return RedirectToPage("Profissional");
+
 
             }
             return RedirectToPage();

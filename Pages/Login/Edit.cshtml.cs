@@ -37,8 +37,13 @@ namespace ROSESHIELD.WEB
         {
             if(ModelState.IsValid)
             {
-                var atualiza = await _db.UserAccounts.FindAsync(UserAccounts.Id);
-                atualiza.Idade = UserAccounts.Idade;
+                if(UserAccounts.Id == 0)
+                {
+                    _db.UserAccounts.Add(UserAccounts);
+                } else  {
+                    _db.UserAccounts.Update(UserAccounts);
+                }
+             
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
             }

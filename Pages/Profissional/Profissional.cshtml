@@ -1,0 +1,86 @@
+﻿@page
+@model ROSESHIELD.WEB.ProfissionalModel
+@{
+    ViewData["Title"] = "Profissional";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<style type="text/css">
+    .btn {
+        cursor: pointer !important;
+    }
+</style>
+
+<br />
+<div class="container row p-0 m-0">
+
+    <div class="col-8">
+        <h2 class="text-info">LISTA DE PROFISSIONAIS</h2>
+    </div>
+
+    <div class="col-4">
+        <a asp-page="/Profissional/CreateProfissional" class="btn btn-info form-control ">CADASTRAR PROFISSIONAIS</a>
+    </div>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post" style="overflow:auto;">
+            @if (Model.Profissional.Count() > 0)
+            {
+                <table id="users" class="table table-striped table-bordered flex-nowrap" style="width:100%;">
+                    <tr class="table-secondary">
+                        <th>
+                            <label>NOME PROFISSIONAL</label>
+                        </th>
+                        <th>
+                            <label>CONTATO</label>
+                        </th>
+                        <th>
+                            <label>ENDERECO</label>
+                        </th>
+                        <th>
+                            <label>EMAIL</label>
+                        </th>
+                        <th>
+                            <label>DIA DE ATENDIMENTO</label>
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.Profissional)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.NomeProfissional)</td>
+                            @*<td>@Html.DisplayFor(m => item.NomeFantasia)</td>
+                                <td>@Html.DisplayFor(m => item.NomeOng)</td>*@
+                            <td>@Html.DisplayFor(m => item.Contato)</td>
+                            <td>@Html.DisplayFor(m => item.Endereco)</td>
+                            <td>@Html.DisplayFor(m => item.Email)</td>
+                            <td>@Html.DisplayFor(m => item.DiaAtendimento)</td>
+                            @*<td>@Html.DisplayFor(m => item.Cidade)</td>
+                                <td>@Html.DisplayFor(m => item.Email)</td>*@
+                            <td>
+                                <button asp-page-handler="DELETE" asp-route-id="@item.Id" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE CADASTRO?')" class="btn btn-danger btn-sm">DELETE</button>
+                                <a asp-page="EditProfissional" asp-route-id="@item.Id" class="btn btn-success btn-sm">EDIT</a>
+                         
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+               <p>NENHUM PROFISSIONAL CADASTRADO...</p>
+            }
+        </form>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+    <script src="~/js/usersAccount.js"></script>
+}
+
+
+

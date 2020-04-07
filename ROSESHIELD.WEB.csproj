@@ -25,7 +25,6 @@
   <ItemGroup>
     <Folder Include="Pages\Completo\" />
     <Folder Include="Pages\Perfil\" />
-    <Folder Include="Pages\Profissional\" />
   </ItemGroup>
 
 

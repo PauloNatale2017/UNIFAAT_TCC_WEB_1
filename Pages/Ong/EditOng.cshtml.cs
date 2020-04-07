@@ -29,19 +29,15 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
-                var atualiza = await _db.Ong.FindAsync(Ong.Id);
-                atualiza.RazaoSocial = Ong.RazaoSocial;
-                atualiza.NomeFantasia = Ong.NomeFantasia;
-                atualiza.NomeOng = Ong.NomeOng;
-                atualiza.TotalFuncionarios = Ong.TotalFuncionarios;
-                atualiza.UpdateDate = Ong.UpdateDate;
-                atualiza.Endereco = Ong.Endereco;
-                atualiza.Email = Ong.Email;
-                atualiza.CreateDate = Ong.CreateDate;
-                atualiza.Contato = Ong.Contato;
-                atualiza.CNPJ_CPF = Ong.CNPJ_CPF;
-                atualiza.Cidade = Ong.Cidade;
-            
+                if (Ong.Id == 0)
+                {
+                    _db.Ong.Add(Ong);
+                }
+                else
+                {
+                    _db.Ong.Update(Ong);
+                }
+
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Ong");
             }
