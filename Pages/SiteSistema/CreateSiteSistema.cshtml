@@ -1,0 +1,58 @@
+﻿@page
+@model ROSESHIELD.WEB.CreateSiteSistemaModel
+@{
+    ViewData["Title"] = "CreateSiteSistema";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">CADASTRO DE OPÇÕES DE MENUS DOS SISTEMAS CADASTRADOS.</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME MENU</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="SiteSistema.Menu" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="SiteSistema.Menu" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>DESCRIÇÃO FUNCIONALIDADE MENU</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="SiteSistema.Descricao" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="SiteSistema.Descricao" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Oficiais" class="btn btn-success form-control">Back To List</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

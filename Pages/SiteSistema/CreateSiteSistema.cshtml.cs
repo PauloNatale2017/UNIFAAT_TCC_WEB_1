@@ -9,14 +9,14 @@ using ROSESHIELD.WEB.Models;
 
 namespace ROSESHIELD.WEB
 {
-    public class CreateParceiroModel : PageModel
+    public class CreateSiteSistemaModel : PageModel
     {
         private readonly AplicationDbContext _db;
 
         [BindProperty]
-        public Parceiro Parceiro { get; set; }
+        public SiteSistema SiteSistema { get; set; }
 
-        public CreateParceiroModel(AplicationDbContext db)
+        public CreateSiteSistemaModel(AplicationDbContext db)
         {
             _db = db;
         }
@@ -28,11 +28,16 @@ namespace ROSESHIELD.WEB
 
         public async Task<IActionResult> OnPost()
         {
-           
-            await _db.Parceiro.AddAsync(Parceiro);
-            await _db.SaveChangesAsync();
-            return RedirectToPage("Parceiro");
-    
+            if (ModelState.IsValid)
+            {
+                await _db.SiteSistema.AddAsync(SiteSistema);
+                await _db.SaveChangesAsync();
+                return RedirectToPage("SiteSistema");
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }

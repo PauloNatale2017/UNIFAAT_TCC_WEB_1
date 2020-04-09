@@ -10,38 +10,32 @@ using ROSESHIELD.WEB.Models;
 
 namespace ROSESHIELD.WEB
 {
-    public class PerfilModel : PageModel
+    public class SiteSistemaModel : PageModel
     {
         private readonly AplicationDbContext _db;
-        public IEnumerable<Perfil> Perfil { get; set; }
-        public IEnumerable<Sistemas> Sistemas { get; set; }
+        public IEnumerable<SiteSistema> SiteSistema { get; set; }
 
-        public PerfilModel(AplicationDbContext db)
+        public SiteSistemaModel(AplicationDbContext db)
         {
             _db = db;
         }
         public async Task OnGet()
         {
-            Perfil = await _db.Perfil.ToListAsync();
-            Sistemas = await _db.Sistemas.ToListAsync();
+            SiteSistema = await _db.SiteSistema.ToListAsync();
         }
 
         public async Task<IActionResult> OnPostDelete(int id)
         {
-            var entity = await _db.Perfil.FindAsync(id);
-            var VinculoSistemaUsuario = _db.VinculoSistemaUsuario.Where(d=> d.IdPerfil == id.ToString()).SingleOrDefault();
-
+            var entity = await _db.SiteSistema.FindAsync(id);
             if (entity == null)
             {
                 return NotFound();
             }
 
-            _db.VinculoSistemaUsuario.Remove(VinculoSistemaUsuario);
-            _db.Perfil.Remove(entity);
-            
+            _db.SiteSistema.Remove(entity);
             await _db.SaveChangesAsync();
 
-            return RedirectToPage("Perfil");
+            return RedirectToPage("SiteSistema");
         }
     }
 }

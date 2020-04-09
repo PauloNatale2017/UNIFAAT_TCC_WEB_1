@@ -12,14 +12,6 @@ app.controller("ctrlPerfil", ['$rootScope', '$scope', '$http', '$location', '$wi
         Obj = $scope;
         path = window.location.origin;
 
-        //    { "EmailUser": "paulo000natale@gmail.com", "Password": "777", "Id": 7, "CreateDate": null, "UpdateDate": null },
-        //    { "EmailUser": "paulo000natale@gmail.com", "Password": "777", "Id": 8, "CreateDate": null, "UpdateDate": null },
-        //    { "EmailUser": "paulo000natale@gmail.com", "Password": "123456", "Id": 9, "CreateDate": null, "UpdateDate": null },
-        //    { "EmailUser": "paulo_ace_1000@hotmail.com", "Password": "82929262", "Id": 10, "CreateDate": null, "UpdateDate": null },
-        //    { "EmailUser": "paulo000natale@gmail.com", "Password": "82929262", "Id": 11, "CreateDate": null, "UpdateDate": null },
-        //    { "EmailUser": "paulo000natale@gmail.com", "Password": "123456", "Id": 12, "CreateDate": null, "UpdateDate": null }];
-
-        $scope.Perfils = [{ "PerfilNome": "ADMIN","Id":"1"}];
 
 
         $scope.values = [];
@@ -66,6 +58,39 @@ app.controller("ctrlPerfil", ['$rootScope', '$scope', '$http', '$location', '$wi
             $http.post("/api/Perfil/createperfilvinculo", JSON.stringify(entityPerfil)).then(function (response) {
                 if (response.data === "OK") {
 
+                    var url = $window.location;
+                    $window.location = "https://localhost:5001/Perfil/Perfil";
+                }
+            });
+        };
+
+        $scope.createperfil = function () {
+
+
+            debugger;
+            var PerfilDados = {
+                HOME: $scope.HOME === true ? "HOME_ON" : "HOME_OFF",
+                MAPS: $scope.MAPS === true ? "MAPS_ON" : "MAPS_OFF",
+                NOTIFICACAO: $scope.NOTIFICACAO === true ? "NOTIFICACAO_ON" : "NOTIFICACAO_OFF",
+                RELATORIOS: $scope.RELATORIOS === true ? "RELATORIOS_ON" : "RELATORIOS_OFF",
+                ABERTURA_BOS: $scope.ABERTURA_BOS === true ? "ABERTURA_BOS_ON" : "ABERTURA_BOS_OFF",
+                CRIAR: $scope.CRIAR === true ? "CRIAR_ON" : "CRIAR_OFF",
+                EDITAR: $scope.EDITAR === true ? "EDITAR_ON" : "EDITAR_OFF",
+                PESQUISA: $scope.PESQUISA === true ? "PESQUISA_ON" : "PESQUISA_OFF",
+                ACAO_FULL: $scope.ACAO_FULL === true ? "ACAO_FULL_ON" : "ACAO_FULL_OFF",
+                NOME_PERFIL: $scope.NomePerfil,
+                ACESSO_TOTAL: $scope.ACESSO_TOTAL === true ? "ACESSO_TOTAL_ON" : "ACESSO_TOTAL_OFF",
+                SISTEMA: "1"
+            };
+            
+
+            $http.post("/api/Perfil/createperfil", JSON.stringify(PerfilDados)).then(function (response) {
+
+                
+
+
+
+                if (response.data === "OK") {
                     var url = $window.location;
                     $window.location = "https://localhost:5001/Perfil/Perfil";
                 }

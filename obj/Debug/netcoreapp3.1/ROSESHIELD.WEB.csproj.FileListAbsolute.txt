@@ -858,3 +858,6 @@ C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcorea
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Sistema\Sistema.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Sistema\CreateSistema.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Sistema\EditSistema.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\SiteSistema.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\EditSiteSistema.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\CreateSiteSistema.cshtml.g.cs

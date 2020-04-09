@@ -1,0 +1,79 @@
+﻿@page
+@model ROSESHIELD.WEB.SiteSistemaModel
+@{
+    ViewData["Title"] = "SiteSistema";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<style type="text/css">
+    .btn {
+        cursor: pointer !important;
+    }
+</style>
+
+<br />
+<div class="container row p-0 m-0">
+
+    <div class="col-8">
+        <h2 class="text-info">LISTA DE MENUS CADASTRADOS PARA OS SISTEMAS</h2>
+    </div>
+
+    <div class="col-4">
+        <a asp-page="/SiteSistema/CreateSiteSistema" class="btn btn-info form-control ">CADASTRAR MENUS DOS SISTEMAS</a>
+    </div>
+
+
+
+    public string Menu { get; set; }
+    public string Descricao { get; set; }
+    public int IdSistema { get; set; }
+
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.SiteSistema.Count() > 0)
+            {
+                <table id="users" class="table table-striped table-bordered flex-nowrap" style="width:100%;">
+                    <tr class="table-secondary">
+                        <th>
+                            <label>MENU</label>
+                        </th>
+                        <th>
+                            <label>DESCRICAO</label>
+                        </th>
+                        <th>
+                            <label>SISTEMA</label>
+                        </th>                      
+
+                    </tr>
+                    @foreach (var item in Model.SiteSistema)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Menu)</td>
+                            <td>@Html.DisplayFor(m => item.Descricao)</td>
+                            <td>@Html.DisplayFor(m => item.IdSistema)</td>                          
+                            <td>
+                                <button asp-page-handler="DELETE" asp-route-id="@item.Id" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE USUARIO?')" class="btn btn-danger btn-sm">DELETE</button>
+                                <a asp-page="EditSiteSistema" asp-route-id="@item.Id" class="btn btn-success btn-sm">EDIT</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+                <p>NENHUM MENU CADASTRADO...</p>
+            }
+        </form>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+
+}
+

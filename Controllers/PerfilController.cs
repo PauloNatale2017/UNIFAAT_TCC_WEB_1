@@ -67,18 +67,26 @@ namespace ROSESHIELD.WEB.Controllers
         public async Task<IActionResult> CreatePerfil(RequestPerfil entity)
         {
 
-            var insert = new Perfil
+            try
             {
-                AccessPerfil = (entity.HOME + "&" + entity.MAPS + "&" + entity.NOTIFICACAO + "&" + entity.RELATORIOS + "&" + entity.ABERTURA_BOS + "&"),
-                ActionsPerfil = (entity.CRIAR + "&" + entity.EDITAR + "&" + entity.PESQUISA + "&" + entity.ACAO_FULL),
-                CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now,
-                NomePerfil = entity.NOME_PERFIL,
-                IdSistema = int.Parse(entity.SISTEMA)
-            };
+                var insert = new Perfil
+                {
+                    AccessPerfil = (entity.HOME + "&" + entity.MAPS + "&" + entity.NOTIFICACAO + "&" + entity.RELATORIOS + "&" + entity.ABERTURA_BOS + "&"),
+                    ActionsPerfil = (entity.CRIAR + "&" + entity.EDITAR + "&" + entity.PESQUISA + "&" + entity.ACAO_FULL),
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    NomePerfil = entity.NOME_PERFIL,
+                    IdSistema = int.Parse(entity.SISTEMA)
+                };
 
-            _db.Perfil.Add(insert);
-            _db.SaveChanges();
+                _db.Perfil.Add(insert);
+                _db.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             return Ok("OK");
         }
