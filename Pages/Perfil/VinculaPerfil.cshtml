@@ -1,0 +1,91 @@
+﻿@page
+@model ROSESHIELD.WEB.VinculaPerfilModel
+@{
+    ViewData["Title"] = "VinculaPerfil";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<script src="~/js/jquery-3.2.1.js"></script>
+<script src="~/js/angular.js"></script>
+<script src="~/js/crossfilter.js"></script>
+<script src="~/js/fusioncharts.js"></script>
+<script src="~/js/angular-fusioncharts.js"></script>
+<script src="~/js/angular-fusioncharts.min.js"></script>
+<script src="~/js/fusioncharts.theme.fusion.js"></script>
+<script src="~/js/fusioncharts.maps.js"></script>
+<script src="~/js/ng-map.min.js"></script>
+<script src="~/js/angular-block-ui.js"></script>
+<link href="~/css/angular-block-ui.css" rel="stylesheet" />
+
+
+<br />
+<h2 class="text-info">CADASTRO DE PERFIS</h2>
+<br />
+
+<div ng-controller="ctrlPerfil" class="border container" style="padding:30px;">
+
+    <hr />
+    <div class="col-sm-12" style="text-align: center; background-color: midnightblue;color: white;text-shadow: white 0px 2px 7px;">
+        <label>VINCULAR PERFIS AOS USUARIOS</label>
+    </div>
+    <hr />
+
+    <div class="form-group row">
+
+        <div class="col-3">
+            <div class="col-sm-12" style="text-align: center; background-color: green;color: white;text-shadow: white 0px 2px 7px;">
+                <label>USUARIOS CADASTRADOS</label>
+            </div>            
+        </div>
+        <div class="col-6">
+            <select ng-model="selectedLogins" class="form-group" style=" width: 100%;">
+                <option ng-repeat="x in values" value="{{x.Id}}">{{x.EmailUser}}</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <h6>ID SELECTED USR: {{selectedLogins}}</h6>
+        </div>
+
+    </div>
+    <hr />
+    <div class="form-group row">
+
+        <div class="col-3">
+            <div class="col-sm-12" style="text-align: center; background-color: lightseagreen;color: white;text-shadow: white 0px 2px 7px;">
+                <label>PERFIS CADASTRADOS</label>
+            </div>
+          
+        </div>
+        <div class="col-6">
+            <select ng-model="selectedPerfils" class="form-group" style=" width: 100%;">
+                <option ng-repeat="p in Perfils" value="{{p.Id}}">{{p.PerfilNome}}</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <h6>ID SELECTED USR: {{selectedPerfils}}</h6>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+
+        <div class="spinner-grow text-success">
+
+        </div>
+
+        <div class="col-3 offset-4">
+            <button type="button" ng-click="SubMitCreate()" class="btn btn-primary form-control" style="cursor:pointer;">VINCULAR</button>
+        </div>
+        @*<div class="col-3">
+            <a asp-page="Profissional" class="btn btn-success form-control">BACK TO LIST</a>
+        </div>*@
+    </div>
+
+</div>
+
+@section Scripts{
+    <script src="~/js/Perfil.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

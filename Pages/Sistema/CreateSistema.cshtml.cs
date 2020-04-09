@@ -9,14 +9,14 @@ using ROSESHIELD.WEB.Models;
 
 namespace ROSESHIELD.WEB
 {
-    public class CreateProfissionalModel : PageModel
+    public class CreateSistemaModel : PageModel
     {
         private readonly AplicationDbContext _db;
 
         [BindProperty]
-        public Profissional Profissional { get; set; }
+        public Sistemas Sistemas { get; set; }
 
-        public CreateProfissionalModel(AplicationDbContext db)
+        public CreateSistemaModel(AplicationDbContext db)
         {
             _db = db;
         }
@@ -27,10 +27,10 @@ namespace ROSESHIELD.WEB
         }
 
         public async Task<IActionResult> OnPost()
-        {         
-          await _db.Profissional.AddAsync(Profissional);
-          await _db.SaveChangesAsync();
-          return RedirectToPage("Profissional");         
+        {
+            await _db.Sistemas.AddAsync(Sistemas);
+            await _db.SaveChangesAsync();
+            return RedirectToPage("Sistema");
         }
     }
 }

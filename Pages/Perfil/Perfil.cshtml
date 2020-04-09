@@ -1,0 +1,93 @@
+﻿@page
+@model ROSESHIELD.WEB.PerfilModel
+@{
+    ViewData["Title"] = "Perfil";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<style type="text/css">
+    .btn {
+        cursor: pointer !important;
+    }
+</style>
+
+<br />
+<div class="container row p-0 m-0">
+
+    <div class="col-8">
+        <h2 class="text-info">VINCULAR PERFIS AOS USUARIOS</h2>
+    </div>
+
+    <div class="row"></div>
+
+    <div class="col-4">
+        <div class="row">
+            <div class="col-6">
+                <a asp-page="/Perfil/CreatePerfil" class="btn btn-info form-control ">CADASTRAR PERFIL</a>
+
+            </div>
+            <div class="col-6">
+                <a asp-page="/Perfil/VinculaPerfil" class="btn btn-info form-control ">VINCULAR PERFIL</a>
+            </div>
+        </div>
+
+       
+
+        
+    </div>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post" style="overflow:auto;">
+            @if (Model.Perfil.Count() > 0)
+            {
+                <table id="users" class="table table-striped table-bordered flex-nowrap" style="width:100%;">
+                    <tr class="table-secondary">
+                        <th>
+                            <label>NOME DO PERFIL</label>
+                        </th>
+                        <th>
+                            <label>SISTEMA</label>
+                        </th>
+                        <th>
+                            <label>ACCESSOS</label>
+                        </th>
+                        <th>
+                            <label>AÇÕES</label>
+                        </th>
+
+                    </tr>
+                    @foreach (var item in Model.Perfil)
+                    {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.NomePerfil)</td>
+                    <td>@Html.DisplayFor(m => item.IdSistema)</td>
+                    <td>@Html.DisplayFor(m => item.AccessPerfil)</td>
+                    <td>@Html.DisplayFor(m => item.ActionsPerfil)</td>
+                    <td>
+                        <button asp-page-handler="DELETE" asp-route-id="@item.Id" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE CADASTRO?')" class="btn btn-danger btn-sm">DELETE</button>
+                        @*<a asp-page="EditPerfil" asp-route-id="@item.Id" class="btn btn-success btn-sm">EDIT</a>*@
+                    </td>
+                </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+                <p>NENHUM PERFIL CADASTRADO...</p>
+            }
+        </form>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+
+}
+
+
+
+

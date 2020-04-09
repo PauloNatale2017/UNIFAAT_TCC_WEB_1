@@ -23,9 +23,12 @@ namespace ROSESHIELD.WEB.Models
         public DbSet<Parceiro> Parceiro { get; set; }
         public DbSet<ParceiroEmpregos> ParceiroEmpregos { get; set; }
         public DbSet<Profissional> Profissional { get; set; }
+        public DbSet<Sistemas> Sistemas { get; set; }
+        public DbSet<Perfil> Perfil { get; set; }
+        public DbSet<SiteSistema> SiteSistema { get; set; }
+        public DbSet<VinculoSistemaUsuario> VinculoSistemaUsuario { get; set; }
 
-
-
+        
 
     }
 }
