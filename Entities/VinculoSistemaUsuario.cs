@@ -7,10 +7,10 @@ namespace ROSESHIELD.WEB.Entities
 {
     public class VinculoSistemaUsuario :baseEntity
     {
-        public int IdUsuario { get; set; }
-
-        public int IdPerfil { get; set; }
-
-        public int IdSistema { get; set; }
+        public string IdUsuario { get; set; }
+               
+        public string IdPerfil { get; set; }
+               
+        public string IdSistema { get; set; }
     }
 }

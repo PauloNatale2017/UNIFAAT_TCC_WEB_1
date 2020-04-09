@@ -35,11 +35,12 @@
         <div class="col-3">
             <div class="col-sm-12" style="text-align: center; background-color: green;color: white;text-shadow: white 0px 2px 7px;">
                 <label>USUARIOS CADASTRADOS</label>
-            </div>            
+            </div>
         </div>
+       
         <div class="col-6">
             <select ng-model="selectedLogins" class="form-group" style=" width: 100%;">
-                <option ng-repeat="x in values" value="{{x.Id}}">{{x.EmailUser}}</option>
+                <option ng-repeat="x in values" value="{{x.id}}">{{x.emailUser}}</option>
             </select>
         </div>
         <div class="col-sm-3">
@@ -58,7 +59,7 @@
         </div>
         <div class="col-6">
             <select ng-model="selectedPerfils" class="form-group" style=" width: 100%;">
-                <option ng-repeat="p in Perfils" value="{{p.Id}}">{{p.PerfilNome}}</option>
+                <option ng-repeat="p in values2" value="{{p.id}}">{{p.nomePerfil}}</option>
             </select>
         </div>
         <div class="col-sm-3">
@@ -74,7 +75,7 @@
         </div>
 
         <div class="col-3 offset-4">
-            <button type="button" ng-click="SubMitCreate()" class="btn btn-primary form-control" style="cursor:pointer;">VINCULAR</button>
+            <button type="button" ng-click="perfilvinculo()" class="btn btn-primary form-control" style="cursor:pointer;">VINCULAR</button>
         </div>
         @*<div class="col-3">
             <a asp-page="Profissional" class="btn btn-success form-control">BACK TO LIST</a>

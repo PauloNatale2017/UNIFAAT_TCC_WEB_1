@@ -28,9 +28,39 @@ namespace ROSESHIELD.WEB.Controllers
         public async Task<IActionResult> GetAll()
         {
             var returns = _db.Login.ToList();
-            var jsonEntity = JsonConvert.SerializeObject(returns);
-            return Json(jsonEntity);
+            //var jsonEntity = JsonConvert.SerializeObject(returns);
+            return Ok(returns);
         }
+
+        [Route("getperfilall")]
+        [HttpGet]
+        public async Task<IActionResult> GetPerfilAll()
+        {
+            var returns = _db.Perfil.ToList();
+            //var jsonEntity = JsonConvert.SerializeObject(returns);
+            return Ok(returns);
+        }
+
+
+
+        [Route("createperfilvinculo")]
+        [HttpPost]
+        public async Task<IActionResult> PerfilVinculo(VinculoSistemaUsuario entityPerfil)
+        {
+
+            _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
+            {
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                IdPerfil = entityPerfil.IdPerfil,
+                IdSistema = entityPerfil.IdSistema,
+                IdUsuario = entityPerfil.IdUsuario
+            });
+            _db.SaveChanges();
+
+            return Ok("OK");
+        }
+
 
         [Route("createperfil")]
         [HttpPost]
