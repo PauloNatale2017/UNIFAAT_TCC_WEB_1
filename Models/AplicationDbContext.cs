@@ -15,7 +15,7 @@ namespace ROSESHIELD.WEB.Models
         }
 
         public DbSet<Login> Login { get; set; }
-        public DbSet<UserAccounts> UserAccounts { get; set; }
+        public DbSet<UserAccounts> UserAccounts { get; set; } 
         public DbSet<Oficiais> Oficiais { get; set; }
         public DbSet<Ong> Ong { get; set; }
         public DbSet<UsuarioOng> UsuarioOng { get; set; }

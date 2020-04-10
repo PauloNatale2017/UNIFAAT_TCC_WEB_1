@@ -804,7 +804,6 @@ C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcorea
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.csprojAssemblyReference.cache
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\staticwebassets\ROSESHIELD.WEB.StaticWebAssets.Manifest.cache
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\staticwebassets\ROSESHIELD.WEB.StaticWebAssets.xml
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.RazorAssemblyInfo.cache
@@ -861,3 +860,4 @@ C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcorea
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\SiteSistema.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\EditSiteSistema.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\CreateSiteSistema.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.csprojAssemblyReference.cache

@@ -22,11 +22,30 @@ namespace ROSESHIELD.WEB.Controllers
         }
 
 
+        public class retur {
+            public string label { get; set; }
+            public int value { get; set; }
+        }
+        
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var returns = _db.Login.ToList();  
-            return Json(JsonConvert.SerializeObject(returns));
+            var loginEnt = _db.Login.ToList();
+            var returns = _db.UserAccounts.ToList();
+
+            List<retur> list = new List<retur>();
+            int values = 1;
+            foreach (var item in returns)
+            {
+                list.Add(new retur { 
+                   label = item.Cidade,
+                   value = (values)
+                });
+                values = values + 1;
+            }
+            
+            return Ok(list);
         }
     }
 }

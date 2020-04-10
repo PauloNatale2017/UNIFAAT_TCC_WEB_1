@@ -19,8 +19,7 @@ app.controller("ctrlPerfil", ['$rootScope', '$scope', '$http', '$location', '$wi
             $http.get("/api/Perfil/getall")
                 .then(function (request) {
                     var dados = request.data;
-                    $scope.values = dados
-                                    
+                    $scope.values = dados                                    
                 }).catch(function (response) {
                     console.log(response);
                 })

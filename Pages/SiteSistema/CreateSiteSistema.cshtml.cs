@@ -30,6 +30,8 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
+                //SISTEMA PADRÃO DE UTILIZAÇÃO//
+                SiteSistema.IdSistema = 1;
                 await _db.SiteSistema.AddAsync(SiteSistema);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("SiteSistema");

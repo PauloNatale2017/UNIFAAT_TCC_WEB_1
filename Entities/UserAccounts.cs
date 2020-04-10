@@ -23,7 +23,10 @@ namespace ROSESHIELD.WEB.Entities
 
         [Required(ErrorMessage = "CPF e obrigatorio.")]
         public string Cpf { get; set; }
-    
+
+        [Required(ErrorMessage = "Cidade e obrigatorio.")]
+        public string Cidade { get; set; }
+
         public Login UsuarioAccesso { get; set; }
     }
 }
