@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ROSESHIELD.WEB.Entities;
@@ -16,6 +17,11 @@ namespace ROSESHIELD.WEB
         [BindProperty]
         public UserAccounts UserAccounts { get; set; }
 
+        [BindProperty]
+        public List<SelectListItem> Options { get; set; }
+
+
+
         public CreateAccountsModel(AplicationDbContext db)
         {
             _db = db;
@@ -23,6 +29,11 @@ namespace ROSESHIELD.WEB
         
         public void OnGet() {
 
+            Options = _db.UserAccounts.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Cidade
+            }).ToList();
         }
 
         public async Task<IActionResult> OnPost()

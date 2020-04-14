@@ -5,5 +5,54 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>EditSiteSistema</h1>
+<br />
+<h2 class="text-info">EDIÇÂO DAS OPÇÕES DE MENUS DOS SISTEMAS SHIELDS.</h2>
+<br />
 
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME MENU</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="SiteSistemas.Menu" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="SiteSistemas.Menu" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>DESCRIÇÃO FUNCIONALIDADE MENU</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="SiteSistemas.Descricao" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="SiteSistemas.Descricao" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="UPDATE" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="SiteSistemas" class="btn btn-success form-control">BACK TO LIST</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

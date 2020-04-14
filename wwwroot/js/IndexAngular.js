@@ -14,6 +14,8 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
 
         $scope.data = [];
 
+        
+        $scope.Cidade = $scope.Cidade_Value;
 
         blockUI.start("....CARREGANDO INFORMAÇÕES....");
 
@@ -27,7 +29,7 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
             blockUI.stop();
         };
 
-        $scope.InitialiseMaps();
+       // $scope.InitialiseMaps();
 
 
         $scope.Config = {
@@ -91,17 +93,17 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
                             "chart": {
                                 "caption": "TOTAL DE USUARIOS CADASTRADOS DIVIDIDOS POR PERIODO",
                                 "subCaption": "",
-                                "xAxisName": "Month",
+                                "xAxisName": new Date(),
                                 "yAxisName": "",
-                                "numberPrefix": "$",
+                                "numberPrefix": "",
                                 "theme": "fusion"
                             },
                             "data": $scope.dadosColumn,
                             "trendlines": [{
                                 "line": [{
                                     "startvalue": "0",
-                                    "valueOnRight": "100",
-                                    "displayvalue": "Monthly Target"
+                                    "valueOnRight": "12",
+                                    "displayvalue": new Date()
                                 }]
                             }]
                         }

@@ -8,8 +8,8 @@
 <h2 class="text-info">CADASTRO BASICO DE ACESSO.</h2>
 <br />
 
-<div class="border container" style="padding:30px;">
-    <form method="post">
+<div  class="border container" style="padding:30px;">
+    <form method="post" >
         <div class="form-group row">
             <div class="col-sm-2">
                 <label>NOME COMPLETO</label>
@@ -78,12 +78,22 @@
 
         <div class="form-group row">
             <div class="col-2">
-                <label>CIDADE</label>
+                <label>CADASTRAR CIDADE</label>
             </div>
-            <div class="col-6">
-                <input asp-for="UserAccounts.Cidade" class="form-control" />
+            <div class="col-3">
+                <input  asp-for="UserAccounts.Cidade"  id="cidade_id" class="form-control" />
             </div>
-            <div class="col-sm-4">
+            <div class="col-3">
+                <label>CIDADES CADASTRADAS:</label>
+            </div>
+            <div class="col-3">
+                @Html.DropDownListFor(x => Model.Options, new SelectList(Model.Options, "Value", "Text"), 
+               htmlAttributes: new { @class = "form-control",
+                                     id = "Id" , 
+                                     ng_model = "Cidade", 
+                                     onchange = "Change()" })
+            </div>
+            <div class="col-sm-3">
                 <span asp-validation-for="UserAccounts.Cidade" class="text-danger"></span>
             </div>
         </div>
@@ -133,6 +143,25 @@
 
     </form>
 </div>
+
+
+<script type="text/javascript">
+
+
+    function Change() {
+            var select = document.getElementById("Id");
+            var options = select.options[select.selectedIndex];
+            //$scope.Cidade_Value = options.text
+           document.getElementById("cidade_id").value = options.text
+    };
+
+
+
+
+
+
+</script>
+
 
 @section Scripts{
   <partial name="_ValidationScriptsPartial" />

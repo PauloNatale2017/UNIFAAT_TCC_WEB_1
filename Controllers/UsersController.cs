@@ -33,18 +33,20 @@ namespace ROSESHIELD.WEB.Controllers
         {
             var loginEnt = _db.Login.ToList();
             var returns = _db.UserAccounts.ToList();
-
+            
             List<retur> list = new List<retur>();
-            int values = 1;
+
             foreach (var item in returns)
             {
+                var totalporcidade = returns.Where(d => d.Cidade == item.Cidade).Count();
+
                 list.Add(new retur { 
                    label = item.Cidade,
-                   value = (values)
+                   value = (totalporcidade)
                 });
-                values = values + 1;
             }
-            
+
+
             return Ok(list);
         }
     }
