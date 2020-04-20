@@ -5,5 +5,73 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>GeoReferencia</h1>
+<style type="text/css">
+    .btn {
+        cursor: pointer !important;
+    }
+</style>
+
+<br />
+<div class="container row p-0 m-0">
+
+    <div class="col-8">
+        <h2 class="text-info">LISTA DE ENDEREÇOS GEO-REFERENCIADOS</h2>
+    </div>
+
+    <div class="col-4">
+        <a asp-page="/GeoReferencia/CreateGeoReferencia" class="btn btn-info form-control ">CADASTRAR GEO-REFERENCIA</a>
+    </div>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post" style="overflow:auto;">
+            @if (Model.Geo.Count() > 0)
+            {
+                <table id="users" class="table table-striped table-bordered flex-nowrap" style="width:100%;">
+                    <tr class="table-secondary">
+                        <th>
+                            <label>ENDEREÇO</label>
+                        </th>
+                        <th>
+                            <label>CEP</label>
+                        </th>
+                        <th>
+                            <label>LAT</label>
+                        </th>
+                        <th>
+                            <label>LONG</label>
+                        </th>                       
+                    </tr>
+                    @foreach (var item in Model.Geo)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Endereco)</td>                       
+                            <td>@Html.DisplayFor(m => item.CEP)</td>
+                            <td>@Html.DisplayFor(m => item.Lat)</td>
+                            <td>@Html.DisplayFor(m => item.Long)</td>
+                    
+                            <td>
+                                <button asp-page-handler="DELETE" asp-route-id="@item.Id" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE CADASTRO?')" class="btn btn-danger btn-sm">DELETE</button>
+                                <a asp-page="EditGeoReferencia" asp-route-id="@item.Id" class="btn btn-success btn-sm">EDIT</a>
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+                <p>NENHUMA GEO REFERENCIA CADASTRADA...</p>
+            }
+        </form>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+
+}
+
 

@@ -29,7 +29,7 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
             blockUI.stop();
         };
 
-       // $scope.InitialiseMaps();
+         $scope.InitialiseMaps();
 
 
         $scope.Config = {

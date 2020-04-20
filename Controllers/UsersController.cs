@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using ROSESHIELD.WEB.Entities;
 using ROSESHIELD.WEB.Models;
 
@@ -26,7 +28,27 @@ namespace ROSESHIELD.WEB.Controllers
             public string label { get; set; }
             public int value { get; set; }
         }
-        
+
+        [Route("location")]
+        [HttpGet]
+        public async Task<IActionResult> GetLocation()
+        {
+
+            #region SELENIUM
+
+            IWebDriver driver = new ChromeDriver(@"C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\DriverChrome\v2\");
+            driver.Navigate().GoToUrl("https://www.latlong.net/");
+
+            driver.FindElement(By.Id("place")).Clear();
+            driver.FindElement(By.Id("place")).SendKeys("Avenida Geronimo de camargo numero 2200");
+
+            //driver.FindElement(By.Id("btnfind")).Click();
+           
+            #endregion
+
+            return Ok("");
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> GetAll()

@@ -28,7 +28,9 @@ namespace ROSESHIELD.WEB.Models
         public DbSet<SiteSistema> SiteSistema { get; set; }
         public DbSet<VinculoSistemaUsuario> VinculoSistemaUsuario { get; set; }
 
-        
+        public DbSet<GeoCadastro> Geo { get; set; }
+
+
 
     }
 }
