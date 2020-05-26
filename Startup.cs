@@ -29,6 +29,12 @@ namespace ROSESHIELD.WEB
             services.AddDbContext<AplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("Conn")));
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddCors(options => {
+                options.AddPolicy("AllowAnyOrigin", builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,8 +46,7 @@ namespace ROSESHIELD.WEB
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseExceptionHandler("/Error");               
                 app.UseHsts();
             }
 
@@ -51,6 +56,8 @@ namespace ROSESHIELD.WEB
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("AllowAnyOrigin");
 
             app.UseEndpoints(endpoints =>
             {

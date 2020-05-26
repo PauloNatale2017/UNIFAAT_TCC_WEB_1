@@ -1,0 +1,116 @@
+﻿@page
+@model ROSESHIELD.WEB.EditVagasModel
+@{
+    ViewData["Title"] = "EditVagas";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">EDITAR CADASTROS</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <input type="hidden" asp-for="Vagas.Id" />
+        <div class="form-group row">
+            <div class="col-2">
+                <label>EMPRESA RESPONSAVEL PELA VAGA</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.IdEmpresa" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.IdEmpresa" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME VAGA</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Vagas.NomeVaga" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.NomeVaga" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>VALOR SALARIO</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Vagas.ValorSalario" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.ValorSalario" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Descrição da vaga</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Vagas.Descricao" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.Descricao" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>Informações Adicionais</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.InformacoeAdicionais" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.InformacoeAdicionais" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>AVISOS DA EMPRESA</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.AvisosDaEmpresa" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.AvisosDaEmpresa" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>Restrições</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.Restricoes" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.Restricoes" class="text-danger"></span>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

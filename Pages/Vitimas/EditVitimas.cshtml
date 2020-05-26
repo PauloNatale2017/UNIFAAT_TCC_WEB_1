@@ -1,0 +1,128 @@
+﻿@page
+@model ROSESHIELD.WEB.EditVitimasModel
+@{
+    ViewData["Title"] = "EditVitimas";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">EDITAR CADASTROS</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <input type="hidden" asp-for="VitimaBasic.Id" class="form-control" />
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME COMPLETO</label>
+            </div>
+            <div class="col-sm-8">
+                <input asp-for="VitimaBasic.NomeCompleto" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="VitimaBasic.NomeCompleto" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>RG/CPF</label>
+            </div>
+            <div class="col-sm-8">
+                <input asp-for="VitimaBasic.Rg_CPF" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="VitimaBasic.Rg_CPF" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <label>ENDEREÇO</label>
+            </div>
+            <div class="col-sm-8">
+                <input asp-for="VitimaBasic.Endereco" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="VitimaBasic.Endereco" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>CONTATO</label>
+            </div>
+            <div class="col-8">
+                <input asp-for="VitimaBasic.Contato" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="VitimaBasic.Contato" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>E-MAIL</label>
+            </div>
+            <div class="col-8">
+                <input asp-for="VitimaBasic.Email" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="VitimaBasic.Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>REDE SOCIAL</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="VitimaBasic.RedeSocial" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="VitimaBasic.RedeSocial" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>CONTATO PARA RECADO</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="VitimaBasic.ContatoRecado" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="VitimaBasic.ContatoRecado" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="UPDATE" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Vitimas" class="btn btn-success form-control">BACK TO LIST</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+

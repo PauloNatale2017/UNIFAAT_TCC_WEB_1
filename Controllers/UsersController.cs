@@ -30,8 +30,8 @@ namespace ROSESHIELD.WEB.Controllers
         }
 
         [Route("location")]
-        [HttpGet]
-        public async Task<IActionResult> GetLocation()
+        [HttpPost]
+        public async Task<IActionResult> GetLocation(string endereco)
         {
 
             #region SELENIUM
@@ -40,9 +40,8 @@ namespace ROSESHIELD.WEB.Controllers
             driver.Navigate().GoToUrl("https://www.latlong.net/");
 
             driver.FindElement(By.Id("place")).Clear();
-            driver.FindElement(By.Id("place")).SendKeys("Avenida Geronimo de camargo numero 2200");
+            driver.FindElement(By.Id("place")).SendKeys(endereco);
 
-            //driver.FindElement(By.Id("btnfind")).Click();
            
             #endregion
 

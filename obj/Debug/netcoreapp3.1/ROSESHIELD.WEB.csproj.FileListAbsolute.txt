@@ -858,7 +858,6 @@ C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcorea
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\SiteSistema.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\EditSiteSistema.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\SiteSistema\CreateSiteSistema.cshtml.g.cs
-C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.csprojAssemblyReference.cache
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\GeoReferencia\GeoReferencia.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\GeoReferencia\CreateGeoReferencia.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\GeoReferencia\EditGeoReferencia.cshtml.g.cs
@@ -866,3 +865,12 @@ C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcorea
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\bin\Debug\netcoreapp3.1\WebDriver.Support.dll
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Vagas\CreateVagas.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Vagas\Vagas.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Vagas\EditVagas.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Vitimas\Vitimas.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Vitimas\CreateVitimas.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\Vitimas\EditVitimas.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\VitimasCompleto\CreateVitimasCompleto.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\VitimasCompleto\EditVitimasCompleto.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\VitimasCompleto\VitimasCompleto.cshtml.g.cs

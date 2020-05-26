@@ -1,0 +1,130 @@
+﻿@page
+@model ROSESHIELD.WEB.CreateVagasModel
+@{
+    ViewData["Title"] = "CreateVagas";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">CADASTRO DE VAGAS</h2>
+<br />
+
+        
+        public int IdEmpresa { get; set; }
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>EMPRESA RESPONSAVEL PELA VAGA</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.IdEmpresa" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.IdEmpresa" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>NOME VAGA</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Vagas.NomeVaga" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.NomeVaga" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>VALOR SALARIO</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Vagas.ValorSalario" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.ValorSalario" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label>Descrição da vaga</label>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Vagas.Descricao" class="form-control" />
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.Descricao" class="text-danger"></span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>Informações Adicionais</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.InformacoeAdicionais" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.InformacoeAdicionais" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>AVISOS DA EMPRESA</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.AvisosDaEmpresa" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.AvisosDaEmpresa" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>Restrições</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Vagas.Restricoes" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <span asp-validation-for="Vagas.Restricoes" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+        <hr />
+
+        <div class="form-group row">
+            <div class="col-3 offset-4">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+            <div class="col-3">
+                <a asp-page="Vagas" class="btn btn-success form-control">BACK TO LIST</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

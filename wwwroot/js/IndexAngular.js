@@ -13,11 +13,8 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
         Obj = $scope;
 
         $scope.data = [];
-
         
-        $scope.Cidade = $scope.Cidade_Value;
-
-        blockUI.start("....CARREGANDO INFORMAÇÕES....");
+        $scope.Cidade = $scope.Cidade_Value;       
 
         $scope.InitialiseMaps = function () {
             var mapOptions = {
@@ -29,7 +26,14 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
             blockUI.stop();
         };
 
-         $scope.InitialiseMaps();
+        $scope.ChamadaMaps = function () {
+
+            blockUI.start("....CARREGANDO INFORMAÇÕES....");
+            //$scope.InitialiseMaps();
+        };
+
+
+        $scope.ChamadaMaps();
 
 
         $scope.Config = {
