@@ -45,25 +45,25 @@
                         <label>NOME COMPLETO</label>
                     </th>
                     <th>
-                        <label>COMPLEMENTAR:{{0}}%</label>
+                        <label>COMPLEMENTAR:<span id="#SPA_COMPLPOR_{{itens.Id}}"></span>%</label>
                     </th>
                     <th>
-                        <label>OCORENCIA:{{0}}%</label>
+                        <label>OCORENCIA:<span id="#SPA_OCORRENCIAPOR_{{itens.Id}}"></span>%</label>
                     </th>
                     <th>
-                        <label>FILHOS:{{0}}%</label>
+                        <label>FILHOS:<span id="#SPA_FILHOSPOR_{{itens.Id}}"></span>%</label>
                     </th>
                     <th>
-                        <label>IDOSO:{{0}}%</label>
+                        <label>IDOSO:<span id="#SPA_IDOSOPOR_{{itens.Id}}"></span>%</label>
                     </th>
                     <th>
-                        <label>S.O.S:{{0}}%</label>
+                        <label>S.O.S:<span id="#SPA_SOSPOR_{{itens.Id}}"></span>%</label>
                     </th>
                 </tr>
                 <tr>
                     <td>{{itens.NomeCompleto}}</td>
-                    <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#COMPLEMENTAR_{{itens.Id}}">COMPLEMENTAR</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#OCORRENCIAS_{{itens.Id}}">OCORENCIA</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" ng-click="Buscaomplementar(itens.Id)" id="#BTN_COMPLEMENTAR_{{itens.Id}}" data-toggle="modal" data-target="#COMPLEMENTAR_{{itens.Id}}">COMPLEMENTAR</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaOcorrencias(itens.Id)" data-toggle="modal" id="#BTN_OCORRENCIA_{{itens.Id}}" data-target="#OCORRENCIAS_{{itens.Id}}">OCORENCIA</button></td>
                     <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#FILHOS_{{itens.Id}}">FILHOS</button></td>
                     <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#IDOSO_{{itens.Id}}">IDOSO</button></td>
                     <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#SOS_{{itens.Id}}">S.O.S</button></td>
@@ -88,7 +88,7 @@
                                         <label>Profissao</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input ng-model="Comp.Profissao" ype="text" class="form-control form-control">
+                                        <input  id="#Profissao_{{itens.Id}}" ype="text" class="form-control form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -96,7 +96,7 @@
                                         <label>RendaPessoal</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input ng-model="Comp.RendaPessoal" type="text" class="form-control form-control">
+                                        <input  id="#RendaPessoal_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -104,7 +104,7 @@
                                         <label>RendaFamiliar</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input ng-model="Comp.RendaFamiliar" type="text" class="form-control form-control">
+                                        <input  id="#RendaFamiliar_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -112,13 +112,18 @@
                                         <label>Drogas Licitas</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.drogaslicitasSIM" type="text" class="form-control form-control">
+                                        @*<input  id="#drogaslicitasSIM_{{itens.Id}}" type="text" class="form-control form-control">*@
+                                        <select id="#drogaslicitasSIM_{{itens.Id}}" name="drogaslicitasSIM" ng-model="drogaslicitasSIM" class="form-control form-control">
+                                            <option value="">--SELECT--</option>
+                                            <option value="1">SIM</option>
+                                            <option value="2">NÃO</option>
+                                        </select>
                                     </div>
                                     <div class="col-xl-2">
                                         <label>Quais Drogas </label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.QualdrogaDescri1" type="text" class="form-control form-control">
+                                        <input   id="#QualdrogaDescri1_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -126,28 +131,38 @@
                                         <label>Drogas Não Licitas</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.drogaslicitasNAO" type="text" class="form-control form-control">
+                                        @*<input  id="#drogaslicitasNAO_{{itens.Id}}" type="text" class="form-control form-control">*@
+                                        <select id="#drogaslicitasNAO_{{itens.Id}}" name="drogaslicitasNAO" ng-model="drogaslicitasNAO" class="form-control form-control">
+                                            <option value="">--SELECT--</option>
+                                            <option value="1">SIM</option>
+                                            <option value="2">NÃO</option>
+                                        </select>
                                     </div>
                                     <div class="col-xl-2">
                                         <label>Quais Drogas </label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.QualdrogaDescri2" type="text" class="form-control form-control">
+                                        <input  id="#QualdrogaDescri2_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
-                                </div>
-                             
+                                </div>                             
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
                                     <div class="col-xl-2">
                                         <label>Possui filhos</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.Possuifilhos" type="text" class="form-control form-control">
+                                      
+                                        <select id="#Possuifilhos_{{itens.Id}}" name="Filhos" ng-model="Filhos" class="form-control form-control">
+                                            <option value="">--SELECT--</option>
+                                            <option value="1">SIM</option>
+                                            <option value="2">NÃO</option>
+                                        </select>
+                                       
                                     </div>
                                     <div class="col-xl-2">
                                         <label>Qtdo</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.Qtdo" type="text" class="form-control form-control">
+                                        <input  id="#Qtdo_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
                                 </div>                               
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -155,13 +170,19 @@
                                         <label>Idoso</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.Idoso" type="text" class="form-control form-control">
+                                        @*<input  id="#Idoso_{{itens.Id}}" type="text" class="form-control form-control">*@
+                                        <select id="#Idoso_{{itens.Id}}" name="Idoso_" ng-model="Idoso" class="form-control form-control">
+                                            <option value="">--SELECT--</option>
+                                            <option value="1">SIM</option>
+                                            <option value="2">NÃO</option>
+                                        </select>
+                                        
                                     </div>
                                     <div class="col-xl-2">
                                         <label>Quantidade</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input ng-model="Comp.Quantidade" type="text" class="form-control form-control">
+                                        <input  id="#Quantidade_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
                                 </div>
                             </div>
@@ -169,10 +190,8 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" ng-click="SalvarComplemento(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Editar</button>
+                            <button type="button" ng-click="SalvarComplemento(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>                      
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
                         </div>
 
                     </div>
@@ -185,30 +204,71 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="text-align:center;">USUARIOS CADASTRADOS PARA A VAGA</h4>
+                            <h4 class="modal-title" style="text-align:center;">CADASTRO COMPLEMENTAR</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="container">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>Nome Completo</th>
-                                            <th>Rg/CPF</th>
-                                            <th>E-Mail</th>
-                                            <th>CANDIDATURA</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>TIPO VIOLENCIA</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#TipoViolencia_{{itens.Id}}" ype="text" class="form-control form-control">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>DIA OCORRIDO </label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#DiaOcorrido_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>LOCAL OCORRIDO </label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#LocalOcorrido_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
 
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>TESTEMUNHA</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Testemunha_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>VINCULO COM AGRESSOR</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#VinculocomAgressor_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NUMERO BO </label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#NumeroBO_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
+                            <button type="button" ng-click="SalvarOcorrencias(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
 
@@ -222,30 +282,63 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="text-align:center;">USUARIOS CADASTRADOS PARA A VAGA</h4>
+                            <h4 class="modal-title" style="text-align:center;">CADASTRO DE FILHOS</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
+
 
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="container">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>Nome Completo</th>
-                                            <th>Rg/CPF</th>
-                                            <th>E-Mail</th>
-                                            <th>CANDIDATURA</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NOME FILHO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Nomefilho_{{itens.Id}}" ype="text" class="form-control form-control">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>ESCOLA ONDE ESTUDA</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Escolaondeestuda_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>DATA NASCIMENTO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#DataNascimento_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
 
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>ENDEREÇO ESCOLA</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Enderecoescola_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NECESSIDADES ESPECIAIS</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Qualnecessidade_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>                                
 
                             </div>
                         </div>
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
+                            <button type="button" ng-click="SalvarFilhos(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
 
@@ -259,30 +352,46 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="text-align:center;">USUARIOS CADASTRADOS PARA A VAGA</h4>
+                            <h4 class="modal-title" style="text-align:center;">CADASTRO DE IDOSO</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
+                      
 
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="container">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>Nome Completo</th>
-                                            <th>Rg/CPF</th>
-                                            <th>E-Mail</th>
-                                            <th>CANDIDATURA</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NOME IDOSO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Nomoidoso_{{itens.Id}}" ype="text" class="form-control form-control">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>DATA NASCIMENTO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#DataNascimento_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>                                
 
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NECESSIDADES ESPECIAIS</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Qual_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
+                            <button type="button" ng-click="SalvarIDOSO(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
 
@@ -296,30 +405,45 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title" style="text-align:center;">USUARIOS CADASTRADOS PARA A VAGA</h4>
+                            <h4 class="modal-title" style="text-align:center;">CADASTRO DE CONTATO DE EMERGENCIA</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
                         <!-- Modal body -->
                         <div class="modal-body">
                             <div class="container">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>Nome Completo</th>
-                                            <th>Rg/CPF</th>
-                                            <th>E-Mail</th>
-                                            <th>CANDIDATURA</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NOME S.O.S</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#NomeSOS_{{itens.Id}}" ype="text" class="form-control form-control">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NUMERO CELULAR</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#NumeroCelular_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
 
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>VINCULO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Vinculo_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
+                            <button type="button" ng-click="SalvarSOS(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
 

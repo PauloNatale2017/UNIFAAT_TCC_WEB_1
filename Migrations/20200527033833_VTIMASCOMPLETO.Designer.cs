@@ -10,8 +10,8 @@ using ROSESHIELD.WEB.Models;
 namespace ROSESHIELD.WEB.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20200526215033_AddUpdateToDb")]
-    partial class AddUpdateToDb
+    [Migration("20200527033833_VTIMASCOMPLETO")]
+    partial class VTIMASCOMPLETO
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -145,28 +145,31 @@ namespace ROSESHIELD.WEB.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CadastroBasicoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CadastroComplementarId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CadastroDeOcorrenciaId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("IdCadastroBasico")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCadastroComplementar")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCadastroDeOcorrencia")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCadastroFilhos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCadastroIdosos")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCadastroSOS")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CadastroBasicoId");
-
-                    b.HasIndex("CadastroComplementarId");
-
-                    b.HasIndex("CadastroDeOcorrenciaId");
 
                     b.ToTable("CadastroDeVitimasCompleto");
                 });
@@ -177,9 +180,6 @@ namespace ROSESHIELD.WEB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CadastroDeVitimasCompletoId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -213,8 +213,6 @@ namespace ROSESHIELD.WEB.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CadastroDeVitimasCompletoId");
-
                     b.ToTable("CadastroFilho");
                 });
 
@@ -224,9 +222,6 @@ namespace ROSESHIELD.WEB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CadastroDeVitimasCompletoId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -254,8 +249,6 @@ namespace ROSESHIELD.WEB.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CadastroDeVitimasCompletoId");
-
                     b.ToTable("CadastroIdoso");
                 });
 
@@ -265,9 +258,6 @@ namespace ROSESHIELD.WEB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CadastroDeVitimasCompletoId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -288,8 +278,6 @@ namespace ROSESHIELD.WEB.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CadastroDeVitimasCompletoId");
 
                     b.ToTable("CadastroSOS");
                 });
@@ -878,42 +866,6 @@ namespace ROSESHIELD.WEB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("VitimaBasic");
-                });
-
-            modelBuilder.Entity("ROSESHIELD.WEB.Entities.CadastroDeVitimasCompleto", b =>
-                {
-                    b.HasOne("ROSESHIELD.WEB.Entities.VitimaBasic", "CadastroBasico")
-                        .WithMany()
-                        .HasForeignKey("CadastroBasicoId");
-
-                    b.HasOne("ROSESHIELD.WEB.Entities.CadastroComplementar", "CadastroComplementar")
-                        .WithMany()
-                        .HasForeignKey("CadastroComplementarId");
-
-                    b.HasOne("ROSESHIELD.WEB.Entities.CadastroDeOcorrencia", "CadastroDeOcorrencia")
-                        .WithMany()
-                        .HasForeignKey("CadastroDeOcorrenciaId");
-                });
-
-            modelBuilder.Entity("ROSESHIELD.WEB.Entities.CadastroFilho", b =>
-                {
-                    b.HasOne("ROSESHIELD.WEB.Entities.CadastroDeVitimasCompleto", null)
-                        .WithMany("CadastroFilhos")
-                        .HasForeignKey("CadastroDeVitimasCompletoId");
-                });
-
-            modelBuilder.Entity("ROSESHIELD.WEB.Entities.CadastroIdoso", b =>
-                {
-                    b.HasOne("ROSESHIELD.WEB.Entities.CadastroDeVitimasCompleto", null)
-                        .WithMany("CadastroIdosos")
-                        .HasForeignKey("CadastroDeVitimasCompletoId");
-                });
-
-            modelBuilder.Entity("ROSESHIELD.WEB.Entities.CadastroSOS", b =>
-                {
-                    b.HasOne("ROSESHIELD.WEB.Entities.CadastroDeVitimasCompleto", null)
-                        .WithMany("CadastroSOS")
-                        .HasForeignKey("CadastroDeVitimasCompletoId");
                 });
 
             modelBuilder.Entity("ROSESHIELD.WEB.Entities.UserAccounts", b =>

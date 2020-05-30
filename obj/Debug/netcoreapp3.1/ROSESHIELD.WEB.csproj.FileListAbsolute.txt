@@ -874,3 +874,4 @@ C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcorea
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\VitimasCompleto\CreateVitimasCompleto.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\VitimasCompleto\EditVitimasCompleto.cshtml.g.cs
 C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\Razor\Pages\VitimasCompleto\VitimasCompleto.cshtml.g.cs
+C:\Users\paulo\OneDrive\Área de Trabalho\REPOSITOR_TCC\WEB_C\obj\Debug\netcoreapp3.1\ROSESHIELD.WEB.csprojAssemblyReference.cache

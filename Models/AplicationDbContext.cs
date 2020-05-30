@@ -29,14 +29,13 @@ namespace ROSESHIELD.WEB.Models
         public DbSet<VinculoSistemaUsuario> VinculoSistemaUsuario { get; set; }
         public DbSet<GeoCadastro> Geo { get; set; }
         public DbSet<Vagas> Vagas { get; set; }
-
-        public DbSet<VitimaBasic> VitimaBasic { get; set; }
-
+        public DbSet<VitimaBasic> VitimaBasic { get; set; }        
         public DbSet<CadastroDeVitimasCompleto> CadastroDeVitimasCompleto { get; set; }
-
-
-
-
+        public DbSet<CadastroDeOcorrencia> CadastroDeOcorrencia { get; set; }
+        public DbSet<CadastroComplementar> CadastroComplementar { get; set; }
+        public DbSet<CadastroFilho> CadastroFilho { get; set; }
+        public DbSet<CadastroIdoso> CadastroIdoso { get; set; }
+        public DbSet<CadastroSOS> CadastroSOS { get; set; }
 
     }
 }

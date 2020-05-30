@@ -7,11 +7,11 @@ namespace ROSESHIELD.WEB.Entities
 {
     public class CadastroDeVitimasCompleto : baseEntity
     {
-        public VitimaBasic CadastroBasico { get; set; }
-        public CadastroDeOcorrencia CadastroDeOcorrencia { get; set; }
-        public CadastroComplementar CadastroComplementar { get; set; }
-        public List<CadastroFilho> CadastroFilhos { get; set; }
-        public List<CadastroIdoso> CadastroIdosos { get; set; }
-        public List<CadastroSOS> CadastroSOS { get; set; }
+        public int IdCadastroBasico { get; set; }
+        public int IdCadastroDeOcorrencia { get; set; }
+        public int IdCadastroComplementar { get; set; }
+        public int IdCadastroFilhos { get; set; }
+        public int IdCadastroIdosos { get; set; }
+        public int IdCadastroSOS { get; set; }
     }
 }

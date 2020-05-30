@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\backup\" />
     <Folder Include="Pages\Completo\" />
   </ItemGroup>
 

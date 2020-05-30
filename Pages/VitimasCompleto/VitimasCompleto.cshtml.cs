@@ -23,7 +23,7 @@ namespace ROSESHIELD.WEB
         public async Task OnGet()
         {
             VitimaBasic = await _db.VitimaBasic.ToListAsync();
-            VitimaCompleto = await _db.CadastroDeVitimasCompleto.ToListAsync();            
+            //VitimaCompleto = await _db.CadastroDeVitimasCompleto.ToListAsync();            
             
         }
 
