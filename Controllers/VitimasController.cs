@@ -34,12 +34,14 @@ namespace ROSESHIELD.WEB.Controllers
             var Completo =  await _db.CadastroDeVitimasCompleto.ToListAsync();            
             var CadastroComplementar = await _db.CadastroComplementar.ToListAsync();
             var ocorrencias = await _db.CadastroDeOcorrencia.ToListAsync();
+            var filhos = await _db.CadastroFilho.ToListAsync();
 
             dynamic dados = new { 
                 vitimabasic = VitimaBasic,
                 cadastrocompleto = Completo,
                 complementar = CadastroComplementar,
-                ocorrencias = ocorrencias
+                ocorrencias = ocorrencias,
+                filhos = filhos
             };
             var jsonEntity = JsonConvert.SerializeObject(dados);
             return Ok(jsonEntity);
@@ -172,6 +174,94 @@ namespace ROSESHIELD.WEB.Controllers
             try
             {
                 var retorno = _db.CadastroDeOcorrencia.Where(d => d.IdCadastroBasico == int.Parse(model.IdCadastroBasico)).SingleOrDefault();
+                jsonEntity = JsonConvert.SerializeObject(retorno);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Ok(jsonEntity);
+        }
+
+
+        #endregion
+
+        #region FILHOS
+
+        [Route("cadastrofilhos")]
+        [HttpPost]
+        public async Task<IActionResult> AddFilhos(CadastroFilho model)
+        {            
+            _db.CadastroFilho.Add(new CadastroFilho {
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                IdCadastroBasico = model.IdCadastroBasico,
+                DataNascimento = model.DataNascimento,
+                Enderecoescola = model.Enderecoescola,
+                Escolaondeestuda = model.Escolaondeestuda,
+                Nomefilho = model.Nomefilho,
+                NecessidadesespeciaisNAO = model.Qualnecessidade == "" ? "0":"1",
+                NecessidadesespeciaisSIM = model.Qualnecessidade == "" ? "1" : "0",
+                Qualnecessidade = model.Qualnecessidade
+            });
+            _db.SaveChanges();
+            return Ok(true);
+        }
+
+
+        [Route("buscafilhos")]
+        [HttpPost]
+        public async Task<IActionResult> GetFilhos(buscacomp model)
+        {
+            var jsonEntity = "";
+            try
+            {
+                var retorno = _db.CadastroFilho.Where(d => d.IdCadastroBasico == int.Parse(model.IdCadastroBasico)).SingleOrDefault();
+                jsonEntity = JsonConvert.SerializeObject(retorno);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Ok(jsonEntity);
+        }
+
+
+        #endregion
+
+        #region IDOSO
+
+
+        [Route("cadastroidoso")]
+        [HttpPost]
+        public async Task<IActionResult> AddIdoso(CadastroIdoso model)
+        {
+            _db.CadastroIdoso.Add(new CadastroIdoso
+            {
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                IdCadastroBasico = model.IdCadastroBasico,
+                DataNascimento = model.DataNascimento,
+                Nomoidoso = model.Nomoidoso,
+                Qual = model.Qual,
+                NecessidadesEspeciaisNAO = model.Qual == "" ? "0" : "1",
+                NecessidadesEspeciaisSIM = model.Qual == "" ? "1" : "0"
+            });
+            _db.SaveChanges();
+            return Ok(true);
+        }
+
+
+        [Route("buscaidoso")]
+        [HttpPost]
+        public async Task<IActionResult> GetIdoso(buscacomp model)
+        {
+            var jsonEntity = "";
+            try
+            {
+                var retorno = _db.CadastroIdoso.Where(d => d.IdCadastroBasico == int.Parse(model.IdCadastroBasico)).ToList();
                 jsonEntity = JsonConvert.SerializeObject(retorno);
             }
             catch (Exception ex)

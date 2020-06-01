@@ -64,9 +64,9 @@
                     <td>{{itens.NomeCompleto}}</td>
                     <td><button type="button" class="btn btn-outline-danger" ng-click="Buscaomplementar(itens.Id)" id="#BTN_COMPLEMENTAR_{{itens.Id}}" data-toggle="modal" data-target="#COMPLEMENTAR_{{itens.Id}}">COMPLEMENTAR</button></td>
                     <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaOcorrencias(itens.Id)" data-toggle="modal" id="#BTN_OCORRENCIA_{{itens.Id}}" data-target="#OCORRENCIAS_{{itens.Id}}">OCORENCIA</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#FILHOS_{{itens.Id}}">FILHOS</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#IDOSO_{{itens.Id}}">IDOSO</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#SOS_{{itens.Id}}">S.O.S</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaFilhos(itens.Id)" data-toggle="modal" id="#BTN_FILHOS_{{itens.Id}}" data-target="#FILHOS_{{itens.Id}}">FILHOS</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaIdoso(itens.Id)" data-toggle="modal" data-target="#IDOSO_{{itens.Id}}" id="#BTN_IDOSOS_{{itens.Id}}"  >IDOSO</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaSOS(itens.Id)" data-toggle="modal" data-target="#SOS_{{itens.Id}}">S.O.S</button></td>
                 </tr>
             </table>
 
@@ -331,17 +331,33 @@
                                     <div class="col-xl-10">
                                         <input id="#Qualnecessidade_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
-                                </div>                                
+                                </div>
 
+                                <div class="modal-footer">
+                                    <button type="button" ng-click="SalvarFilhos(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <table class="table">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Firstname</th>
+                                                <th>Lastname</th>
+                                                <th>Email</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>John</td>
+                                                <td>Doe</td>
+                                                <td>john@example.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" ng-click="SalvarFilhos(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -355,7 +371,7 @@
                             <h4 class="modal-title" style="text-align:center;">CADASTRO DE IDOSO</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                      
+
 
                         <!-- Modal body -->
                         <div class="modal-body">
@@ -375,7 +391,7 @@
                                     <div class="col-xl-10">
                                         <input id="#DataNascimento_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
-                                </div>                                
+                                </div>
 
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
                                     <div class="col-xl-2">
@@ -391,8 +407,27 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" ng-click="SalvarIDOSO(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
+                            <button type="button" ng-click="SalvarIdoso(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                        <div class="modal-footer">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>john@example.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>
@@ -445,6 +480,25 @@
                         <div class="modal-footer">
                             <button type="button" ng-click="SalvarSOS(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                        <div class="modal-footer">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John</td>
+                                        <td>Doe</td>
+                                        <td>john@example.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>

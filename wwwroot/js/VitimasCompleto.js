@@ -124,11 +124,141 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
         };
 
         $scope.SalvarFilhos = function (IdUsuario) {
-            alert("OPERAÇÃO EFETUADA COM SUCESSO");
+            var path = window.location.origin;
+
+            var request = {
+                "IdCadastroBasico": IdUsuario,
+                "Nomefilho": document.getElementById("#Nomefilho_" + IdUsuario).value,
+                "Escolaondeestuda": document.getElementById("#Escolaondeestuda_" + IdUsuario).value,
+                "DataNascimento": document.getElementById("#DataNascimento_" + IdUsuario).value,
+                "Enderecoescola": document.getElementById("#Enderecoescola_" + IdUsuario).value,
+                "Qualnecessidade": document.getElementById("#Qualnecessidade_" + IdUsuario).value
+            };
+
+            $http.post(path + "/api/vitimas/cadastrofilhos", request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+
+                        var stylodoc = document.getElementById("#BTN_FILHOS_" + IdUsuario);
+                        stylodoc.style.backgroundColor = "green";
+                        stylodoc.style.color = "white";
+                        stylodoc.style.border = "green";
+                        document.getElementById("#SPA_FILHOSPOR_" + $scope.basic[i].Id).innerText = "100";
+                        blockUI.stop();
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+        };
+        $scope.BuscaFilhos = function (id) {
+
+            var path = window.location.origin;
+
+            var request = { "IdCadastroBasico": "" + id + ""  };
+
+            $http.post(path + "/api/vitimas/buscafilhos", request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+                        $scope.Complementar = response.data;
+
+                        var stylodoc = document.getElementById("#BTN_FILHOS_" + response.data.IdCadastroBasico);
+                        stylodoc.style.backgroundColor = "green";
+                        stylodoc.style.color = "white";
+                        stylodoc.style.border = "green";
+                        $scope.SPA_FILHOSPOR_ = 100;
+
+                        var IdUsuario = response.data.IdCadastroBasico;                        
+
+                        document.getElementById("#Nomefilho_" + IdUsuario).value = response.data.Nomefilho;
+                        document.getElementById("#Escolaondeestuda_" + IdUsuario).value = response.data.Escolaondeestuda;
+                        document.getElementById("#DataNascimento_" + IdUsuario).value = response.data.DataNascimento;
+                        document.getElementById("#Enderecoescola_" + IdUsuario).value = response.data.Enderecoescola;
+                        document.getElementById("#Qualnecessidade_" + IdUsuario).value = response.data.Qualnecessidade;
+
+                        document.getElementById("#SPA_FILHOSPOR_" + $scope.basic[i].Id).innerText = "100";
+
+                        console.log(response.data);
+                        blockUI.stop();
+                    }
+                                        
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
         };
 
-        $scope.SalvarIDOSO = function (IdUsuario) {
-            alert("OPERAÇÃO EFETUADA COM SUCESSO");
+        $scope.BuscaIdoso = function (id) {
+
+            var path = window.location.origin;
+
+            var request = { "IdCadastroBasico": "" + id + "" };
+
+            $http.post(path + "/api/vitimas/buscaidoso", request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+                        $scope.Complementar = response.data;
+
+                        var stylodoc = document.getElementById("#BTN_IDOSOS_" + response.data.IdCadastroBasico);
+                        stylodoc.style.backgroundColor = "green";
+                        stylodoc.style.color = "white";
+                        stylodoc.style.border = "green";
+                        $scope.SPA_FILHOSPOR_ = 100;
+
+                        var IdUsuario = response.data.IdCadastroBasico;
+
+                        document.getElementById("#Nomoidoso_" + IdUsuario).value = response.data.Nomoidoso;
+                        document.getElementById("#DataNascimento_" + IdUsuario).value = response.data.DataNascimento;
+                        document.getElementById("#Qual_" + IdUsuario).value = response.data.Qual;
+
+                        document.getElementById("#SPA_IDOSOPOR_" + $scope.basic[i].Id).innerText = "100";
+
+                        console.log(response.data);
+                        blockUI.stop();
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+        };
+
+
+        $scope.SalvarIdoso = function (IdUsuario) {
+            var path = window.location.origin;
+
+            var request = {
+                "IdCadastroBasico": IdUsuario,
+                "Nomoidoso": document.getElementById("#Nomoidoso_" + IdUsuario).value,
+                "DataNascimento": document.getElementById("#DataNascimento_" + IdUsuario).value,
+                "Qual": document.getElementById("#Qual_" + IdUsuario).value
+            };
+
+            $http.post(path + "/api/vitimas/cadastroidoso", request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+
+                        var stylodoc = document.getElementById("#BTN_IDOSOS_" + IdUsuario);
+                        stylodoc.style.backgroundColor = "green";
+                        stylodoc.style.color = "white";
+                        stylodoc.style.border = "green";
+                        document.getElementById("#SPA_IDOSOPOR_" + $scope.basic[i].Id).innerText = "100";
+                        blockUI.stop();
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
         };
 
         $scope.SalvarSOS = function (IdUsuario) {
@@ -139,6 +269,7 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
             var path = window.location.origin;
             var loginUrlEndPoint = path + "/api/vitimas/cadastrosbasicos";
             blockUI.start("CARREGANDO...");
+
             $http.get(loginUrlEndPoint).then(function (response) {
                 if (response.status === 200) {
                     if (response.data === "null") {
@@ -150,11 +281,11 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                         $scope.basic = response.data.vitimabasic;
                         $scope.complementar = response.data.complementar;
                         $scope.ocorrencias = response.data.ocorrencias;
+                        $scope.filhos = response.data.filhos;
                         
 
                         $scope.CadastroBasico = $scope.basic;
                         $scope.TOTALCADASTRADOINCOM = $scope.basic.length;
-
 
                         setTimeout(function () {
                             for (var i = 0; i < $scope.basic.length; i++) {
@@ -190,7 +321,23 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                             }
                             $scope.blockUI.stop();
                         }, 3000);
-                        
+
+                        setTimeout(function () {
+                            for (var i = 0; i < $scope.basic.length; i++) {
+
+                                var retornoFilter = $scope.filhos.filter(function (values) { return values.IdCadastroBasico === $scope.basic[i].Id; });
+
+                                if (retornoFilter.length > 0) {
+                                    var stylodoc = document.getElementById("#BTN_FILHOS_" + $scope.basic[i].Id);
+                                    stylodoc.style.backgroundColor = "green";
+                                    stylodoc.style.color = "white";
+                                    stylodoc.style.border = "green";
+                                    document.getElementById("#SPA_FILHOSPOR_" + $scope.basic[i].Id).innerText = "100";                                    
+
+                                }
+                            }
+                            $scope.blockUI.stop();
+                        }, 3000);                        
                      
 
                         console.log(response.data);
