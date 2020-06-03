@@ -12,7 +12,7 @@
 </style>
 
 <br />
-<div class="container row p-0 m-0">
+<div class="container row p-0 m-0" ng-controller="ctlrParceiro">
 
     <div class="col-8">
         <h2 class="text-info">LISTA DE PARCEIROS</h2>
@@ -23,10 +23,9 @@
     </div>
 
     <div class="col-12 border p-3 mt-3">
-        <form method="post" style="overflow:auto;">
-            @if (Model.Parceiro.Count() > 0)
-            {
-                <table id="users" class="table table-striped table-bordered flex-nowrap" style="width:100%;">
+        <div ng-repeat="itens in ParceirosList">
+            <table id="users" class="table table-striped table-bordered flex-nowrap" style="width:100%;">
+                <thead>
                     <tr class="table-secondary">
                         <th>
                             <label>NOME EMPRESA</label>
@@ -41,45 +40,144 @@
                             <label>ENDEREÇO</label>
                         </th>
                         <th>
-                            <label>T.VAGAS</label>
+                            <label>CAD.VAGAS</label>
+                        </th>
+                        <th>
+                            <label>LIST.VAGAS</label>
                         </th>
                     </tr>
-                    @foreach (var item in Model.Parceiro)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(m => item.NOMEEMPRESA)</td>
-                            @*<td>@Html.DisplayFor(m => item.NomeFantasia)</td>
-                                <td>@Html.DisplayFor(m => item.NomeOng)</td>*@
-                            <td>@Html.DisplayFor(m => item.CNPJ_CPF)</td>
-                            <td>@Html.DisplayFor(m => item.CONTATO)</td>
-                            <td>@Html.DisplayFor(m => item.ENDERECO)</td>
-                            <td>@Html.DisplayFor(m => item.TOTAL_VAGAS_CADASTRADAS)</td>
-                            @*<td>@Html.DisplayFor(m => item.Cidade)</td>
-                                <td>@Html.DisplayFor(m => item.Email)</td>*@
-                        <td>
-                            <button asp-page-handler="DELETE" asp-route-id="@item.Id" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE CADASTRO?')" class="btn btn-danger btn-sm">DELETE</button>
-                            <a asp-page="EditParceiro" asp-route-id="@item.Id" class="btn btn-success btn-sm">EDIT</a>
-                            <a asp-page="CreateVaga" asp-route-id="@item.Id" class="btn btn-success btn-sm">CAD.VAGAS</a>
-                        </td>
-                        </tr>
-                    }
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{itens.NOMEEMPRESA}}</td>
+                        <td>{{itens.CNPJ_CPF}}</td>
+                        <td>{{itens.EMAIL}}</td>
+                        <td>{{itens.ENDERECO}}</td>
+                        <td>{{itens.TOTAL_VAGAS_CADASTRADAS}}</td>
 
-                </table>
-            }
-            else
-            {
-                <p>NENHUM USUARIO CADASTRADO...</p>
-            }
-        </form>
+                        <td><button type="button" class="btn btn-primary" id="#BTN_CADVAGAS_{{itens.Id}}" data-toggle="modal" data-target="#CAD_VAGAS_{{itens.Id}}">CAD.VAGAS</button></td>
+                        <td><button type="button" class="btn btn-primary" ng-click="ListaCadastrada(itens.Id)" data-toggle="modal" id="#BTN_LISTAVAGA_{{itens.Id}}" data-target="#LIST_VAGAS_{{itens.Id}}">LIST.VAGAS</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="modal fade" id="CAD_VAGAS_{{itens.Id}}">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title" style="text-align:center;">CADASTRO DE VAGAS POR EMPRESA</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>NOME VAGAS</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#NomeVaga_{{itens.Id}}" ype="text" class="form-control form-control">
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>AREA DE ATUAÇÃO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#AreaAtuacao_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>CARGO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Cargo_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>DESCRICAO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#Descricao_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>FAIXA SALARIAL</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#FaixaSalarial_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin: 1px 1px 10px 1px;">
+                                    <div class="col-xl-2">
+                                        <label>HORARIO DE TRABALHO</label>
+                                    </div>
+                                    <div class="col-xl-10">
+                                        <input id="#HorarioTrabalho_{{itens.Id}}" type="text" class="form-control form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" ng-click="SalvarVagasEmpresa(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="LIST_VAGAS_{{itens.Id}}">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+
+                        <div class="modal-footer">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>VAGA</th>
+                                        <th>FAIXA SALARIAL</th>
+                                        <th>CARGO</th>
+                                        <th>HORARIO DE TRABALHO</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="vagas in vagasempregoLits">
+                                    <tr>
+                                        <td>{{vagas.NomeVaga}}</td>
+                                        <td>{{vagas.FaixaSalarial}}</td>
+                                        <td>{{vagas.Cargo}}</td>
+                                        <td>{{vagas.HorarioTrabalho}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
 </div>
 
-
-
-@section Scripts{
-    
-}
-
+<script src="~/js/Parceiros.js"></script>
 
 

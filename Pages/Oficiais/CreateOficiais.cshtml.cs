@@ -33,7 +33,7 @@ namespace ROSESHIELD.WEB
             {
                 await _db.Oficiais.AddAsync(Oficiais);
                 await _db.SaveChangesAsync();
-                return RedirectToPage("Vagas");
+                return RedirectToPage("Oficiais");
             }
             else
             {

@@ -66,7 +66,6 @@ namespace ROSESHIELD.WEB.Controllers
         [HttpPost]
         public async Task<IActionResult> PerfilVinculo(VinculoSistemaUsuario entityPerfil)
         {
-
             _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
             {
                 CreateDate = DateTime.Now,

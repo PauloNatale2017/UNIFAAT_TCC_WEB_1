@@ -66,7 +66,7 @@
                     <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaOcorrencias(itens.Id)" data-toggle="modal" id="#BTN_OCORRENCIA_{{itens.Id}}" data-target="#OCORRENCIAS_{{itens.Id}}">OCORENCIA</button></td>
                     <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaFilhos(itens.Id)" data-toggle="modal" id="#BTN_FILHOS_{{itens.Id}}" data-target="#FILHOS_{{itens.Id}}">FILHOS</button></td>
                     <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaIdoso(itens.Id)" data-toggle="modal" data-target="#IDOSO_{{itens.Id}}" id="#BTN_IDOSOS_{{itens.Id}}"  >IDOSO</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaSOS(itens.Id)" data-toggle="modal" data-target="#SOS_{{itens.Id}}">S.O.S</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaSOS(itens.Id)" data-toggle="modal" data-target="#SOS_{{itens.Id}}" id="#BTN_SOS_{{itens.Id}}">S.O.S</button></td>
                 </tr>
             </table>
 
@@ -342,16 +342,16 @@
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th>Firstname</th>
-                                                <th>Lastname</th>
-                                                <th>Email</th>
+                                                <th>Nome Filho</th>
+                                                <th>Necessidade Especial</th>
+                                                <th>Data Nascimento</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody ng-repeat="filhos in filhosLits">
                                             <tr>
-                                                <td>John</td>
-                                                <td>Doe</td>
-                                                <td>john@example.com</td>
+                                                <td>{{filhos.Nomefilho}}</td>
+                                                <td>{{filhos.Qualnecessidade}}</td>
+                                                <td>{{filhos.DataNascimento}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -415,16 +415,16 @@
                             <table class="table">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>Firstname</th>
-                                        <th>Lastname</th>
-                                        <th>Email</th>
+                                        <th>Nome Idoso</th>
+                                        <th>Data Nascimento</th>
+                                        <th>Necessidade Especial</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody ng-repeat="idosos in IdososLits">
                                     <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
+                                        <td>{{idosos.Nomoidoso}}</td>
+                                        <td>{{idosos.DataNascimento}}</td>
+                                        <td>{{idosos.Qual}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -483,22 +483,22 @@
                         </div>
 
                         <div class="modal-footer">
-                            <table class="table">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>Firstname</th>
-                                        <th>Lastname</th>
-                                        <th>Email</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nome Idoso</th>
+                                    <th>Data Nascimento</th>
+                                    <th>Necessidade Especial</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="SOS in SOSLits">
+                                <tr>
+                                    <td>{{SOS.NomeSOS}}</td>
+                                    <td>{{SOS.NumeroCelular}}</td>
+                                    <td>{{SOS.Vinculo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         </div>
 
                     </div>
@@ -513,8 +513,3 @@
 </div>
 
 <script src="~/js/VitimasCompleto.js"></script>
-
-@section Scripts{
-
-}
-

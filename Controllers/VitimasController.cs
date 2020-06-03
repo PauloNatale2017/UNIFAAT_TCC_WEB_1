@@ -35,13 +35,31 @@ namespace ROSESHIELD.WEB.Controllers
             var CadastroComplementar = await _db.CadastroComplementar.ToListAsync();
             var ocorrencias = await _db.CadastroDeOcorrencia.ToListAsync();
             var filhos = await _db.CadastroFilho.ToListAsync();
+            var Idoso = await _db.CadastroIdoso.ToListAsync();
+            var sos = await _db.CadastroSOS.ToListAsync();
 
             dynamic dados = new { 
                 vitimabasic = VitimaBasic,
                 cadastrocompleto = Completo,
                 complementar = CadastroComplementar,
                 ocorrencias = ocorrencias,
-                filhos = filhos
+                filhos = filhos,
+                Idoso = Idoso,
+                sos = sos
+            };
+            var jsonEntity = JsonConvert.SerializeObject(dados);
+            return Ok(jsonEntity);
+
+        }
+
+        [Route("cadastrosvitima")]
+        [HttpGet]
+        public async Task<IActionResult> GetCadastrosVitimas()
+        {
+            var VitimaBasic = await _db.VitimaBasic.ToListAsync();          
+
+            dynamic dados = new {
+                vitimabasic = VitimaBasic            
             };
             var jsonEntity = JsonConvert.SerializeObject(dados);
             return Ok(jsonEntity);
@@ -217,7 +235,7 @@ namespace ROSESHIELD.WEB.Controllers
             var jsonEntity = "";
             try
             {
-                var retorno = _db.CadastroFilho.Where(d => d.IdCadastroBasico == int.Parse(model.IdCadastroBasico)).SingleOrDefault();
+                var retorno = _db.CadastroFilho.Where(d => d.IdCadastroBasico == int.Parse(model.IdCadastroBasico)).ToList();
                 jsonEntity = JsonConvert.SerializeObject(retorno);
             }
             catch (Exception ex)
@@ -262,6 +280,47 @@ namespace ROSESHIELD.WEB.Controllers
             try
             {
                 var retorno = _db.CadastroIdoso.Where(d => d.IdCadastroBasico == int.Parse(model.IdCadastroBasico)).ToList();
+                jsonEntity = JsonConvert.SerializeObject(retorno);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Ok(jsonEntity);
+        }
+
+
+        #endregion
+
+        #region SOS
+
+
+        [Route("cadastrosos")]
+        [HttpPost]
+        public async Task<IActionResult> AddSOS(CadastroSOS model)
+        {
+            _db.CadastroSOS.Add(new CadastroSOS {
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                IdCadastroBasico = model.IdCadastroBasico,
+                NomeSOS = model.NomeSOS,
+                NumeroCelular = model.NumeroCelular,
+                Vinculo = model.Vinculo
+            });
+            _db.SaveChanges();
+            return Ok(true);
+        }
+
+
+        [Route("buscasos")]
+        [HttpPost]
+        public async Task<IActionResult> GetSOS(buscacomp model)
+        {
+            var jsonEntity = "";
+            try
+            {
+                var retorno = _db.CadastroSOS.Where(d => d.IdCadastroBasico == int.Parse(model.IdCadastroBasico)).ToList();
                 jsonEntity = JsonConvert.SerializeObject(retorno);
             }
             catch (Exception ex)

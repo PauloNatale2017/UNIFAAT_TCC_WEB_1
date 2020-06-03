@@ -27,9 +27,8 @@ namespace ROSESHIELD.WEB
         }
 
         public async Task<IActionResult> OnPost()
-        {
-           
-            await _db.Parceiro.AddAsync(Parceiro);
+        {            
+             await _db.Parceiro.AddAsync(Parceiro);
             await _db.SaveChangesAsync();
             return RedirectToPage("Parceiro");
     

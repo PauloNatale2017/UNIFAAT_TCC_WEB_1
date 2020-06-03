@@ -154,6 +154,7 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                 }
             });
         };
+
         $scope.BuscaFilhos = function (id) {
 
             var path = window.location.origin;
@@ -165,25 +166,19 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                     if (response.data === "null") {
                         alert("RETORNO DO REQUEST NULL");
                     } else {
-                        $scope.Complementar = response.data;
-
-                        var stylodoc = document.getElementById("#BTN_FILHOS_" + response.data.IdCadastroBasico);
-                        stylodoc.style.backgroundColor = "green";
-                        stylodoc.style.color = "white";
-                        stylodoc.style.border = "green";
-                        $scope.SPA_FILHOSPOR_ = 100;
-
-                        var IdUsuario = response.data.IdCadastroBasico;                        
-
-                        document.getElementById("#Nomefilho_" + IdUsuario).value = response.data.Nomefilho;
-                        document.getElementById("#Escolaondeestuda_" + IdUsuario).value = response.data.Escolaondeestuda;
-                        document.getElementById("#DataNascimento_" + IdUsuario).value = response.data.DataNascimento;
-                        document.getElementById("#Enderecoescola_" + IdUsuario).value = response.data.Enderecoescola;
-                        document.getElementById("#Qualnecessidade_" + IdUsuario).value = response.data.Qualnecessidade;
-
-                        document.getElementById("#SPA_FILHOSPOR_" + $scope.basic[i].Id).innerText = "100";
-
+                        console.log("filhos");
                         console.log(response.data);
+                        $scope.filhosLits = response.data;
+
+                        for (var i = 0; i < response.data.length; i++) {
+                            var stylodoc = document.getElementById("#BTN_FILHOS_" + response.data[i].IdCadastroBasico);
+                            stylodoc.style.backgroundColor = "green";
+                            stylodoc.style.color = "white";
+                            stylodoc.style.border = "green";
+                            $scope.SPA_FILHOSPOR_ = 100;
+                            break;
+                        }
+
                         blockUI.stop();
                     }
                                         
@@ -204,22 +199,16 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                     if (response.data === "null") {
                         alert("RETORNO DO REQUEST NULL");
                     } else {
-                        $scope.Complementar = response.data;
+                        $scope.IdososLits = response.data;
 
-                        var stylodoc = document.getElementById("#BTN_IDOSOS_" + response.data.IdCadastroBasico);
-                        stylodoc.style.backgroundColor = "green";
-                        stylodoc.style.color = "white";
-                        stylodoc.style.border = "green";
-                        $scope.SPA_FILHOSPOR_ = 100;
-
-                        var IdUsuario = response.data.IdCadastroBasico;
-
-                        document.getElementById("#Nomoidoso_" + IdUsuario).value = response.data.Nomoidoso;
-                        document.getElementById("#DataNascimento_" + IdUsuario).value = response.data.DataNascimento;
-                        document.getElementById("#Qual_" + IdUsuario).value = response.data.Qual;
-
-                        document.getElementById("#SPA_IDOSOPOR_" + $scope.basic[i].Id).innerText = "100";
-
+                        for (var i = 0; i < response.data.length; i++) {
+                            var stylodoc = document.getElementById("#BTN_IDOSOS_" + response.data[i].IdCadastroBasico);
+                            stylodoc.style.backgroundColor = "green";
+                            stylodoc.style.color = "white";
+                            stylodoc.style.border = "green";
+                            $scope.SPA_FILHOSPOR_ = 100;
+                            break;
+                        }
                         console.log(response.data);
                         blockUI.stop();
                     }
@@ -229,7 +218,6 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                 }
             });
         };
-
 
         $scope.SalvarIdoso = function (IdUsuario) {
             var path = window.location.origin;
@@ -261,9 +249,7 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
             });
         };
 
-        $scope.SalvarSOS = function (IdUsuario) {
-            alert("OPERAÇÃO EFETUADA COM SUCESSO");
-        };
+      
 
         $scope.CadastroBasicos = function () {  
             var path = window.location.origin;
@@ -282,6 +268,8 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                         $scope.complementar = response.data.complementar;
                         $scope.ocorrencias = response.data.ocorrencias;
                         $scope.filhos = response.data.filhos;
+                        $scope.Idoso = response.data.Idoso;
+                        $scope.sos = response.data.sos;
                         
 
                         $scope.CadastroBasico = $scope.basic;
@@ -337,8 +325,40 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                                 }
                             }
                             $scope.blockUI.stop();
-                        }, 3000);                        
-                     
+                        }, 3000);   
+
+                        setTimeout(function () {
+                            for (var i = 0; i < $scope.basic.length; i++) {
+
+                                var retornoFilter = $scope.Idoso.filter(function (values) { return values.IdCadastroBasico === $scope.basic[i].Id; });
+
+                                if (retornoFilter.length > 0) {
+                                    var stylodoc = document.getElementById("#BTN_IDOSOS_" + $scope.basic[i].Id);
+                                    stylodoc.style.backgroundColor = "green";
+                                    stylodoc.style.color = "white";
+                                    stylodoc.style.border = "green";
+                                    document.getElementById("#SPA_IDOSOPOR_" + $scope.basic[i].Id).innerText = "100";
+                                }
+                            }
+                            $scope.blockUI.stop();
+                        }, 3000);   
+                        
+                        setTimeout(function () {
+                            for (var i = 0; i < $scope.basic.length; i++) {
+
+                                var retornoFilter = $scope.sos.filter(function (values) { return values.IdCadastroBasico === $scope.basic[i].Id; });
+
+                                if (retornoFilter.length > 0) {
+                                    var stylodoc = document.getElementById("#BTN_SOS_" + $scope.basic[i].Id);
+                                    stylodoc.style.backgroundColor = "green";
+                                    stylodoc.style.color = "white";
+                                    stylodoc.style.border = "green";
+                                    document.getElementById("#SPA_SOSPOR_" + $scope.basic[i].Id).innerText = "100";
+                                }
+                            }
+                            $scope.blockUI.stop();
+                        }, 3000);
+
 
                         console.log(response.data);
                        
@@ -437,7 +457,64 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
             });
         };
 
+        $scope.SalvarSOS = function (IdUsuario) {
+            var path = window.location.origin;
 
+            var request = {
+                "IdCadastroBasico": IdUsuario,
+                "NomeSOS": document.getElementById("#NomeSOS_" + IdUsuario).value,
+                "NumeroCelular": document.getElementById("#NumeroCelular_" + IdUsuario).value,
+                "Vinculo": document.getElementById("#Vinculo_" + IdUsuario).value
+            };
+
+            $http.post(path + "/api/vitimas/cadastrosos", request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+
+                        var stylodoc = document.getElementById("#BTN_SOS_" + IdUsuario);
+                        stylodoc.style.backgroundColor = "green";
+                        stylodoc.style.color = "white";
+                        stylodoc.style.border = "green";
+                        document.getElementById("#SPA_SOSPOR_" + $scope.basic[i].Id).innerText = "100";
+                        blockUI.stop();
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+        };
+
+        $scope.BuscaSOS = function (IdUsuario) {
+            var path = window.location.origin;
+
+            var request = { "IdCadastroBasico": "" + IdUsuario + "" };
+
+            $http.post(path + "/api/vitimas/buscasos", request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+                        $scope.SOSLits = response.data;
+
+                        for (var i = 0; i < response.data.length; i++) {
+                            var stylodoc = document.getElementById("#BTN_SOS_" + response.data[i].IdCadastroBasico);
+                            stylodoc.style.backgroundColor = "green";
+                            stylodoc.style.color = "white";
+                            stylodoc.style.border = "green";                         
+                            break;
+                        }
+                       
+                        blockUI.stop();
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+        };
         
 
         $scope.GetVagas = function () {

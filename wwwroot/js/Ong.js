@@ -5,15 +5,44 @@ var token = "";
 var urlExternal = "https://localhost:5001/api/";
 
 
-
-
-app.controller("CtrlGeo", ['$scope', '$http', '$location', '$window', 'blockUI', '$timeout', '$interval',
+app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI', '$timeout', '$interval',
     function ($scope, $http, $location, $window, blockUI, $timeout, $interval) {
         
         Obj = $scope;
 
         //blockUI.start("....CARREGANDO INFORMAÇÕES....");
 
+        $scope.BuscaOngsFnc = function () {
+            //
+            var path = window.location.origin;
+            var loginUrlEndPoint = urlExternal + "external/externalongs";
+
+            blockUI.start("CARREGANDO...");
+
+            $http.get(loginUrlEndPoint).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    }
+                    else {
+                        console.log(response.data);
+                        $scope.OngsFunc = response.data;
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+            blockUI.stop();
+        };
+
+        $scope.SalvaOngsFnc = function (Id) {
+
+        };
+
+        $scope.EditOng = function (id) {
+            $window.location = "https://localhost:5001/Ong/EditOng?id=" + id;            
+        };
 
         $scope.CadastroBasicos = function () {
             var path = window.location.origin;
@@ -38,7 +67,6 @@ app.controller("CtrlGeo", ['$scope', '$http', '$location', '$window', 'blockUI',
             blockUI.stop();
         };
 
-
         $scope.GeoReferenciaGet = function () {
 
             var data = {
@@ -50,9 +78,6 @@ app.controller("CtrlGeo", ['$scope', '$http', '$location', '$window', 'blockUI',
                 $scope.dadosPie = dados;               
             });
         };
-
-
-        $scope.CadastroBasicos();
 
         $scope.SalvarGeoReferencia = function () {
             var path = window.location.origin;
@@ -83,5 +108,7 @@ app.controller("CtrlGeo", ['$scope', '$http', '$location', '$window', 'blockUI',
                 }
             });
         };
+
+        $scope.BuscaOngsFnc();
 
  }]);

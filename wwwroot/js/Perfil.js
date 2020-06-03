@@ -17,13 +17,17 @@ app.controller("ctrlPerfil", ['$rootScope', '$scope', '$http', '$location', '$wi
         $scope.values = [];
         $scope.Logins =   function () {
             $http.get("/api/Perfil/getall")
-                .then(function (request) {
+                .then(function (request)
+                {
+                    console.log(request.data);
                     var dados = request.data;
-                    $scope.values = dados                                    
-                }).catch(function (response) {
+                    $scope.values = dados;                                    
+                }).catch(function (response)
+                {
                     console.log(response);
                 })
-                .finally(function () {
+                .finally(function ()
+                {
                     blockUI.stop();
                 });
         };

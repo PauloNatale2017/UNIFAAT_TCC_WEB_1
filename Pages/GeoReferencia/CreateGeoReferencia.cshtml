@@ -6,33 +6,29 @@
 }
 
 
-@*<script src="~/js/jquery-3.2.1.js"></script>
-    <script src="~/js/angular.js"></script>
-    <script src="~/js/crossfilter.js"></script>
-    <script src="~/js/fusioncharts.js"></script>
-    <script src="~/js/angular-fusioncharts.js"></script>
-    <script src="~/js/angular-fusioncharts.min.js"></script>
-    <script src="~/js/fusioncharts.theme.fusion.js"></script>
-    <script src="~/js/fusioncharts.maps.js"></script>
-    <script src="~/js/ng-map.min.js"></script>
-    <script src="~/js/angular-block-ui.js"></script>
-    <link href="~/css/angular-block-ui.css" rel="stylesheet" />    
-<br />
-<h2 class="text-info">CADASTRO DE PROFISIONAIS</h2>
-<br />
 
 
-@*<div ng-controller="CtrlGeo" class="border container" style="padding:30px;">*@
+    <form method="post">
 
-    <div  class="border container" style="padding:30px;">
-        <form method="post">
+        <script src="~/js/jquery-3.2.1.js"></script>
+        <script src="~/js/angular.js"></script>
+        <script src="~/js/crossfilter.js"></script>
+        <script src="~/js/fusioncharts.js"></script>
+        <script src="~/js/angular-fusioncharts.js"></script>
+        <script src="~/js/angular-fusioncharts.min.js"></script>
+        <script src="~/js/fusioncharts.theme.fusion.js"></script>
+        <script src="~/js/fusioncharts.maps.js"></script>
+        <script src="~/js/ng-map.min.js"></script>
+        <script src="~/js/angular-block-ui.js"></script>
+        <link href="~/css/angular-block-ui.css" rel="stylesheet" />
 
+        <div class="border container" style="padding:30px;" ng-controller="CtrlGeo">
             <div class="form-group row">
                 <div class="col-sm-2">
                     <label>ENDEREÇO</label>
                 </div>
                 <div class="col-sm-8">
-                    <input asp-for="Geo.Endereco" class="form-control" /> @*ng-model="ModelEndereco"*@
+                    <input asp-for="Geo.Endereco" id="endereco" class="form-control" /> @*ng-model="ModelEndereco"*@
                 </div>
                 <br />
                 <div class="col-sm-4">
@@ -47,7 +43,7 @@
                     <label>CEP</label>
                 </div>
                 <div class="col-sm-8">
-                    <input asp-for="Geo.CEP" class="form-control" />
+                    <input asp-for="Geo.CEP" id="cep" class="form-control" />
                 </div>
                 <br />
                 <div class="col-sm-4">
@@ -60,22 +56,15 @@
                     <label>COMPLEMENTO DE ENDEREÇO</label>
                 </div>
                 <div class="col-sm-6">
-                    <input asp-for="Geo.Complemento" class="form-control" />
+                    <input asp-for="Geo.Complemento" id="complemento" class="form-control" />
                 </div>
                 <br />
                 <div class="col-sm-4">
-                    <a href="https://www.latlong.net/">SITE GEO</a>
+                    <a href="https://www.latlong.net/" target="_blank">>SITE GEO</a>
                     @*<button ng-click="GeoReferenciaGet()" class="btn btn-info" value="">BUSCAR GEO</button>*@
                 </div>
 
             </div>
-
-            <br />
-            @*<div class="row">
-                    <div id="map_canvas" class="col-xl-12" style="width:100%;height:350px;margin-top: 52px; float: left;">
-                    </div>
-                </div>
-                <hr />*@
 
             <div class="form-group row">
                 <div class="col-2">
@@ -85,7 +74,7 @@
                     <input asp-for="Geo.Lat" class="form-control" />
                 </div>
                 <div class="col-sm-4">
-                    <span asp-validation-for="Geo.Lat" class="text-danger"></span>
+                    <span asp-validation-for="Geo.Lat" id="lat" class="text-danger"></span>
                 </div>
             </div>
 
@@ -94,7 +83,7 @@
                     <label>GEOREFERENCIA (LONG)</label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Geo.Long" class="form-control" />
+                    <input asp-for="Geo.Long" id="long" class="form-control" />
                 </div>
                 <div class="col-sm-4">
                     <span asp-validation-for="Geo.Long" class="text-danger"></span>
@@ -102,11 +91,22 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-2">
+                <div class="col-3">
                     <label>SELECIONAR O USUARIO PARA ESSA REFERENCIA</label>
                 </div>
+                <div class="col-7">
+                    <select ng-model="selectedLogins" class="form-control" style="width: 100%;">
+                        <option ng-repeat="x in basic" value="{{x.Id}}">{{x.NomeCompleto}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row" style="visibility:hidden !important;">
                 <div class="col-8">
-                    <input asp-for="Geo.IdUsuario" class="form-control" />
+                    <label>SELECIONAR O USUARIO PARA ESSA REFERENCIA</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="Geo.IdUsuario" id="idusuario" class="form-control" value="{{selectedLogins}}" />
                 </div>
                 <div class="col-sm-4">
                     <span asp-validation-for="Geo.IdUsuario" class="text-danger"></span>
@@ -114,26 +114,26 @@
             </div>
 
 
-
             <hr />
 
             <div class="form-group row">
                 <div class="col-3 offset-4">
-                    <input type="submit" value="CREATE" class="btn btn-primary form-control" />
+                    <input type="button" ng-click="SalvarGeoReferencia()" value="CREATE" class="btn btn-primary form-control" />
                 </div>
                 <div class="col-3">
                     <a asp-page="GeoReferecia" class="btn btn-success form-control">BACK TO LIST</a>
                 </div>
 
             </div>
+        </div>
+    </form>
 
-        </form>
-    </div>
 
 
-    @section Scripts{
+@section Scripts{
 
-        @*<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCypG8QjTkeOxBNGJZ8F8nGvy6A1fhm5Wk"></script>*@
-        @*<script src="~/js/GeoScript.js"></script>*@
-    }
+    @*<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCypG8QjTkeOxBNGJZ8F8nGvy6A1fhm5Wk"></script>*@
 
+}
+
+<script src="~/js/GeoScript.js"></script>

@@ -37,9 +37,9 @@
                         <th>
                             <label>CONTATO</label>
                         </th>
-                        <th>
+                        @*<th>
                             <label>ATUAÇÃO</label>
-                        </th>
+                        </th>*@
                         <th>
                             <label>HORARIOS DE ATENDIMENTO</label>
                         </th>
@@ -51,7 +51,7 @@
                     <td>@Html.DisplayFor(m => item.Nome)</td>
                     <td>@Html.DisplayFor(m => item.NomeDepartamento)</td>
                     <td>@Html.DisplayFor(m => item.Contato)</td>
-                    <td>@Html.DisplayFor(m => item.AbrangenciaDeAtuacao)</td>
+                    @*<td>@Html.DisplayFor(m => item.AbrangenciaDeAtuacao)</td>*@
                     <td>@Html.DisplayFor(m => item.Horario)</td>
                     <td>
                         <button asp-page-handler="DELETE" asp-route-id="@item.Id" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE USUARIO?')" class="btn btn-danger btn-sm">DELETE</button>

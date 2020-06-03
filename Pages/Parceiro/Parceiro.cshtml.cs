@@ -22,7 +22,7 @@ namespace ROSESHIELD.WEB
         }
         public async Task OnGet()
         {
-            Parceiro = await _db.Parceiro.ToListAsync();
+            //Parceiro = await _db.Parceiro.ToListAsync();
         }
 
 
