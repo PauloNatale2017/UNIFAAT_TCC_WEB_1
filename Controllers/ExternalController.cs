@@ -170,6 +170,15 @@ namespace ROSESHIELD.WEB.Controllers
             return Ok(jsonEntity);
         }
 
-        
+        [Route("externalongssave")]
+        [HttpGet]
+        public async Task<IActionResult> SalvaOngs(UsuarioOng model)
+        {
+            var returns = _db.Ong.ToList();
+            var jsonEntity = JsonConvert.SerializeObject(returns);
+            return Ok(jsonEntity);
+        }
+
+
     }
 }

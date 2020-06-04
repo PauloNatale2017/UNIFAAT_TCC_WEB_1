@@ -10,6 +10,11 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
         
         Obj = $scope;
 
+        $scope.values = [
+            { "Descricao": "ADMIN", "Id": "1" },
+            { "Descricao": "TESTE", "Id": "2" }
+        ];
+
         //blockUI.start("....CARREGANDO INFORMAÇÕES....");
 
         $scope.BuscaOngsFnc = function () {
