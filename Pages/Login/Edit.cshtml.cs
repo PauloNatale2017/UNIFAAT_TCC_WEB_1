@@ -35,20 +35,20 @@ namespace ROSESHIELD.WEB
 
         public async Task<IActionResult> OnPost()
         {
-            if(ModelState.IsValid)
-            {
-                if(UserAccounts.Id == 0)
-                {
-                    _db.UserAccounts.Add(UserAccounts);
-                } else  {
-                    _db.UserAccounts.Update(UserAccounts);
-                }
-             
-                await _db.SaveChangesAsync();
-                return RedirectToPage("Index");
-            }
-            return RedirectToPage();
+            UserAccounts.CreateDate = (UserAccounts.CreateDate == null ? DateTime.Now : UserAccounts.CreateDate);
+            UserAccounts.UpdateDate = (UserAccounts.UpdateDate == null ? DateTime.Now : UserAccounts.UpdateDate);
+            UserAccounts.Cidade = (UserAccounts.Cidade == null ? "Atibaia" : UserAccounts.Cidade);
 
+            if(UserAccounts.Id == 0)
+            {
+                _db.UserAccounts.Add(UserAccounts);
+            } else  {
+                _db.UserAccounts.Update(UserAccounts);
+            }
+            
+            await _db.SaveChangesAsync();
+            return RedirectToPage("Index");
+            
         }
     }
 }

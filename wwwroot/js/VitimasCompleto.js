@@ -249,8 +249,6 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
             });
         };
 
-      
-
         $scope.CadastroBasicos = function () {  
             var path = window.location.origin;
             var loginUrlEndPoint = path + "/api/vitimas/cadastrosbasicos";
@@ -515,7 +513,6 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                 }
             });
         };
-        
 
         $scope.GetVagas = function () {
           

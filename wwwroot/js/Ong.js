@@ -43,10 +43,63 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
 
         $scope.SalvaOngsFnc = function (Id) {
 
+            var path = window.location.origin;
+            var loginUrlEndPoint = urlExternal + "external/externalongssave";
+
+            var idusuario = JSON.stringify(Id);
+
+            var acesss = document.getElementById("#PerfilSelec_" + idusuario).value;
+
+            var request = {
+                "NomeCompleto": document.getElementById("#NomeCompleto_" + idusuario).value,
+                "Cargo": document.getElementById("#Cargo_" + idusuario).value,
+                "Email": document.getElementById("#Email_" + idusuario).value,
+                "IdOng": document.getElementById("#IdOng_" + idusuario).value,
+                "Perfil": acesss               
+            };
+
+
+            $http.post(loginUrlEndPoint, request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {                      
+                        $window.location = "https://localhost:5001/Ong/Ong";
+                    }
+
+                } else {
+                    alert("ONG NÂO CADASTRADA");
+                }
+            });
         };
 
         $scope.EditOng = function (id) {
             $window.location = "https://localhost:5001/Ong/EditOng?id=" + id;            
+        };
+
+        $scope.DeleteOng = function (Id) {
+
+
+            var path = window.location.origin;
+            var loginUrlEndPoint = urlExternal + "external/externalongsdelete";
+
+            var idusuario = JSON.stringify(Id);
+
+            var request = { "Id": idusuario };
+
+
+            $http.post(loginUrlEndPoint, request).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+                        $window.location = "https://localhost:5001/Ong/Ong";
+                    }
+
+                } else {
+                    alert("ONG NÂO CADASTRADA");
+                }
+            });
         };
 
         $scope.CadastroBasicos = function () {

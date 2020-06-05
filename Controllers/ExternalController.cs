@@ -170,13 +170,78 @@ namespace ROSESHIELD.WEB.Controllers
             return Ok(jsonEntity);
         }
 
+
+        [Route("externalongsdelete")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteOngs(buscacomp model)
+        {
+ 
+            var entity = _db.Ong.Where(d => d.Id == int.Parse(model.Id)).SingleOrDefault();
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+             _db.Ong.Remove(entity);
+            await _db.SaveChangesAsync();
+
+            return Ok(true);
+        }
+
         [Route("externalongssave")]
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> SalvaOngs(UsuarioOng model)
         {
-            var returns = _db.Ong.ToList();
-            var jsonEntity = JsonConvert.SerializeObject(returns);
-            return Ok(jsonEntity);
+            var userong = new UsuarioOng
+            {
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                IdOng = model.IdOng,
+                Cargo = model.Cargo,
+                Email = model.Email,
+                NomeCompleto = model.NomeCompleto,
+                Perfil = model.Perfil
+            };
+            await _db.UsuarioOng.AddAsync(userong);
+            await _db.SaveChangesAsync();
+
+            var login = new Login   {
+                EmailUser = model.Email,
+                Password = "123456",
+                UpdateDate = DateTime.Now,
+                CreateDate = DateTime.Now
+            };
+            _db.Login.AddAsync(login);
+            _db.SaveChanges();
+
+            var Ongs = _db.Ong.Where(d => d.Id == int.Parse(model.IdOng)).SingleOrDefault();
+            Ongs.TotalFuncionarios = (Ongs.TotalFuncionarios == null ? (1).ToString() : (int.Parse(Ongs.TotalFuncionarios) + 1).ToString());
+            _db.Ong.Update(Ongs);
+            _db.SaveChanges();
+
+            var LoginsConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).SingleOrDefault();
+            var usuariobasiclogin = new UserAccounts {
+                 Cidade = "Atibaia",
+                 Contato = Ongs.Contato,
+                 Cpf = "",
+                 CreateDate = DateTime.Now,
+                 Endereco = Ongs.Endereco,
+                 Idade = "",
+                 IdLogin = LoginsConsulta.Id,
+                 NomeCompleto = model.NomeCompleto,
+                 UpdateDate = DateTime.Now,
+                 UsuarioAccesso = new Login { 
+                       EmailUser = LoginsConsulta.EmailUser,
+                       Password =  LoginsConsulta.Password,
+                       UpdateDate = DateTime.Now,
+                       CreateDate = DateTime.Now
+                 }
+            };
+
+            _db.UserAccounts.AddAsync(usuariobasiclogin);
+            _db.SaveChanges();
+
+            return Ok(true);
         }
 
 

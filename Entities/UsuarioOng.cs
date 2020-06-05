@@ -10,7 +10,7 @@ namespace ROSESHIELD.WEB.Entities
         public string NomeCompleto { get; set; }
         public string Cargo { get; set; }
         public string Email { get; set; }
-        public OngPerfil Perfil { get; set; }
-        public int IdOng { get; set; }
+        public string Perfil { get; set; }
+        public string IdOng { get; set; }
     }
 }

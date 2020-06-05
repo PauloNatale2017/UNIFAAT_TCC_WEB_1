@@ -16,24 +16,23 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
         
         $scope.Cidade = $scope.Cidade_Value;       
 
-        $scope.InitialiseMaps = function () {
-            var mapOptions = {
-                center: new google.maps.LatLng(-15.768466, -47.929459),
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-            blockUI.stop();
-        };
+        //$scope.InitialiseMaps = function () {
+        //    var mapOptions = {
+        //        center: new google.maps.LatLng(-15.768466, -47.929459),
+        //        zoom: 8,
+        //        mapTypeId: google.maps.MapTypeId.ROADMAP
+        //    };
+        //    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        //    blockUI.stop();
+        //};
 
-        $scope.ChamadaMaps = function () {
+        //$scope.ChamadaMaps = function () {
+        //    blockUI.start("....CARREGANDO INFORMAÇÕES....");
+        //    $scope.InitialiseMaps();
+        //};
 
-            blockUI.start("....CARREGANDO INFORMAÇÕES....");
-            //$scope.InitialiseMaps();
-        };
 
-
-        $scope.ChamadaMaps();
+        //$scope.ChamadaMaps();
 
 
         $scope.Config = {
@@ -122,6 +121,30 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
     
         $scope.GrafiColumn();
         $scope.GrafiPie1();
+
+        $scope.CadastroBasicos = function () {
+            var path = window.location.origin;
+            var loginUrlEndPoint = path + "/api/vitimas/cadastrosbasicos";
+            blockUI.start("CARREGANDO...");
+
+            $http.get(loginUrlEndPoint).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    } else {
+
+                        $scope.basic = response.data.vitimabasic;
+                        console.log(response.data);
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+            blockUI.stop();
+        };
+
+        $scope.CadastroBasicos();
 
     }
 ]);

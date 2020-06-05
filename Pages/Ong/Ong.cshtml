@@ -63,10 +63,10 @@
                     <td>{{itens.Contato}}</td>
                     <td>{{itens.Endereco}}</td>
                     <td>{{itens.TotalFuncionarios}}</td>
-                    <td><button type="button" class="btn btn-outline-danger"  data-toggle="modal" data-target="#FUNC_CADAST_{{itens.Id}}" id="#BTNFUNC_CADAST_{{itens.Id}}">CADSTRO FUNC</button></td>
+                    <td><button type="button" class="btn btn-outline-success"  data-toggle="modal" data-target="#FUNC_CADAST_{{itens.Id}}" id="#BTNFUNC_CADAST_{{itens.Id}}">CADSTRO FUNC</button></td>
                     
                     <td>
-                        <button asp-page-handler="DELETE" asp-route-id="{{itens.Id}}" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE CADASTRO?')" class="btn btn-danger btn-sm">DELETE</button>
+                        <button type="button" class="btn btn-outline-info" ng-click="DeleteOng(itens.Id)" onclick="return confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESSE CADASTRO?')" class="btn btn-danger btn-sm">DELETE</button>
                         <button type="button" class="btn btn-outline-info" ng-click="EditOng(itens.Id)">EDIT</button>  
                     </td>
                 </tr>
@@ -122,36 +122,9 @@
                                     </select>
                                 </div>
                             </div>
-                                @*<div class="col-sm-3 form-control form-control">
-                <h6>ID SELECTED USR: {{selectedOngPerfil}}</h6>
-            </div>*@
-
-                                @*
-
-                OngPerfil Perfil
-
-                <div class="col-6">
-                    <select ng-model="selectedLogins" class="form-group" style=" width: 100%;">
-                        <option ng-repeat="x in values" value="{{x.Id}}">{{x.EmailUser}}</option>
-                    </select>
-                </div>
-                <div class="col-sm-3">
-                    <h6>ID SELECTED USR: {{selectedLogins}}</h6>
-                </div>
-
-
-
-
-
-                <div class="row" style="margin: 1px 1px 10px 1px;"> OngPerfil Perfil
-                <div class="col-xl-2">
-                    <label>NOME S.O.S</label>
-                </div>
-                <div class="col-xl-10">
-                    <input id="#NomeSOS_{{itens.Id}}" ype="text" class="form-control form-control">
-                </div>
-            </div>*@
-
+                            <div class="col-sm-3 form-control form-control" style="visibility:hidden;">
+                                <input id="#PerfilSelec_{{itens.Id}}" ype="text" class="form-control form-control" value="{{selectedOngPerfil}}">
+                            </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
                                     <div class="col-xl-2">
                                         <label>ONG</label>
