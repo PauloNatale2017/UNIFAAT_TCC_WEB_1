@@ -29,7 +29,9 @@ namespace ROSESHIELD.WEB
             services.AddDbContext<AplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("Conn")));
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
-            services.AddCors(options => {
+
+            services.AddCors(options =>
+            {
                 options.AddPolicy("AllowAnyOrigin", builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()

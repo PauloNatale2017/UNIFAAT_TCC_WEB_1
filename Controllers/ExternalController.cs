@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ROSESHIELD.WEB.Entities;
@@ -59,9 +60,21 @@ namespace ROSESHIELD.WEB.Controllers
         }
 
         #endregion
-        
+
+              
+
+        [Route("externalusersall")]
+        [HttpGet]        
+        public async Task<IActionResult> GetUsuariosFull()
+        {
+            var returns = _db.Login.ToList();
+            var jsonEntity = JsonConvert.SerializeObject(returns);
+            return Ok(jsonEntity);
+        }
+
+
         [Route("externalusers")]
-        [HttpPost]
+        [HttpPost]       
         public async Task<IActionResult> GetUsuarios(UserLogin user)
         {
             var returns = _db.Login.Where(d => d.EmailUser == user.User && d.Password == user.Password).SingleOrDefault();
