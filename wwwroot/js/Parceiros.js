@@ -7,7 +7,7 @@ var data = [];
 var mapa;
 var marker;
 var infowindow;
-var urlExternal = "https://localhost:5001/api/";
+var urlExternal = "http://localhost:5001/api/";
 
 
 app.controller("ctlrParceiro", ['$scope', '$http', '$location', '$window', 'blockUI', '$timeout', '$interval',

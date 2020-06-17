@@ -2,7 +2,7 @@
 var app = angular.module('App', ['blockUI', 'ng-fusioncharts']);
 var Obj;
 var token = "";
-var urlExternal = "https://localhost:5001/api/";
+var urlExternal = "http://localhost:5001/api/";
 
 
 
@@ -75,7 +75,7 @@ app.controller("CtrlGeo", ['$scope', '$http', '$location', '$window', 'blockUI',
                     } else {
                       
                         blockUI.stop();
-                        $window.location = "https://localhost:5001/GeoReferencia/GeoReferencia";
+                        $window.location = "http://localhost:5001/GeoReferencia/GeoReferencia";
                     }
 
                 } else {

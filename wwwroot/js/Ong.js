@@ -2,7 +2,7 @@
 var app = angular.module('App', ['blockUI', 'ng-fusioncharts']);
 var Obj;
 var token = "";
-var urlExternal = "https://localhost:5001/api/";
+var urlExternal = "http://localhost:5001/api/";
 
 
 app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI', '$timeout', '$interval',
@@ -64,7 +64,7 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
                     if (response.data === "null") {
                         alert("RETORNO DO REQUEST NULL");
                     } else {                      
-                        $window.location = "https://localhost:5001/Ong/Ong";
+                        $window.location = "http://localhost:5001/Ong/Ong";
                     }
 
                 } else {
@@ -74,7 +74,7 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
         };
 
         $scope.EditOng = function (id) {
-            $window.location = "https://localhost:5001/Ong/EditOng?id=" + id;            
+            $window.location = "http://localhost:5001/Ong/EditOng?id=" + id;            
         };
 
         $scope.DeleteOng = function (Id) {
@@ -93,7 +93,7 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
                     if (response.data === "null") {
                         alert("RETORNO DO REQUEST NULL");
                     } else {
-                        $window.location = "https://localhost:5001/Ong/Ong";
+                        $window.location = "http://localhost:5001/Ong/Ong";
                     }
 
                 } else {
@@ -158,7 +158,7 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
                     } else {
                       
                         blockUI.stop();
-                        $window.location = "https://localhost:5001/GeoReferencia/GeoReferencia";
+                        $window.location = "http://localhost:5001/GeoReferencia/GeoReferencia";
                     }
 
                 } else {

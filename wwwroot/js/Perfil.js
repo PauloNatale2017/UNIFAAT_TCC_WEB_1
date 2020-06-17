@@ -1,6 +1,6 @@
 ﻿
 
-var app = angular.module('App', ['blockUI', 'ng-fusioncharts']);
+var app = angular.module('App', ['blockUI']);
 var Obj;
 
 
@@ -33,6 +33,10 @@ app.controller("ctrlPerfil", ['$rootScope', '$scope', '$http', '$location', '$wi
         };
         $scope.Logins();
 
+        $scope.click = function () {
+            alert("hhhhhhhhhhhhhhhhhhhh");
+        };
+
         $scope.values2 = [];
         $scope.Perfis = function () {
             $http.get("/api/Perfil/getperfilall")
@@ -62,40 +66,49 @@ app.controller("ctrlPerfil", ['$rootScope', '$scope', '$http', '$location', '$wi
                 if (response.data === "OK") {
 
                     var url = $window.location;
-                    $window.location = "https://localhost:5001/Perfil/Perfil";
+                    $window.location = "http://localhost:5001/Perfil/Perfil";
                 }
             });
         };
 
         $scope.createperfil = function () {
 
-
-            debugger;
             var PerfilDados = {
-                HOME: $scope.HOME === true ? "HOME_ON" : "HOME_OFF",
-                MAPS: $scope.MAPS === true ? "MAPS_ON" : "MAPS_OFF",
-                NOTIFICACAO: $scope.NOTIFICACAO === true ? "NOTIFICACAO_ON" : "NOTIFICACAO_OFF",
-                RELATORIOS: $scope.RELATORIOS === true ? "RELATORIOS_ON" : "RELATORIOS_OFF",
-                ABERTURA_BOS: $scope.ABERTURA_BOS === true ? "ABERTURA_BOS_ON" : "ABERTURA_BOS_OFF",
+                HOME: ($scope.HOME === true ? "HOME_ON" : "HOME_OFF") + "&" +
+                      ($scope.USUARIOS === true ? "USUARIOS_ON" : "USUARIOS_OFF") + "&" +
+                      ($scope.RELATORIOS === true ? "RELATORIOS_ON" : "RELATORIOS_OFF") + "&" +
+                      ($scope.CHAT === true ? "CHAT_ON" : "CHAT_OFF") + "&" +
+                      ($scope.AUTOMACAO === true ? "AUTOMACAO_ON" : "AUTOMACAO_OFF") + "&" +
+                      ($scope.VAGAS === true ? "VAGAS_ON" : "VAGAS_OFF") + "&" +
+                      ($scope.OCORRENCIAS === true ? "OCORRENCIAS_ON" : "OCORRENCIAS_OFF") + "&" +
+                      ($scope.ALERTAS === true ? "NOTIFICACAO_ON" : "NOTIFICACAO_OFF"),
+
+                //USUARIOS: $scope.USUARIOS === true ? "USUARIOS_ON" : "USUARIOS_OFF",
+                //RELATORIOS: $scope.RELATORIOS === true ? "RELATORIOS_ON" : "RELATORIOS_OFF",
+                //CHAT: $scope.CHAT === true ? "CHAT_ON" : "CHAT_OFF",
+                //AUTOMACAO: $scope.AUTOMACAO === true ? "AUTOMACAO_ON" : "AUTOMACAO_OFF",               
+                //VAGAS: $scope.VAGAS === true ? "VAGAS_ON" : "VAGAS_OFF",
+                //OCORRENCIAS: $scope.OCORRENCIAS === true ? "OCORRENCIAS_ON" : "OCORRENCIAS_OFF",
+                //ALERTAS: $scope.ALERTAS === true ? "NOTIFICACAO_ON" : "NOTIFICACAO_OFF",               
+
                 CRIAR: $scope.CRIAR === true ? "CRIAR_ON" : "CRIAR_OFF",
                 EDITAR: $scope.EDITAR === true ? "EDITAR_ON" : "EDITAR_OFF",
                 PESQUISA: $scope.PESQUISA === true ? "PESQUISA_ON" : "PESQUISA_OFF",
-                ACAO_FULL: $scope.ACAO_FULL === true ? "ACAO_FULL_ON" : "ACAO_FULL_OFF",
+               
                 NOME_PERFIL: $scope.NomePerfil,
+
+                ACAO_FULL: $scope.ACAO_FULL === true ? "ACAO_FULL_ON" : "ACAO_FULL_OFF",
                 ACESSO_TOTAL: $scope.ACESSO_TOTAL === true ? "ACESSO_TOTAL_ON" : "ACESSO_TOTAL_OFF",
+
                 SISTEMA: "1"
             };
             
 
             $http.post("/api/Perfil/createperfil", JSON.stringify(PerfilDados)).then(function (response) {
 
-                
-
-
-
                 if (response.data === "OK") {
                     var url = $window.location;
-                    $window.location = "https://localhost:5001/Perfil/Perfil";
+                    $window.location = "http://localhost:5001/Perfil/Perfil";
                 }
             });
         };

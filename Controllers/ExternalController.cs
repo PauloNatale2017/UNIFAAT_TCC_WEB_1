@@ -61,7 +61,16 @@ namespace ROSESHIELD.WEB.Controllers
 
         #endregion
 
-              
+
+        [Route("externalgerperfill/{idusuario}")]
+        [HttpGet]
+        public async Task<IActionResult> GetPerfil(string IdUsuario)
+        {
+            var returnPerfiluser = _db.VinculoSistemaUsuario.Where(d => d.IdPerfil == IdUsuario).SingleOrDefault();
+            var returns = _db.Perfil.ToList();
+            var jsonEntity = JsonConvert.SerializeObject(returns.Where(d=>d.Id == int.Parse(returnPerfiluser.IdUsuario)));
+            return Ok(jsonEntity);
+        }
 
         [Route("externalusersall")]
         [HttpGet]        

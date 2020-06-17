@@ -26,132 +26,122 @@
     @*<form method="post">*@
 
 
-        <div class="form-group row">
-            <div class="col-sm-2">
-                <label>SISTEMA</label>
-            </div>
-            <div class="col-sm-8">
-                <select ng-model="LISTA_DROP" name="Sistema" class="form-control">
-                    <option value="0">SELECIONE UM SISTEMA...</option>
-                    <option value="1">ROSESHIELD.WEB</option>
-                    <option value="2">ROSESHIELD.APP</option>
-                    <option value="3">ROSESHIELD.DESKTOP</option>
-                    <optgroup label="ADMINISTRADOR">
-                        <option value="4">ROSESHIELD.GERENCIADOR</option>
-                    </optgroup>
-                </select>
-            </div>
-            <br />
-            <div class="col-sm-4">
-                <span asp-validation-for="Perfil.NomePerfil" class="text-danger"></span>
-            </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label>SISTEMA</label>
         </div>
-
-        <hr />
-
-        <div class="form-group row">
-            <div class="col-sm-2">
-                <label>NOME DO PERFIL</label>
-            </div>
-            <div class="col-sm-8">
-                <input ng-model="NomePerfil" asp-for="Perfil.NomePerfil" class="form-control" />
-            </div>
-            <br />
-            <div class="col-sm-4">
-                <span asp-validation-for="Perfil.NomePerfil" class="text-danger"></span>
-            </div>
+        <div class="col-sm-8">
+            <select ng-model="LISTA_DROP" name="Sistema" class="form-control">
+                <option value="0">SELECIONE UM SISTEMA...</option>
+                <option value="1">ROSESHIELD.WEB</option>
+                <option value="2">ROSESHIELD.APP</option>
+                <option value="3">ROSESHIELD.DESKTOP</option>
+                <optgroup label="ADMINISTRADOR">
+                    <option value="4">ROSESHIELD.GERENCIADOR</option>
+                </optgroup>
+            </select>
         </div>
-
-        <hr />
-        <div class="col-sm-12" style="text-align: center; background-color: midnightblue;color: white;text-shadow: white 0px 2px 7px;">
-            <label>ACESSOS PARA O PERFIL</label>
+        <br />
+        <div class="col-sm-4">
+            <span asp-validation-for="Perfil.NomePerfil" class="text-danger"></span>
         </div>
-        <hr />
+    </div>
 
-        <div class="form-group row">
+    <hr />
 
-            <div class="col-sm-12">
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label>NOME DO PERFIL</label>
+        </div>
+        <div class="col-sm-8">
+            <input ng-model="NomePerfil" asp-for="Perfil.NomePerfil" class="form-control" />
+        </div>
+        <br />
+        <div class="col-sm-4">
+            <span asp-validation-for="Perfil.NomePerfil" class="text-danger"></span>
+        </div>
+    </div>
 
-                @foreach (var item in Model.SiteSistema)
-                {
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row" style="text-align:center;">
-                                <div class="col-xl-3">
-                                    @{
-                                        var Modelo = "";
+    <hr />
+    <div class="col-sm-12" style="text-align: center; background-color: midnightblue;color: white;text-shadow: white 0px 2px 7px;">
+        <label>ACESSOS PARA O PERFIL</label>
+    </div>
+    <hr />
 
-                                        switch (item.Menu)
-                                        {
-                                            case "NOTIFICAÇÃO":
-                                                Modelo = "NOTIFICACAO";
-                                                break;
-                                            case "ABERTURA B'Os":
-                                                Modelo = "ABERTURA_BOS";
-                                                break;
-                                            case "AÇÃO-EDITAR":
-                                                Modelo = "EDITAR";
-                                                break;
-                                            case "AÇÃO-CRIAR":
-                                                Modelo = "CRIAR";
-                                                break;
-                                            case "AÇÃO-PESQUISA":
-                                                Modelo = "PESQUISA";
-                                                break;
-                                            case "AÇÃO-CRIAR/PESQUISAR/DELETAR":
-                                                Modelo = "ACAO_FULL";
-                                                break;
-                                            case "ACESSO TOTAL":
-                                                Modelo = "ACESSO_TOTAL";
-                                                break;
-                                            default:
-                                                Modelo = item.Menu;
-                                                break;
-                                        };
-                                    }
-                                    <input ng-model="@Modelo" id="@Modelo" type="checkbox" />
-                                    <span style="overflow: auto; text-overflow: clip">
-                                        @item.Menu
-                                    </span>
-                                </div>
-                                <div class="col-xl-9">
-                                    <span style="overflow: auto;text-overflow: clip">
-                                        @item.Descricao
-                                    </span>
-                                </div>
+    <div class="form-group row">
+
+        <div class="col-sm-12">
+
+            @foreach (var item in Model.SiteSistema)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row" style="text-align:center;">
+                            <div class="col-xl-3">
+                                @{
+                                    var Modelo = "";
+
+                                    switch (item.Menu)
+                                    {
+                                        case "NOTIFICAÇÃO":
+                                            Modelo = "NOTIFICACAO";
+                                            break;                                     
+                                        case "AÇÃO-EDITAR":
+                                            Modelo = "EDITAR";
+                                            break;
+                                        case "AÇÃO-CRIAR":
+                                            Modelo = "CRIAR";
+                                            break;
+                                        case "AÇÃO-PESQUISA":
+                                            Modelo = "PESQUISA";
+                                            break;
+                                        case "AÇÃO-CRIAR/PESQUISAR/DELETAR":
+                                            Modelo = "ACAO_FULL";
+                                            break;
+                                        case "ACESSO TOTAL":
+                                            Modelo = "ACESSO_TOTAL";
+                                            break;
+                                        case "VAGAS DISPONIVEIS":
+                                            Modelo = "VAGAS_DISPONIVEIS";
+                                            break;
+                                        default:
+                                            Modelo = item.Menu;
+                                            break;
+                                    };
+                                }
+                                <input ng-model="@Modelo" id="@Modelo" type="checkbox" />
+                                <span style="overflow: auto; text-overflow: clip">
+                                    @item.Menu
+                                </span>
+                            </div>
+                            <div class="col-xl-9">
+                                <span style="overflow: auto;text-overflow: clip">
+                                    @item.Descricao
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <hr />
-                }
-            </div>
-
+                </div>
+                <hr />
+            }
         </div>
 
-        <hr />
+    </div>
 
-        <div class="form-group row">
+    <hr />
+    
+    <div class="form-group row">
 
-            <div class="spinner-grow text-success">
-
-            </div>
-
-            <div class="col-3 offset-4">
-                <button type="button" ng-click="createperfil()" class="btn btn-primary form-control" style="cursor:pointer;">CREATE</button>
-                @*<input onclick="SubMitCreate()" value="CREATE" class="btn btn-primary form-control" />*@
-            </div>
-            <div class="col-3">
-                <a asp-page="Profissional" class="btn btn-success form-control">BACK TO LIST</a>
-            </div>
+        <div class="col-3 offset-4">
+            <button type="button" ng-click="createperfil()" class="btn btn-primary form-control" style="cursor:pointer;">CREATE</button>          
         </div>
+        <div class="col-3">
+            <a asp-page="Profissional" class="btn btn-success form-control">BACK TO LIST</a>
+        </div>
+    </div>
 
     @*</form>*@
 </div>
 
-@section Scripts{
-    <script src="~/js/Perfil.js"></script>
-    <partial name="_ValidationScriptsPartial" />
-}
 
-
-
+<script src="~/js/Perfil.js"></script>

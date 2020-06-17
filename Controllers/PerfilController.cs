@@ -89,7 +89,7 @@ namespace ROSESHIELD.WEB.Controllers
             {
                 var insert = new Perfil
                 {
-                    AccessPerfil = (entity.HOME + "&" + entity.MAPS + "&" + entity.NOTIFICACAO + "&" + entity.RELATORIOS + "&" + entity.ABERTURA_BOS + "&"),
+                    AccessPerfil = entity.HOME,
                     ActionsPerfil = (entity.CRIAR + "&" + entity.EDITAR + "&" + entity.PESQUISA + "&" + entity.ACAO_FULL),
                     CreateDate = DateTime.Now,
                     UpdateDate = DateTime.Now,

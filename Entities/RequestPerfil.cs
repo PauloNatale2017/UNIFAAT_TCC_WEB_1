@@ -12,6 +12,7 @@ namespace ROSESHIELD.WEB.Entities
             public string NOTIFICACAO { get; set; }
             public string RELATORIOS { get; set; }
             public string ABERTURA_BOS { get; set; }
+
             public string EDITAR { get; set; }
             public string CRIAR { get; set; }
             public string PESQUISA { get; set; }
