@@ -13,5 +13,6 @@ namespace ROSESHIELD.WEB.Entities
         public int IdCadastroFilhos { get; set; }
         public int IdCadastroIdosos { get; set; }
         public int IdCadastroSOS { get; set; }
+        public string Rg_CPF { get; set; }
     }
 }

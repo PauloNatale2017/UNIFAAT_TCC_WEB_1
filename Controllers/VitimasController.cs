@@ -118,6 +118,17 @@ namespace ROSESHIELD.WEB.Controllers
                     drogaslicitasSIM = model.drogaslicitasSIM != "" ? "1" : "0"
                 });
                 _db.SaveChanges();
+
+                var entity = _db.CadastroComplementar.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+                var vinculos = _db.CadastroDeVitimasCompleto.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+
+                vinculos.UpdateDate = DateTime.Now;
+                vinculos.IdCadastroComplementar = entity.Id;
+
+                _db.CadastroDeVitimasCompleto.Update(vinculos);
+                await _db.SaveChangesAsync();
+
+
             }
            
 
@@ -157,9 +168,12 @@ namespace ROSESHIELD.WEB.Controllers
         public async Task<IActionResult> AddOcorrencia(CadastroDeOcorrencia model)
         {
             var retorno = _db.CadastroDeOcorrencia.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+
             if (retorno != null) {
                 return BadRequest("Cadastro Cadastro De Ocorrencia ja existente.");
-            } else {
+            } 
+            else
+            {
                 _db.CadastroDeOcorrencia.Add(new CadastroDeOcorrencia
                 {
                     CreateDate = DateTime.Now,
@@ -177,6 +191,15 @@ namespace ROSESHIELD.WEB.Controllers
                     NumeroBO = model.NumeroBO
                 });
                 _db.SaveChanges();
+
+                var entity = _db.CadastroDeOcorrencia.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+                var vinculos = _db.CadastroDeVitimasCompleto.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+
+                vinculos.UpdateDate = DateTime.Now;
+                vinculos.IdCadastroDeOcorrencia = entity.Id;
+
+                _db.CadastroDeVitimasCompleto.Update(vinculos);
+                await _db.SaveChangesAsync();
             }
 
 
@@ -224,6 +247,17 @@ namespace ROSESHIELD.WEB.Controllers
                 Qualnecessidade = model.Qualnecessidade
             });
             _db.SaveChanges();
+
+            var entity = _db.CadastroFilho.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+            var vinculos = _db.CadastroDeVitimasCompleto.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+
+            vinculos.UpdateDate = DateTime.Now;
+            vinculos.IdCadastroFilhos = entity.Id;
+
+            _db.CadastroDeVitimasCompleto.Update(vinculos);
+            await _db.SaveChangesAsync();
+
+
             return Ok(true);
         }
 
@@ -268,6 +302,18 @@ namespace ROSESHIELD.WEB.Controllers
                 NecessidadesEspeciaisSIM = model.Qual == "" ? "1" : "0"
             });
             _db.SaveChanges();
+
+            var entity = _db.CadastroIdoso.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).FirstOrDefault();
+            var vinculos = _db.CadastroDeVitimasCompleto.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+
+            vinculos.UpdateDate = DateTime.Now;
+            vinculos.IdCadastroIdosos = entity.Id;
+
+            _db.CadastroDeVitimasCompleto.Update(vinculos);
+            await _db.SaveChangesAsync();
+
+
+
             return Ok(true);
         }
 
@@ -309,6 +355,17 @@ namespace ROSESHIELD.WEB.Controllers
                 Vinculo = model.Vinculo
             });
             _db.SaveChanges();
+
+            var entity = _db.CadastroSOS.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).FirstOrDefault();
+            var vinculos = _db.CadastroDeVitimasCompleto.Where(d => d.IdCadastroBasico == model.IdCadastroBasico).SingleOrDefault();
+
+            vinculos.UpdateDate = DateTime.Now;
+            vinculos.IdCadastroSOS = entity.Id;
+
+            _db.CadastroDeVitimasCompleto.Update(vinculos);
+            await _db.SaveChangesAsync();
+
+
             return Ok(true);
         }
 

@@ -199,6 +199,7 @@ app.controller("VitimasCompleto", ['$scope', '$http', '$location', '$window', 'b
                     if (response.data === "null") {
                         alert("RETORNO DO REQUEST NULL");
                     } else {
+
                         $scope.IdososLits = response.data;
 
                         for (var i = 0; i < response.data.length; i++) {
