@@ -112,6 +112,8 @@
                                 </div>
                             </div>
 
+
+
                             <div class="row" style="margin: 1px 1px 10px 1px;">
                                 <div class="col-xl-2">
                                     <label>PERFIL DE ACESSO</label>
@@ -122,21 +124,51 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="col-sm-3 form-control form-control" style="visibility:hidden;">
                                 <input id="#PerfilSelec_{{itens.Id}}" ype="text" class="form-control form-control" value="{{selectedOngPerfil}}">
                             </div>
-                                <div class="row" style="margin: 1px 1px 10px 1px;">
-                                    <div class="col-xl-2">
-                                        <label>ONG</label>
-                                    </div>
-                                    <div class="col-xl-10">
-                                        <input id="#IdOng_{{itens.Id}}" ype="text" value="{{itens.Id}}" class="form-control form-control">
-                                    </div>
+                            <div class="col-sm-3 form-control form-control" style="visibility:hidden;">
+                                <input id="#PerfilSelec_{{itens.Id}}" ype="text" class="form-control form-control" value="{{selectedOngPerfilNome}}">
+                            </div>
+
+
+                            <div class="row" style="margin: 1px 1px 10px 1px;">
+                                <div class="col-xl-2">
+                                    <label>ONG</label>
                                 </div>
-
-
+                                <div class="col-xl-8">
+                                    <input id="#IdOng_{{itens.Id}}" ype="text" value="{{itens.Id}}" class="form-control form-control">
+                                </div>
+                                <div class="col-xl-2">
+                                    <span id="#IdOng_{{itens.Id}}">{{itens.RazaoSocial}}</span>
+                                </div>
                             </div>
                         </div>
+
+                        @*<div class="row" style="margin: 1px 1px 10px 1px;">
+            <div class="col-xl-2">
+                <label>PERFIL DE ACESSO</label>
+            </div>
+            <div class="col-xl-10">
+                <select ng-model="selectedOngPerfil_{{itens.Id}}" class="form-control form-control" style=" width: 100%;">
+                    <option ng-repeat="x in values" value="{{x.Id}}">{{x.Descricao}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3 form-control form-control" style="visibility:hidden;">
+            <input id="#PerfilSelec_{{itens.Id}}" ype="text" class="form-control form-control" value="{{selectedOngPerfil}}">
+        </div>
+            <div class="row" style="margin: 1px 1px 10px 1px;">
+                <div class="col-xl-2">
+                    <label>ONG</label>
+                </div>
+                <div class="col-xl-10">
+                    <input id="#IdOng_{{itens.Id}}" ype="text" value="{{itens.Id}}" class="form-control form-control">
+                </div>
+            </div>
+        </div>*@
+                    </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">

@@ -10,12 +10,48 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
         
         Obj = $scope;
 
-        $scope.values = [
-            { "Descricao": "ADMIN", "Id": "1" },
-            { "Descricao": "TESTE", "Id": "2" }
-        ];
+        $scope.values = [];
+
+        //$scope.values = [
+        //    { "Descricao": "ADMIN", "Id": "1" },
+        //    { "Descricao": "TESTE", "Id": "2" }
+        //];
 
         //blockUI.start("....CARREGANDO INFORMAÇÕES....");
+
+
+        $scope.AdminPerfil = function () {
+
+            var path = window.location.origin;
+            var loginUrlEndPoint = urlExternal + "external/externalgerperfillall";
+
+            blockUI.start("CARREGANDO...");
+
+            $http.get(loginUrlEndPoint).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    }
+                    else {
+                        console.log(response.data);
+
+                        angular.forEach(response.data, function (value, index) {
+                            $scope.values.push({ "Descricao": value.NomePerfil, "Id": value.Id });
+                            console.log(value);
+
+                        });
+                 
+                        //$scope.values = response.data;
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+            blockUI.stop();
+
+        };
+
 
         $scope.BuscaOngsFnc = function () {
             //
@@ -62,14 +98,17 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
             $http.post(loginUrlEndPoint, request).then(function (response) {
                 if (response.status === 200) {
                     if (response.data === "null") {
-                        alert("RETORNO DO REQUEST NULL");
+                        alert(response.data);
                     } else {                      
                         $window.location = "http://localhost:5001/Ong/Ong";
                     }
 
                 } else {
-                    alert("ONG NÂO CADASTRADA");
+                    alert(response.data);
                 }
+            }, function (response) {
+                    alert(response.data);
+                    $window.location = "http://localhost:5001/Ong/Ong";
             });
         };
 
@@ -168,5 +207,7 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
         };
 
         $scope.BuscaOngsFnc();
+
+        $scope.AdminPerfil();
 
  }]);

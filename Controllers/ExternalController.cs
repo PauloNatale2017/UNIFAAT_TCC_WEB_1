@@ -62,6 +62,16 @@ namespace ROSESHIELD.WEB.Controllers
         #endregion
 
 
+        [Route("externalgerperfillall")]
+        [HttpGet]
+        public async Task<IActionResult> GetPerfilAll()
+        {           
+            var returns = _db.Perfil.ToList();
+            var jsonEntity = JsonConvert.SerializeObject(returns);
+            return Ok(jsonEntity);
+        }
+
+
         [Route("externalgerperfill/{idusuario}")]
         [HttpGet]
         public async Task<IActionResult> GetPerfil(string IdUsuario)
@@ -213,19 +223,7 @@ namespace ROSESHIELD.WEB.Controllers
         [Route("externalongssave")]
         [HttpPost]
         public async Task<IActionResult> SalvaOngs(UsuarioOng model)
-        {
-            var userong = new UsuarioOng
-            {
-                CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now,
-                IdOng = model.IdOng,
-                Cargo = model.Cargo,
-                Email = model.Email,
-                NomeCompleto = model.NomeCompleto,
-                Perfil = model.Perfil
-            };
-            await _db.UsuarioOng.AddAsync(userong);
-            await _db.SaveChangesAsync();
+        {            
 
             var login = new Login   {
                 EmailUser = model.Email,
@@ -233,35 +231,70 @@ namespace ROSESHIELD.WEB.Controllers
                 UpdateDate = DateTime.Now,
                 CreateDate = DateTime.Now
             };
-            _db.Login.AddAsync(login);
-            _db.SaveChanges();
 
-            var Ongs = _db.Ong.Where(d => d.Id == int.Parse(model.IdOng)).SingleOrDefault();
-            Ongs.TotalFuncionarios = (Ongs.TotalFuncionarios == null ? (1).ToString() : (int.Parse(Ongs.TotalFuncionarios) + 1).ToString());
-            _db.Ong.Update(Ongs);
-            _db.SaveChanges();
+            var ValidaConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).ToList();
+            if(ValidaConsulta.Count <= 0 && model.Email != "")
+            {
+                var userong = new UsuarioOng
+                {
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    IdOng = model.IdOng,
+                    Cargo = model.Cargo,
+                    Email = model.Email,
+                    NomeCompleto = model.NomeCompleto,
+                    Perfil = model.Perfil
+                };
+                await _db.UsuarioOng.AddAsync(userong);
+                await _db.SaveChangesAsync();
 
-            var LoginsConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).SingleOrDefault();
-            var usuariobasiclogin = new UserAccounts {
-                 Cidade = "Atibaia",
-                 Contato = Ongs.Contato,
-                 Cpf = "",
-                 CreateDate = DateTime.Now,
-                 Endereco = Ongs.Endereco,
-                 Idade = "",
-                 IdLogin = LoginsConsulta.Id,
-                 NomeCompleto = model.NomeCompleto,
-                 UpdateDate = DateTime.Now,
-                 UsuarioAccesso = new Login { 
-                       EmailUser = LoginsConsulta.EmailUser,
-                       Password =  LoginsConsulta.Password,
-                       UpdateDate = DateTime.Now,
-                       CreateDate = DateTime.Now
-                 }
-            };
+                _db.Login.AddAsync(login);
+                _db.SaveChanges();
 
-            _db.UserAccounts.AddAsync(usuariobasiclogin);
-            _db.SaveChanges();
+                var Ongs = _db.Ong.Where(d => d.Id == int.Parse(model.IdOng)).SingleOrDefault();
+                Ongs.TotalFuncionarios = (Ongs.TotalFuncionarios == null ? (1).ToString() : (int.Parse(Ongs.TotalFuncionarios) + 1).ToString());
+                _db.Ong.Update(Ongs);
+                _db.SaveChanges();
+
+                var LoginsConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).SingleOrDefault();
+                var usuariobasiclogin = new UserAccounts
+                {
+                    Cidade = "Atibaia",
+                    Contato = Ongs.Contato,
+                    Cpf = "",
+                    CreateDate = DateTime.Now,
+                    Endereco = Ongs.Endereco,
+                    Idade = "",
+                    IdLogin = LoginsConsulta.Id,
+                    NomeCompleto = model.NomeCompleto,
+                    UpdateDate = DateTime.Now,
+                    UsuarioAccesso = new Login
+                    {
+                        EmailUser = LoginsConsulta.EmailUser,
+                        Password = LoginsConsulta.Password,
+                        UpdateDate = DateTime.Now,
+                        CreateDate = DateTime.Now
+                    }
+                };
+
+                _db.UserAccounts.AddAsync(usuariobasiclogin);
+                _db.SaveChanges();
+
+                _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
+                {
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    IdPerfil = model.Perfil,
+                    IdSistema = "1",
+                    IdUsuario = LoginsConsulta.Id.ToString()
+                });
+                _db.SaveChanges();
+            }
+            else
+            {
+                return BadRequest("EMAIL JA CADASTRADO.");
+            }
+            
 
             return Ok(true);
         }
