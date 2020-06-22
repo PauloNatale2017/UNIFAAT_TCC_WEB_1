@@ -23,14 +23,14 @@ namespace ROSESHIELD.WEB.Controllers
         {
             _db = db;
         }
-        
+
         #region CLASS
 
         public class buscacomp
         {
             public string Id { get; set; }
         }
-        
+
         public class requestgeo
         {
             public string Endereco { get; set; }
@@ -65,7 +65,7 @@ namespace ROSESHIELD.WEB.Controllers
         [Route("externalgerperfillall")]
         [HttpGet]
         public async Task<IActionResult> GetPerfilAll()
-        {           
+        {
             var returns = _db.Perfil.ToList();
             var jsonEntity = JsonConvert.SerializeObject(returns);
             return Ok(jsonEntity);
@@ -78,12 +78,12 @@ namespace ROSESHIELD.WEB.Controllers
         {
             var returnPerfiluser = _db.VinculoSistemaUsuario.Where(d => d.IdPerfil == IdUsuario).SingleOrDefault();
             var returns = _db.Perfil.ToList();
-            var jsonEntity = JsonConvert.SerializeObject(returns.Where(d=>d.Id == int.Parse(returnPerfiluser.IdUsuario)));
+            var jsonEntity = JsonConvert.SerializeObject(returns.Where(d => d.Id == int.Parse(returnPerfiluser.IdUsuario)));
             return Ok(jsonEntity);
         }
 
         [Route("externalusersall")]
-        [HttpGet]        
+        [HttpGet]
         public async Task<IActionResult> GetUsuariosFull()
         {
             var returns = _db.Login.ToList();
@@ -93,7 +93,7 @@ namespace ROSESHIELD.WEB.Controllers
 
 
         [Route("externalusers")]
-        [HttpPost]       
+        [HttpPost]
         public async Task<IActionResult> GetUsuarios(UserLogin user)
         {
             var returns = _db.Login.Where(d => d.EmailUser == user.User && d.Password == user.Password).SingleOrDefault();
@@ -118,7 +118,7 @@ namespace ROSESHIELD.WEB.Controllers
             var jsonEntity = JsonConvert.SerializeObject(returns);
             return Ok(jsonEntity);
         }
-        
+
         [Route("externalparceiros")]
         [HttpGet]
         public async Task<IActionResult> GetParceiros()
@@ -136,21 +136,22 @@ namespace ROSESHIELD.WEB.Controllers
             var jsonEntity = JsonConvert.SerializeObject(returns);
             return Ok(jsonEntity);
         }
-               
+
         [Route("externalvagasempresasalvar")]
         [HttpPost]
         public async Task<IActionResult> SalvaVagasEmpresa(entitymodel model)
         {
-            _db.ParceiroEmpregos.Add(new ParceiroEmpregos {
-                 CreateDate = DateTime.Now,
-                 UpdateDate = DateTime.Now,
-                 AreaAtuacao = model.AreaAtuacao,
-                 Cargo = model.Cargo,
-                 Descricao = model.Descricao,
-                 FaixaSalarial = model.FaixaSalarial,
-                 HorarioTrabalho = model.HorarioTrabalho,
-                 NomeVaga = model.NomeVaga,
-                 IdEmpresa = int.Parse(model.Id)
+            _db.ParceiroEmpregos.Add(new ParceiroEmpregos
+            {
+                CreateDate = DateTime.Now,
+                UpdateDate = DateTime.Now,
+                AreaAtuacao = model.AreaAtuacao,
+                Cargo = model.Cargo,
+                Descricao = model.Descricao,
+                FaixaSalarial = model.FaixaSalarial,
+                HorarioTrabalho = model.HorarioTrabalho,
+                NomeVaga = model.NomeVaga,
+                IdEmpresa = int.Parse(model.Id)
             });
             _db.Vagas.Add(new Vagas
             {
@@ -170,7 +171,7 @@ namespace ROSESHIELD.WEB.Controllers
             _db.SaveChanges();
             return Ok(true);
         }
-               
+
         [Route("externalcadastrogeo")]
         [HttpPost]
         public async Task<IActionResult> SalvaGeoReferencia(requestgeo model)
@@ -192,7 +193,7 @@ namespace ROSESHIELD.WEB.Controllers
 
             return Ok(true);
         }
-        
+
         [Route("externalongs")]
         [HttpGet]
         public async Task<IActionResult> GetOngs()
@@ -207,14 +208,14 @@ namespace ROSESHIELD.WEB.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteOngs(buscacomp model)
         {
- 
+
             var entity = _db.Ong.Where(d => d.Id == int.Parse(model.Id)).SingleOrDefault();
             if (entity == null)
             {
                 return NotFound();
             }
 
-             _db.Ong.Remove(entity);
+            _db.Ong.Remove(entity);
             await _db.SaveChangesAsync();
 
             return Ok(true);
@@ -223,9 +224,10 @@ namespace ROSESHIELD.WEB.Controllers
         [Route("externalongssave")]
         [HttpPost]
         public async Task<IActionResult> SalvaOngs(UsuarioOng model)
-        {            
+        {
 
-            var login = new Login   {
+            var login = new Login
+            {
                 EmailUser = model.Email,
                 Password = "123456",
                 UpdateDate = DateTime.Now,
@@ -233,7 +235,7 @@ namespace ROSESHIELD.WEB.Controllers
             };
 
             var ValidaConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).ToList();
-            if(ValidaConsulta.Count <= 0 && model.Email != "")
+            if (ValidaConsulta.Count <= 0 && model.Email != "")
             {
                 var userong = new UsuarioOng
                 {
@@ -294,11 +296,19 @@ namespace ROSESHIELD.WEB.Controllers
             {
                 return BadRequest("EMAIL JA CADASTRADO.");
             }
-            
+
 
             return Ok(true);
         }
 
 
+        [Route("externaupdatevitimasbasic")]
+        [HttpPut]
+        public async Task<IActionResult> UpdateVitimaBasic(VitimaBasic model)
+        {
+            _db.VitimaBasic.Update(model);
+            _db.SaveChangesAsync();
+            return Ok(true);
+        }
     }
 }

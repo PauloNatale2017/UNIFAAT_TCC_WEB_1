@@ -29,6 +29,7 @@
           "AngularJS.Cookies": "1.7.9",
           "AngularJS.Core": "1.7.9",
           "AngularJS.Messages": "1.7.9",
+          "MG.Packages.Angular.UI.Mask": "1.8.7",
           "Microsoft.AspNet.Mvc": "5.2.7",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.3",
           "Microsoft.EntityFrameworkCore": "3.1.3",
@@ -333,6 +334,7 @@
           "AngularJS.Core": "1.7.9"
         }
       },
+      "MG.Packages.Angular.UI.Mask/1.8.7": {},
       "Microsoft.AspNet.Mvc/5.2.7": {
         "dependencies": {
           "Microsoft.AspNet.Razor": "3.2.7",
@@ -3961,6 +3963,13 @@
       "sha512": "sha512-ImO8Z3EHbH+htQ23HkbzgjF+ze15tc5FSt6JFZQEqhkeJ03W315ZdGO6yk7OUZGo1R9AEC0ZNOfcYkwUoT2ZuA==",
       "path": "angularjs.messages/1.7.9",
       "hashPath": "angularjs.messages.1.7.9.nupkg.sha512"
+    },
+    "MG.Packages.Angular.UI.Mask/1.8.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ohnVWCU4rUp26txJgCfL78lQdmvEtSNPZpwGlUhAd0RF2GO6Uoi2mCK3xXzvjcUl+KhGcqxtBD3gDHDB4wyaiw==",
+      "path": "mg.packages.angular.ui.mask/1.8.7",
+      "hashPath": "mg.packages.angular.ui.mask.1.8.7.nupkg.sha512"
     },
     "Microsoft.AspNet.Mvc/5.2.7": {
       "type": "package",

@@ -5,6 +5,7 @@ var token = "";
 var urlExternal = "http://localhost:5001/api/";
 
 
+
 app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI', '$timeout', '$interval',
     function ($scope, $http, $location, $window, blockUI, $timeout, $interval) {
         

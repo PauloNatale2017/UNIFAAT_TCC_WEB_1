@@ -26,6 +26,9 @@
           "AngularJS.Core": "1.7.9"
         }
       },
+      "MG.Packages.Angular.UI.Mask/1.8.7": {
+        "type": "package"
+      },
       "Microsoft.AspNet.Mvc/5.2.7": {
         "type": "package",
         "dependencies": {
@@ -3002,6 +3005,19 @@
         "content/Scripts/angular-messages.js",
         "content/Scripts/angular-messages.min.js",
         "content/Scripts/angular-messages.min.js.map"
+      ]
+    },
+    "MG.Packages.Angular.UI.Mask/1.8.7": {
+      "sha512": "ohnVWCU4rUp26txJgCfL78lQdmvEtSNPZpwGlUhAd0RF2GO6Uoi2mCK3xXzvjcUl+KhGcqxtBD3gDHDB4wyaiw==",
+      "type": "package",
+      "path": "mg.packages.angular.ui.mask/1.8.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/mg/packages/angular-ui/mask.js",
+        "content/Scripts/mg/packages/angular-ui/mask.min.js",
+        "mg.packages.angular.ui.mask.1.8.7.nupkg.sha512",
+        "mg.packages.angular.ui.mask.nuspec"
       ]
     },
     "Microsoft.AspNet.Mvc/5.2.7": {
@@ -8858,6 +8874,7 @@
       "AngularJS.Cookies >= 1.7.9",
       "AngularJS.Core >= 1.7.9",
       "AngularJS.Messages >= 1.7.9",
+      "MG.Packages.Angular.UI.Mask >= 1.8.7",
       "Microsoft.AspNet.Mvc >= 5.2.7",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 3.1.3",
       "Microsoft.EntityFrameworkCore >= 3.1.3",
@@ -8935,6 +8952,10 @@
           "AngularJS.Messages": {
             "target": "Package",
             "version": "[1.7.9, )"
+          },
+          "MG.Packages.Angular.UI.Mask": {
+            "target": "Package",
+            "version": "[1.8.7, )"
           },
           "Microsoft.AspNet.Mvc": {
             "target": "Package",
