@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace ROSESHIELD.WEB.Entities
 {
     public class Ong : baseEntity
     {
+        [Required(ErrorMessage = "Usuario e obrigatorio.")]
         public string RazaoSocial { get; set; }
         public string NomeFantasia { get; set; }
         public string NomeOng { get; set; }

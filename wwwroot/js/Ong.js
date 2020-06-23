@@ -13,14 +13,6 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
 
         $scope.values = [];
 
-        //$scope.values = [
-        //    { "Descricao": "ADMIN", "Id": "1" },
-        //    { "Descricao": "TESTE", "Id": "2" }
-        //];
-
-        //blockUI.start("....CARREGANDO INFORMAÇÕES....");
-
-
         $scope.AdminPerfil = function () {
 
             var path = window.location.origin;

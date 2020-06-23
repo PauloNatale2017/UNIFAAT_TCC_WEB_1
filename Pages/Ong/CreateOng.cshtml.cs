@@ -31,6 +31,7 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
+               
                 await _db.Ong.AddAsync(Ong);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Ong");

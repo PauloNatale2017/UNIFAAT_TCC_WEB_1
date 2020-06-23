@@ -16,9 +16,11 @@
 <script src="~/js/ng-map.min.js"></script>
 <script src="~/js/angular-block-ui.js"></script>
 <script src="~/js/mask.min.js"></script>
-
+<script src="~/js/jquery.mask.js"></script>
 
 <link href="~/css/angular-block-ui.css" rel="stylesheet" />
+
+
 
 <br />
 <h2 class="text-info">CADASTRO BASICO DE ONGS.</h2>
@@ -41,9 +43,9 @@
 
         <hr />
 
-        <input class="cep" type="text" name="name" value="" />
-        <input type="text" name="field-name" data-mask="00/00/0000" />
-        <input type="text" name="field-name" data-mask="00/00/0000" />
+
+
+        @*<input type="text" id="cnpj">*@
 
         <div class="form-group row">
             <div class="col-sm-2">
@@ -78,12 +80,15 @@
                 <label>CNPJ/CPF</label>
             </div>
             <div class="col-8">
-                <input ui-mask="99.999.999/9999-99" asp-for="Ong.CNPJ_CPF" class="form-control" />
+
+                <input asp-for="Ong.CNPJ_CPF" class="form-control cnpj" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="Ong.CNPJ_CPF" class="text-danger"></span>
             </div>
         </div>
+
+
 
         <div class="form-group row">
             <div class="col-2">
@@ -102,10 +107,10 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-6">
-                <input asp-for="Ong.Email" class="form-control" />
+                <input id="emailid" asp-for="Ong.Email" class="form-control email" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="Ong.Email" class="text-danger"></span>
+                <span id="emailvalid"  class="text-danger"></span>
             </div>
         </div>
 
@@ -135,17 +140,17 @@
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-3">
-                <label>EMAIL</label>
-            </div>
-            <div class="col-7">
-                <input asp-for="Ong.Email" class="form-control" />
-            </div>
-            <div class="col-sm-3">
-                <span asp-validation-for="Ong.Email" class="text-danger"></span>
-            </div>
-        </div>
+        @*<div class="form-group row">
+                <div class="col-3">
+                    <label>EMAIL</label>
+                </div>
+                <div class="col-7">
+                    <input asp-for="Ong.Email" class="form-control" />
+                </div>
+                <div class="col-sm-3">
+                    <span asp-validation-for="Ong.Email" class="text-danger"></span>
+                </div>
+            </div>*@
 
         <hr />
 
@@ -166,25 +171,20 @@
 </div>
 <script type="text/javascript">
 
-    var app = angular.module('App', ['blockUI', 'ng-fusioncharts']);
-    var Obj;
-    var token = "";
-    var urlExternal = "http://localhost:5001/api/";
+        var app = angular.module('App', ['blockUI', 'ng-fusioncharts']);
+        var Obj;
+        var token = "";
+        var urlExternal = "http://localhost:5001/api/";
 
 
 
-    app.controller("ctlrCreate", ['$scope', '$http', '$location', '$window', 'blockUI', '$timeout', '$interval',
-        function ($scope, $http, $location, $window, blockUI, $timeout, $interval) {
-              alert("aaaaaaaaadsdsdsd");
-              
-        }]);
+        app.controller("ctlrCreate", ['$scope', '$http', '$location', '$window', 'blockUI', '$timeout', '$interval',
+            function ($scope, $http, $location, $window, blockUI, $timeout, $interval) {
+               
 
-   
+         }]);
+
+
 </script>
 
-
-@section Scripts{
-    @*<partial name="_ValidationScriptsPartial" />*@
-}
-
-
+<script src="~/js/Mascaras.js"></script>
