@@ -76,10 +76,14 @@ namespace ROSESHIELD.WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPerfil(string IdUsuario)
         {
-            var returnPerfiluser = _db.VinculoSistemaUsuario.Where(d => d.IdPerfil == IdUsuario).SingleOrDefault();
-            var returns = _db.Perfil.ToList();
-            var jsonEntity = JsonConvert.SerializeObject(returns.Where(d => d.Id == int.Parse(returnPerfiluser.IdUsuario)));
-            return Ok(jsonEntity);
+            var returnPerfiluser = _db.VinculoSistemaUsuario.Where(d => d.IdUsuario == IdUsuario).SingleOrDefault();
+            if (returnPerfiluser != null)
+            {
+                var returns = _db.Perfil.ToList();
+                var jsonEntity = JsonConvert.SerializeObject(returns.Where(d => d.Id == int.Parse(returnPerfiluser.IdPerfil)));
+                return Ok(jsonEntity);
+            }
+            return BadRequest("USUARIO NÃO POSSUI PERFIL CADASTRADO.");
         }
 
         [Route("externalusersall")]

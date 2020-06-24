@@ -70,9 +70,9 @@ namespace ROSESHIELD.WEB.Controllers
             {
                 CreateDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
-                IdPerfil = entityPerfil.IdPerfil,
+                IdPerfil = entityPerfil.IdUsuario,
                 IdSistema = entityPerfil.IdSistema,
-                IdUsuario = entityPerfil.IdUsuario
+                IdUsuario = entityPerfil.IdPerfil
             });
             _db.SaveChanges();
 
@@ -96,7 +96,7 @@ namespace ROSESHIELD.WEB.Controllers
                     NomePerfil = entity.NOME_PERFIL,
                     IdSistema = int.Parse(entity.SISTEMA)
                 };
-
+                
                 _db.Perfil.Add(insert);
                 _db.SaveChanges();
 

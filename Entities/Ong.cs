@@ -8,7 +8,7 @@ namespace ROSESHIELD.WEB.Entities
 {
     public class Ong : baseEntity
     {
-        [Required(ErrorMessage = "Usuario e obrigatorio.")]
+        [Required(ErrorMessage = "Razao Social é obrigatorio.")]
         public string RazaoSocial { get; set; }
         public string NomeFantasia { get; set; }
         public string NomeOng { get; set; }

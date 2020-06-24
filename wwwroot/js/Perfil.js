@@ -79,7 +79,7 @@ app.controller("ctrlPerfil", ['$rootScope', '$scope', '$http', '$location', '$wi
                       ($scope.RELATORIOS === true ? "RELATORIOS_ON" : "RELATORIOS_OFF") + "&" +
                       ($scope.CHAT === true ? "CHAT_ON" : "CHAT_OFF") + "&" +
                       ($scope.AUTOMACAO === true ? "AUTOMACAO_ON" : "AUTOMACAO_OFF") + "&" +
-                      ($scope.VAGAS === true ? "VAGAS_ON" : "VAGAS_OFF") + "&" +
+                      ($scope.VAGAS_DISPONIVEIS === true ? "VAGAS_ON" : "VAGAS_OFF") + "&" +
                       ($scope.OCORRENCIAS === true ? "OCORRENCIAS_ON" : "OCORRENCIAS_OFF") + "&" +
                       ($scope.ALERTAS === true ? "NOTIFICACAO_ON" : "NOTIFICACAO_OFF"),
 
