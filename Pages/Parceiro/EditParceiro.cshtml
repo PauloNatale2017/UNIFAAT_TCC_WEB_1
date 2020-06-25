@@ -30,10 +30,10 @@
 
         <div class="form-group row">
             <div class="col-sm-2">
-                <label>CNPJ/CPF</label>
+                <label>CNPJ</label>
             </div>
             <div class="col-sm-8">
-                <input asp-for="Parceiro.CNPJ_CPF" class="form-control" />
+                <input asp-for="Parceiro.CNPJ_CPF" class="form-control cnpj" />
             </div>
             <br />
             <div class="col-sm-4">
@@ -46,7 +46,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-sm-8">
-                <input asp-for="Parceiro.CONTATO" class="form-control" />
+                <input asp-for="Parceiro.CONTATO" class="form-control phone_with_ddd" />
             </div>
             <br />
             <div class="col-sm-4">
@@ -73,10 +73,10 @@
                 <label>E-MAIL</label>
             </div>
             <div class="col-8">
-                <input asp-for="Parceiro.EMAIL" class="form-control" />
+                <input asp-for="Parceiro.EMAIL" class="form-control email" id="emailid" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="Parceiro.EMAIL" class="text-danger"></span>
+                <span asp-validation-for="Parceiro.EMAIL" id="emailvalid" class="text-danger"></span>
             </div>
         </div>
 
@@ -95,6 +95,8 @@
 
     </form>
 </div>
+
+<script src="~/js/Mascaras.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

@@ -208,6 +208,16 @@ namespace ROSESHIELD.WEB.Controllers
         }
 
 
+        [Route("externalongsfunc")]
+        [HttpGet]
+        public async Task<IActionResult> GetOngsFunc()
+        {
+            var returns = _db.UsuarioOng.ToList();
+            var jsonEntity = JsonConvert.SerializeObject(returns);
+            return Ok(jsonEntity);
+        }
+
+
         [Route("externalongsdelete")]
         [HttpPost]
         public async Task<IActionResult> DeleteOngs(buscacomp model)

@@ -40,6 +40,26 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
+                UserAccounts.UsuarioAccesso.CreateDate = DateTime.Now;
+                UserAccounts.UsuarioAccesso.UpdateDate = DateTime.Now;
+
+                Random randNum = new Random();
+                string senhaRandom = randNum.Next(1, 9999999).ToString();
+
+                string destinatario = UserAccounts.UsuarioAccesso.Password;
+
+                UserAccounts.UsuarioAccesso.Password = senhaRandom;
+
+                await _db.Login.AddAsync(UserAccounts.UsuarioAccesso);
+                await _db.SaveChangesAsync();
+
+                Notificacoes.SendEmail envio = new Notificacoes.SendEmail();
+                envio.EnvioDeEmails("paulo000natale@gmail.com", destinatario, senhaRandom, UserAccounts.UsuarioAccesso.EmailUser);
+
+                var loginnew = _db.Login.Where(d => d.EmailUser == UserAccounts.UsuarioAccesso.EmailUser && d.Password == UserAccounts.UsuarioAccesso.Password).SingleOrDefault();
+
+                UserAccounts.IdLogin = loginnew.Id;
+
                 await _db.UserAccounts.AddAsync(UserAccounts);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");

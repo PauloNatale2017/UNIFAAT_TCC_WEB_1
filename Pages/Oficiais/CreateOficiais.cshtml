@@ -59,7 +59,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-6">
-                <input asp-for="Oficiais.Contato" class="form-control" />
+                <input asp-for="Oficiais.Contato" class="form-control phone_with_ddd" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="Oficiais.Contato" class="text-danger"></span>
@@ -83,10 +83,10 @@
                 <label>EMAIL/DEP</label>
             </div>
             <div class="col-6">
-                <input asp-for="Oficiais.Email" class="form-control" />
+                <input asp-for="Oficiais.Email" class="form-control email" id="emailid" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="Oficiais.Email" class="text-danger"></span>
+                <span asp-validation-for="Oficiais.Email" id="emailvalid" class="text-danger"></span>
             </div>
         </div>
 
@@ -101,7 +101,7 @@
                 <span asp-validation-for="Oficiais.Notificacao" class="text-danger"></span>
             </div>
         </div>
-        
+
         <hr />
 
         <div class="form-group row">
@@ -109,7 +109,7 @@
                 <label>HORARIO DE ATENDIMENTO</label>
             </div>
             <div class="col-7">
-                <input asp-for="Oficiais.Horario" class="form-control" />
+                <input asp-for="Oficiais.Horario" class="form-control time" />
             </div>
             <div class="col-sm-3">
                 <span asp-validation-for="Oficiais.Horario" class="text-danger"></span>
@@ -127,7 +127,7 @@
                 <span asp-validation-for="Oficiais.NumeroBO" class="text-danger"></span>
             </div>
         </div>
-        
+
         <hr />
 
         <div class="form-group row">
@@ -141,6 +141,8 @@
 
     </form>
 </div>
+
+<script src="~/js/Mascaras.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

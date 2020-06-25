@@ -12,7 +12,7 @@
 
 <div class="border container" style="padding:30px;">
     <form method="post">
-       
+
         <div class="form-group row">
             <div class="col-sm-2">
                 <label>NOME PROFISSIONAL</label>
@@ -33,7 +33,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-sm-8">
-                <input asp-for="Profissional.Contato" class="form-control" />
+                <input asp-for="Profissional.Contato" class="form-control phone" />
             </div>
             <br />
             <div class="col-sm-4">
@@ -61,10 +61,10 @@
                 <label>E-MAIL</label>
             </div>
             <div class="col-8">
-                <input asp-for="Profissional.Email" class="form-control" />
+                <input asp-for="Profissional.Email" class="form-control email" id="emailid" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="Profissional.Email" class="text-danger"></span>
+                <span asp-validation-for="Profissional.Email" id="emailvalid" class="text-danger"></span>
             </div>
         </div>
 
@@ -109,7 +109,7 @@
                 <label>VALOR COBRADO</label>
             </div>
             <div class="col-8">
-                <input asp-for="Profissional.ValorCobrado" class="form-control" />
+                <input asp-for="Profissional.ValorCobrado" class="form-control money2" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="Profissional.ValorCobrado" class="text-danger"></span>
@@ -121,7 +121,7 @@
                 <label>DESCONTO</label>
             </div>
             <div class="col-8">
-                <input asp-for="Profissional.Desconto" class="form-control" />
+                <input asp-for="Profissional.Desconto" class="form-control desconto" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="Profissional.Desconto" class="text-danger"></span>
@@ -143,6 +143,9 @@
 
     </form>
 </div>
+
+
+<script src="~/js/Mascaras.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

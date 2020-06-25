@@ -27,7 +27,7 @@
 
         <div class="form-group row">
             <div class="col-2">
-                <label>IDADE</label>
+                <label>DATA NASCIMENTO</label>
 
             </div>
             <div class="col-6">
@@ -56,7 +56,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-6">
-                <input asp-for="UserAccounts.Contato" class="form-control phone_with_ddd" />
+                <input asp-for="UserAccounts.Contato" class="form-control phone" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="UserAccounts.Contato" class="text-danger"></span>
@@ -87,7 +87,7 @@
                 <label>CIDADES CADASTRADAS:</label>
             </div>
             <div class="col-3">
-                @Html.DropDownListFor(x => Model.Options, new SelectList(Model.Options, "Value", "Text"), 
+               @Html.DropDownListFor(x => Model.Options, new SelectList(Model.Options, "Value", "Text"), 
                htmlAttributes: new { @class = "form-control",
                                      id = "Id" , 
                                      ng_model = "Cidade", 
@@ -116,18 +116,18 @@
 
         <div class="form-group row">
             <div class="col-3">
-                <label>DIGITE UMA SENHA</label>
+                <label>DIGITE SEU EMAIL</label>
             </div>
-            <div class="col-7">
-                <input asp-for="UserAccounts.UsuarioAccesso.Password" class="form-control" />
+            <div class="col-6">
+                <input asp-for="UserAccounts.UsuarioAccesso.Password" id="emailvalid2" class="form-control email2" />
             </div>
             <div class="col-sm-3">
-                <span asp-validation-for="UserAccounts.UsuarioAccesso.Password" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.UsuarioAccesso.Password" id="emailvalid3" class="text-danger"></span>
             </div>
         </div>
 
 
-
+        <script src="~/js/Mascaras.js"></script>
 
         <hr />
 
@@ -148,16 +148,25 @@
 <script type="text/javascript">
 
 
+   
+
+    function INSERT() {
+            var select = document.getElementById("Id");
+            var options = select.options[select.selectedIndex];
+            //$scope.Cidade_Value = options.text
+            document.getElementById("cidade_id").value = options.text
+    }
+
     function Change() {
             var select = document.getElementById("Id");
             var options = select.options[select.selectedIndex];
             //$scope.Cidade_Value = options.text
-           document.getElementById("cidade_id").value = options.text
+            document.getElementById("cidade_id").value = options.text
     };
 
-
-
-
+    setTimeout(function () {
+        INSERT();
+    }, 2500);
 
 
 </script>

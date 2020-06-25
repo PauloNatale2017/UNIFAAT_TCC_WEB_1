@@ -46,8 +46,32 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
         };
 
 
+        $scope.BuscaOngsFncLogin = function () {
+
+            var path = window.location.origin;
+            var loginUrlEndPoint = urlExternal + "external/externalongsfunc";
+
+            blockUI.start("CARREGANDO...");
+
+            $http.get(loginUrlEndPoint).then(function (response) {
+                if (response.status === 200) {
+                    if (response.data === "null") {
+                        alert("RETORNO DO REQUEST NULL");
+                    }
+                    else {
+                        console.log(response.data);
+                        $scope.OngsFuncLogin = response.data;
+                    }
+
+                } else {
+                    alert("USUARIO NÂO AUTHENTICADO");
+                }
+            });
+            blockUI.stop();
+        };
+
         $scope.BuscaOngsFnc = function () {
-            //
+           
             var path = window.location.origin;
             var loginUrlEndPoint = urlExternal + "external/externalongs";
 
@@ -197,6 +221,30 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
                     alert("USUARIO NÂO AUTHENTICADO");
                 }
             });
+        };
+
+        $scope.EmailValida = function (id) {
+
+            var con = id.toString();
+            var emailvalue = document.getElementById("#Email_" + con).value;
+            if (emailvalue !== "") {
+                $scope.EmailValidaFunc(emailvalue);
+            } else { $("#emailvalid").text(""); }
+
+        };
+
+        $scope.EmailValidaFunc = function (email) {
+            var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            
+            $("#emailvalid").text("");
+            if (reg.test(email)) {
+                $("#emailvalid").text("EMAIL VALIDO.");
+                $scope.COLOR_TEXT = "text-success";
+            }
+            else {
+                $("#emailvalid").text("EMAIL INVALIDO.");
+                $scope.COLOR_TEXT = "text-danger";
+            }
         };
 
         $scope.BuscaOngsFnc();

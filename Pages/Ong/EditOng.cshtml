@@ -57,10 +57,10 @@
 
         <div class="form-group row">
             <div class="col-2">
-                <label>CNPJ/CPF</label>
+                <label>CNPJ</label>
             </div>
             <div class="col-8">
-                <input asp-for="Ong.CNPJ_CPF" class="form-control" />
+                <input asp-for="Ong.CNPJ_CPF" class="form-control cnpj" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="Ong.CNPJ_CPF" class="text-danger"></span>
@@ -72,7 +72,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-8">
-                <input asp-for="Ong.Contato" class="form-control" />
+                <input asp-for="Ong.Contato" class="form-control phone_with_ddd" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="Ong.Contato" class="text-danger"></span>
@@ -84,10 +84,10 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-6">
-                <input asp-for="Ong.Email" class="form-control" />
+                <input asp-for="Ong.Email" class="form-control email" id="emailid" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="Ong.Email" class="text-danger"></span>
+                <span asp-validation-for="Ong.Email" id="emailvalid" class="text-danger"></span>
             </div>
         </div>
 
@@ -122,10 +122,10 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-7">
-                <input asp-for="Ong.Email" class="form-control" />
+                <input asp-for="Ong.Email" class="form-control email" id="emailid" />
             </div>
             <div class="col-sm-3">
-                <span asp-validation-for="Ong.Email" class="text-danger"></span>
+                <span asp-validation-for="Ong.Email" id="emailvalid" class="text-danger"></span>
             </div>
         </div>
 
@@ -142,6 +142,8 @@
 
     </form>
 </div>
+
+<script src="~/js/Mascaras.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

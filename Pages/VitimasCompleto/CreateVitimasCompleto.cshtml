@@ -30,10 +30,10 @@
 
         <div class="form-group row">
             <div class="col-sm-2">
-                <label>RG/CPF</label>
+                <label>CPF</label>
             </div>
             <div class="col-sm-8">
-                <input asp-for="VitimaBasic.Rg_CPF" class="form-control" />
+                <input asp-for="VitimaBasic.Rg_CPF" class="form-control cpf" />
             </div>
             <br />
             <div class="col-sm-4">
@@ -59,7 +59,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-8">
-                <input asp-for="VitimaBasic.Contato" class="form-control" />
+                <input asp-for="VitimaBasic.Contato" class="form-control phone" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="VitimaBasic.Contato" class="text-danger"></span>
@@ -71,10 +71,10 @@
                 <label>E-MAIL</label>
             </div>
             <div class="col-8">
-                <input asp-for="VitimaBasic.Email" class="form-control" />
+                <input asp-for="VitimaBasic.Email" class="form-control email" id="emailid" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="VitimaBasic.Email" class="text-danger"></span>
+                <span asp-validation-for="VitimaBasic.Email" class="text-danger" id="emailvalid"></span>
             </div>
         </div>
 
@@ -95,7 +95,7 @@
                 <label>CONTATO PARA RECADO</label>
             </div>
             <div class="col-8">
-                <input asp-for="VitimaBasic.ContatoRecado" class="form-control" />
+                <input asp-for="VitimaBasic.ContatoRecado" class="form-control phone" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="VitimaBasic.ContatoRecado" class="text-danger"></span>
@@ -117,6 +117,9 @@
 
     </form>
 </div>
+
+
+<script src="~/js/Mascaras.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

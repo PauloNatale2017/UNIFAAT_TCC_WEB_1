@@ -6,7 +6,7 @@
 }
 
 <br />
-<h2 class="text-info">Edit Accounts Users</h2>
+<h2 class="text-info">EDIT ACCOUNTS USERS</h2>
 <br />
 
 <div class="border container" style="padding:30px;">
@@ -35,7 +35,7 @@
 
             </div>
             <div class="col-6">
-                <input asp-for="UserAccounts.Idade" class="form-control" />
+                <input asp-for="UserAccounts.Idade" class="form-control date" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="UserAccounts.Idade" class="text-danger"></span>
@@ -60,7 +60,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-6">
-                <input asp-for="UserAccounts.Contato" class="form-control" />
+                <input asp-for="UserAccounts.Contato" class="form-control phone_with_ddd" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="UserAccounts.Contato" class="text-danger"></span>
@@ -72,7 +72,7 @@
                 <label>CPF</label>
             </div>
             <div class="col-6">
-                <input asp-for="UserAccounts.Cpf" class="form-control" />
+                <input asp-for="UserAccounts.Cpf" class="form-control cpf" />
             </div>
             <div class="col-sm-4">
                 <span asp-validation-for="UserAccounts.Cpf" class="text-danger"></span>
@@ -85,10 +85,10 @@
                 <label>DIGITE SEU USUARIO</label>
             </div>
             <div class="col-7">
-                <input asp-for="UserAccounts.UsuarioAccesso.EmailUser" class="form-control" />
+                <input asp-for="UserAccounts.UsuarioAccesso.EmailUser" id="emailid" class="form-control email" />
             </div>
             <div class="col-sm-3">
-                <span asp-validation-for="UserAccounts.UsuarioAccesso.EmailUser" class="text-danger"></span>
+                <span asp-validation-for="UserAccounts.UsuarioAccesso.EmailUser" id="emailvalid" class="text-danger"></span>
             </div>
         </div>
 
@@ -104,7 +104,7 @@
             </div>
         </div>
         <hr />
-        
+
         <div class="form-group row">
             <div class="col-3 offset-4">
                 <input type="submit" value="Update" class="btn btn-primary form-control" />
@@ -116,6 +116,8 @@
 
     </form>
 </div>
+
+<script src="~/js/Mascaras.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

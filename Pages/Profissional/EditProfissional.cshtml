@@ -32,7 +32,7 @@
                 <label>CONTATO</label>
             </div>
             <div class="col-sm-8">
-                <input asp-for="Profissional.Contato" class="form-control" />
+                <input asp-for="Profissional.Contato" class="form-control phone" />
             </div>
             <br />
             <div class="col-sm-4">
@@ -55,15 +55,16 @@
 
         <hr />
 
+
         <div class="form-group row">
             <div class="col-2">
                 <label>E-MAIL</label>
             </div>
             <div class="col-8">
-                <input asp-for="Profissional.Email" class="form-control" />
+                <input asp-for="Profissional.Email" class="form-control email" id="emailid" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="Profissional.Email" class="text-danger"></span>
+                <span asp-validation-for="Profissional.Email" id="emailvalid" class="text-danger"></span>
             </div>
         </div>
 
@@ -115,19 +116,18 @@
             </div>
         </div>
 
+
         <div class="form-group row">
             <div class="col-2">
-                <label>DESCONTO</label>
+                <label>VALOR COBRADO</label>
             </div>
             <div class="col-8">
-                <input asp-for="Profissional.Desconto" class="form-control" />
+                <input asp-for="Profissional.ValorCobrado" class="form-control desconto" />
             </div>
             <div class="col-sm-4">
-                <span asp-validation-for="Profissional.Desconto" class="text-danger"></span>
+                <span asp-validation-for="Profissional.ValorCobrado" class="text-danger"></span>
             </div>
         </div>
-
-
 
         <hr />
 
@@ -142,6 +142,10 @@
 
     </form>
 </div>
+
+
+<script src="~/js/Mascaras.js"></script>
+<script src="~/js/main.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

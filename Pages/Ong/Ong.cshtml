@@ -67,7 +67,12 @@
                     <td>{{itens.CNPJ_CPF}}</td>
                     <td>{{itens.Contato}}</td>
                     <td>{{itens.Endereco}}</td>
-                    <td>{{itens.TotalFuncionarios}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-info" ng-click="ListaFuncionarios(itens.Id)" data-toggle="modal" data-target="#FUNC_VISUALIZAR_{{itens.Id}}">
+                            VISUALIZAR <span class="badge badge-light">{{itens.TotalFuncionarios}}</span>
+                        </button>
+
+                    </td>
                     <td><button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#FUNC_CADAST_{{itens.Id}}" id="#BTNFUNC_CADAST_{{itens.Id}}">CADSTRO FUNC</button></td>
 
                     <td>
@@ -78,6 +83,26 @@
 
             </tbody>
         </table>
+
+        <div class="modal fade" id="FUNC_VISUALIZAR_{{itens.Id}}">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>LOGIN USUARIO</th>
+                        <th>SENHA USUARIO</th>
+                        @*<th>Necessidade Especial</th>*@
+                    </tr>
+                </thead>
+                <tbody ng-repeat="ongs in OngsFuncLogin">
+                    <tr>
+                        <td>{{ongs.Email}}</td>
+                        <td>{{ongs.NumeroCelular}}</td>                       
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
         <div class="modal fade" id="FUNC_CADAST_{{itens.Id}}">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -104,7 +129,7 @@
                                     <label>CARGO</label>
                                 </div>
                                 <div class="col-xl-10">
-                                    <input id="#Cargo_{{itens.Id}}" ui-mask="99.999.999/9999-99" ui-mask-placeholder-char="_" ype="text" class="form-control form-control">
+                                    <input id="#Cargo_{{itens.Id}}" ype="text" class="form-control form-control">
                                 </div>
                             </div>
 
@@ -112,12 +137,13 @@
                                 <div class="col-xl-2">
                                     <label>E-MAIL</label>
                                 </div>
-                                <div class="col-xl-10">
-                                    <input id="#Email_{{itens.Id}}" ype="text" class="form-control form-control">
+                                <div class="col-xl-7">
+                                    <input id="#Email_{{itens.Id}}" ng-keyup="EmailValida(itens.Id)" ype="text" class="form-control form-control email">
+                                </div>
+                                <div class="col-xl-3">
+                                    <span class="{{COLOR_TEXT}}" id="emailvalid"></span>
                                 </div>
                             </div>
-
-                            <input class="cep" type="text"  name="name" value="" />
 
                             <div class="row" style="margin: 1px 1px 10px 1px;">
                                 <div class="col-xl-2">
@@ -151,28 +177,6 @@
                             </div>
                         </div>
 
-                        @*<div class="row" style="margin: 1px 1px 10px 1px;">
-                                <div class="col-xl-2">
-                                    <label>PERFIL DE ACESSO</label>
-                                </div>
-                                <div class="col-xl-10">
-                                    <select ng-model="selectedOngPerfil_{{itens.Id}}" class="form-control form-control" style=" width: 100%;">
-                                        <option ng-repeat="x in values" value="{{x.Id}}">{{x.Descricao}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 form-control form-control" style="visibility:hidden;">
-                                <input id="#PerfilSelec_{{itens.Id}}" ype="text" class="form-control form-control" value="{{selectedOngPerfil}}">
-                            </div>
-                                <div class="row" style="margin: 1px 1px 10px 1px;">
-                                    <div class="col-xl-2">
-                                        <label>ONG</label>
-                                    </div>
-                                    <div class="col-xl-10">
-                                        <input id="#IdOng_{{itens.Id}}" ype="text" value="{{itens.Id}}" class="form-control form-control">
-                                    </div>
-                                </div>
-                            </div>*@
                     </div>
 
                     <!-- Modal footer -->
@@ -187,8 +191,9 @@
 
     </div>
 
-</div>
+    </div>
 
+<script src="~/js/Mascaras.js"></script>
 <script src="~/js/Ong.js"></script>
 
 @section Scripts{

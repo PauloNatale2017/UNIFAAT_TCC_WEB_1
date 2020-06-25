@@ -31,7 +31,9 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
-               
+                Ong.CreateDate = DateTime.Now;
+                Ong.UpdateDate = DateTime.Now;
+
                 await _db.Ong.AddAsync(Ong);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Ong");

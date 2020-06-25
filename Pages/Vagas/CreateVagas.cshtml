@@ -9,7 +9,7 @@
 <h2 class="text-info">CADASTRO DE VAGAS</h2>
 <br />
 
-        
+
         public int IdEmpresa { get; set; }
 
 <div class="border container" style="padding:30px;">
@@ -50,7 +50,7 @@
                 <label>VALOR SALARIO</label>
             </div>
             <div class="col-sm-6">
-                <input asp-for="Vagas.ValorSalario" class="form-control" />
+                <input asp-for="Vagas.ValorSalario" class="form-control money2" />
             </div>
             <br />
             <div class="col-sm-4">
@@ -124,6 +124,8 @@
 
     </form>
 </div>
+
+<script src="~/js/Mascaras.js"></script>
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

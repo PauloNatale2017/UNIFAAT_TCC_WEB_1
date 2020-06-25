@@ -15,7 +15,10 @@
 <script src="~/js/fusioncharts.maps.js"></script>
 <script src="~/js/ng-map.min.js"></script>
 <script src="~/js/angular-block-ui.js"></script>
+
 <link href="~/css/angular-block-ui.css" rel="stylesheet" />
+
+<script src="~/js/Mascaras.js"></script>
 
 <style type="text/css">
     .btn {
@@ -35,7 +38,7 @@
         <a class="btn btn-info form-control ">TOTAL:{{TOTALCADASTRADOINCOM}}</a>
     </div>
 
-    <div class="col-12 border p-3 mt-3">   
+    <div class="col-12 border p-3 mt-3">
         <div ng-repeat="itens in CadastroBasico">
             <table id="CadastrosBasicos"
                    class="table table-striped table-bordered flex-nowrap"
@@ -65,7 +68,7 @@
                     <td><button type="button" class="btn btn-outline-danger" ng-click="Buscaomplementar(itens.Id)" id="#BTN_COMPLEMENTAR_{{itens.Id}}" data-toggle="modal" data-target="#COMPLEMENTAR_{{itens.Id}}">COMPLEMENTAR</button></td>
                     <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaOcorrencias(itens.Id)" data-toggle="modal" id="#BTN_OCORRENCIA_{{itens.Id}}" data-target="#OCORRENCIAS_{{itens.Id}}">OCORENCIA</button></td>
                     <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaFilhos(itens.Id)" data-toggle="modal" id="#BTN_FILHOS_{{itens.Id}}" data-target="#FILHOS_{{itens.Id}}">FILHOS</button></td>
-                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaIdoso(itens.Id)" data-toggle="modal" data-target="#IDOSO_{{itens.Id}}" id="#BTN_IDOSOS_{{itens.Id}}"  >IDOSO</button></td>
+                    <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaIdoso(itens.Id)" data-toggle="modal" data-target="#IDOSO_{{itens.Id}}" id="#BTN_IDOSOS_{{itens.Id}}">IDOSO</button></td>
                     <td><button type="button" class="btn btn-outline-danger" ng-click="BuscaSOS(itens.Id)" data-toggle="modal" data-target="#SOS_{{itens.Id}}" id="#BTN_SOS_{{itens.Id}}">S.O.S</button></td>
                 </tr>
             </table>
@@ -82,13 +85,13 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <div class="container">                               
+                            <div class="container">
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
                                     <div class="col-xl-2">
                                         <label>Profissao</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input  id="#Profissao_{{itens.Id}}" ype="text" class="form-control form-control">
+                                        <input id="#Profissao_{{itens.Id}}" ype="text" class="form-control form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -96,7 +99,7 @@
                                         <label>RendaPessoal</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input  id="#RendaPessoal_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#RendaPessoal_{{itens.Id}}" type="text" class="form-control form-control money">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -104,7 +107,7 @@
                                         <label>RendaFamiliar</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input  id="#RendaFamiliar_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#RendaFamiliar_{{itens.Id}}" type="text" class="form-control form-control money">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -123,7 +126,7 @@
                                         <label>Quais Drogas </label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input   id="#QualdrogaDescri1_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#QualdrogaDescri1_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -142,29 +145,29 @@
                                         <label>Quais Drogas </label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input  id="#QualdrogaDescri2_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#QualdrogaDescri2_{{itens.Id}}" type="text" class="form-control form-control">
                                     </div>
-                                </div>                             
+                                </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
                                     <div class="col-xl-2">
                                         <label>Possui filhos</label>
                                     </div>
                                     <div class="col-xl-4">
-                                      
+
                                         <select id="#Possuifilhos_{{itens.Id}}" name="Filhos" ng-model="Filhos" class="form-control form-control">
                                             <option value="">--SELECT--</option>
                                             <option value="1">SIM</option>
                                             <option value="2">NÃO</option>
                                         </select>
-                                       
+
                                     </div>
                                     <div class="col-xl-2">
                                         <label>Qtdo</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input  id="#Qtdo_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#Qtdo_{{itens.Id}}" type="text" class="form-control form-control totalfi">
                                     </div>
-                                </div>                               
+                                </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
                                     <div class="col-xl-2">
                                         <label>Idoso</label>
@@ -176,13 +179,13 @@
                                             <option value="1">SIM</option>
                                             <option value="2">NÃO</option>
                                         </select>
-                                        
+
                                     </div>
                                     <div class="col-xl-2">
                                         <label>Quantidade</label>
                                     </div>
                                     <div class="col-xl-4">
-                                        <input  id="#Quantidade_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#Quantidade_{{itens.Id}}" type="text" class="form-control form-control totalfi">
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +193,7 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" ng-click="SalvarComplemento(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>                      
+                            <button type="button" ng-click="SalvarComplemento(itens.Id)" class="btn btn-success" data-dismiss="modal">Salvar</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
 
@@ -224,7 +227,7 @@
                                         <label>DIA OCORRIDO </label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input id="#DiaOcorrido_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#DiaOcorrido_{{itens.Id}}" type="text" class="form-control form-control data">
                                     </div>
                                 </div>
                                 <div class="row" style="margin: 1px 1px 10px 1px;">
@@ -311,7 +314,7 @@
                                         <label>DATA NASCIMENTO</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input id="#DataNascimento_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#DataNascimento_{{itens.Id}}" type="text" class="form-control form-control data">
                                     </div>
                                 </div>
 
@@ -389,7 +392,7 @@
                                         <label>DATA NASCIMENTO</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input id="#DataNascimento_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#DataNascimento_{{itens.Id}}" type="text" class="form-control form-control data">
                                     </div>
                                 </div>
 
@@ -460,7 +463,7 @@
                                         <label>NUMERO CELULAR</label>
                                     </div>
                                     <div class="col-xl-10">
-                                        <input id="#NumeroCelular_{{itens.Id}}" type="text" class="form-control form-control">
+                                        <input id="#NumeroCelular_{{itens.Id}}" type="text" class="form-control form-control phone">
                                     </div>
                                 </div>
 
@@ -483,22 +486,22 @@
                         </div>
 
                         <div class="modal-footer">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>Nome Idoso</th>
-                                    <th>Data Nascimento</th>
-                                    <th>Necessidade Especial</th>
-                                </tr>
-                            </thead>
-                            <tbody ng-repeat="SOS in SOSLits">
-                                <tr>
-                                    <td>{{SOS.NomeSOS}}</td>
-                                    <td>{{SOS.NumeroCelular}}</td>
-                                    <td>{{SOS.Vinculo}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Nome Idoso</th>
+                                        <th>Data Nascimento</th>
+                                        <th>Necessidade Especial</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="SOS in SOSLits">
+                                    <tr>
+                                        <td>{{SOS.NomeSOS}}</td>
+                                        <td>{{SOS.NumeroCelular}}</td>
+                                        <td>{{SOS.Vinculo}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
 
                     </div>
@@ -507,9 +510,6 @@
 
         </div>
     </div>
-
-  
-
 </div>
 
 <script src="~/js/VitimasCompleto.js"></script>
