@@ -287,17 +287,23 @@ namespace ROSESHIELD.WEB.Controllers
                     Idade = "",
                     IdLogin = LoginsConsulta.Id,
                     NomeCompleto = model.NomeCompleto,
-                    UpdateDate = DateTime.Now,
-                    UsuarioAccesso = new Login
-                    {
-                        EmailUser = LoginsConsulta.EmailUser,
-                        Password = LoginsConsulta.Password,
-                        UpdateDate = DateTime.Now,
-                        CreateDate = DateTime.Now
-                    }
+                    UpdateDate = DateTime.Now                   
                 };
 
                 _db.UserAccounts.AddAsync(usuariobasiclogin);
+                _db.SaveChanges();
+
+                var UsuarioAccessoUpdate = new Login
+                {
+                    EmailUser = LoginsConsulta.EmailUser,
+                    Password = LoginsConsulta.Password,
+                    UpdateDate = DateTime.Now,
+                    CreateDate = DateTime.Now
+                };
+
+                usuariobasiclogin.UsuarioAccesso = UsuarioAccessoUpdate;
+
+                _db.UserAccounts.Update(usuariobasiclogin);
                 _db.SaveChanges();
 
                 _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
@@ -309,6 +315,8 @@ namespace ROSESHIELD.WEB.Controllers
                     IdUsuario = LoginsConsulta.Id.ToString()
                 });
                 _db.SaveChanges();
+
+          
             }
             else
             {
