@@ -12,5 +12,6 @@ namespace ROSESHIELD.WEB.Entities
         public string Email { get; set; }
         public string Perfil { get; set; }
         public string IdOng { get; set; }
+        public string IdUsuario { get; set; }
     }
 }

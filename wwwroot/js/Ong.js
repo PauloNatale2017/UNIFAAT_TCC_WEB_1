@@ -46,27 +46,31 @@ app.controller("CtrlOng", ['$scope', '$http', '$location', '$window', 'blockUI',
         };
 
 
-        $scope.BuscaOngsFncLogin = function () {
+        $scope.ListaFuncionarios = function (id) {
 
             var path = window.location.origin;
-            var loginUrlEndPoint = urlExternal + "external/externalongsfunc";
+            var loginUrlEndPoint = urlExternal + "external/externalongsfunc?id=" + id;
 
             blockUI.start("CARREGANDO...");
 
-            $http.get(loginUrlEndPoint).then(function (response) {
+            $http.post(loginUrlEndPoint).then(function (response) {
                 if (response.status === 200) {
                     if (response.data === "null") {
-                        alert("RETORNO DO REQUEST NULL");
-                    }
-                    else {
+                        alert(response.data);
+                    } else {
                         console.log(response.data);
                         $scope.OngsFuncLogin = response.data;
                     }
 
-                } else {
-                    alert("USUARIO NÂO AUTHENTICADO");
                 }
+                else {
+                    alert(response.data);
+                }
+            }, function (response) {
+                alert(response.data);
+                $window.location = "http://localhost:5001/Ong/Ong";
             });
+
             blockUI.stop();
         };
 

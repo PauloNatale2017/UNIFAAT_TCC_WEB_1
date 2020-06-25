@@ -209,8 +209,8 @@ namespace ROSESHIELD.WEB.Controllers
 
 
         [Route("externalongsfunc")]
-        [HttpGet]
-        public async Task<IActionResult> GetOngsFunc()
+        [HttpPost]
+        public async Task<IActionResult> GetOngsFunc(string id)
         {
             var returns = _db.UsuarioOng.ToList();
             var jsonEntity = JsonConvert.SerializeObject(returns);
@@ -240,19 +240,23 @@ namespace ROSESHIELD.WEB.Controllers
         public async Task<IActionResult> SalvaOngs(UsuarioOng model)
         {
 
-            var login = new Login
-            {
+            Random randNum = new Random();
+            string senhaRandom = randNum.Next(1, 9999999).ToString();
+
+            var login = new Login{
                 EmailUser = model.Email,
-                Password = "123456",
+                Password = senhaRandom,
                 UpdateDate = DateTime.Now,
                 CreateDate = DateTime.Now
             };
 
+            Notificacoes.SendEmail envio = new Notificacoes.SendEmail();
+            envio.EnvioDeEmails("paulo000natale@gmail.com", model.Email, senhaRandom, model.Email);
+
             var ValidaConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).ToList();
             if (ValidaConsulta.Count <= 0 && model.Email != "")
             {
-                var userong = new UsuarioOng
-                {
+                var userong = new UsuarioOng  {
                     CreateDate = DateTime.Now,
                     UpdateDate = DateTime.Now,
                     IdOng = model.IdOng,
