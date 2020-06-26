@@ -250,8 +250,8 @@ namespace ROSESHIELD.WEB.Controllers
                 CreateDate = DateTime.Now
             };
 
-            Notificacoes.SendEmail envio = new Notificacoes.SendEmail();
-            envio.EnvioDeEmails("paulo000natale@gmail.com", model.Email, senhaRandom, model.Email);
+            //Notificacoes.SendEmail envio = new Notificacoes.SendEmail();
+            //envio.EnvioDeEmails("paulo000natale@gmail.com", model.Email, senhaRandom, model.Email);
 
             var ValidaConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).ToList();
             if (ValidaConsulta.Count <= 0 && model.Email != "")
@@ -268,51 +268,52 @@ namespace ROSESHIELD.WEB.Controllers
                 await _db.UsuarioOng.AddAsync(userong);
                 await _db.SaveChangesAsync();
 
-                _db.Login.AddAsync(login);
-                _db.SaveChanges();
+                #region UPDATE TOTAL FUNCIONARIOS ONG
+                   var Ongs = _db.Ong.Where(d => d.Id == int.Parse(model.IdOng)).SingleOrDefault();
+                   Ongs.TotalFuncionarios = (Ongs.TotalFuncionarios == null ? (1).ToString() : (int.Parse(Ongs.TotalFuncionarios) + 1).ToString());
+                   _db.Ong.Update(Ongs);
+                   _db.SaveChanges();
+                #endregion
 
-                var Ongs = _db.Ong.Where(d => d.Id == int.Parse(model.IdOng)).SingleOrDefault();
-                Ongs.TotalFuncionarios = (Ongs.TotalFuncionarios == null ? (1).ToString() : (int.Parse(Ongs.TotalFuncionarios) + 1).ToString());
-                _db.Ong.Update(Ongs);
-                _db.SaveChanges();
-
-                var LoginsConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).SingleOrDefault();
-                var usuariobasiclogin = new UserAccounts
-                {
+                #region CREATE USER ACCOUNT BASIC
+                 var usuariobasiclogin = new UserAccounts {
                     Cidade = "Atibaia",
                     Contato = Ongs.Contato,
                     Cpf = "",
                     CreateDate = DateTime.Now,
                     Endereco = Ongs.Endereco,
                     Idade = "",
-                    IdLogin = LoginsConsulta.Id,
+                    IdLogin = 0,
                     NomeCompleto = model.NomeCompleto,
-                    UpdateDate = DateTime.Now                   
-                };
-
-                _db.UserAccounts.AddAsync(usuariobasiclogin);
-                _db.SaveChanges();
-
-                var UsuarioAccessoUpdate = new Login
-                {
-                    EmailUser = LoginsConsulta.EmailUser,
-                    Password = LoginsConsulta.Password,
                     UpdateDate = DateTime.Now,
-                    CreateDate = DateTime.Now
+                    UsuarioAccesso = new Login {
+                         CreateDate = DateTime.Now,
+                         UpdateDate = DateTime.Now,
+                         EmailUser = userong.Email,
+                         Password = senhaRandom
+                    }
                 };
+                 _db.UserAccounts.AddAsync(usuariobasiclogin);
+                 _db.SaveChanges();
+                #endregion
 
-                usuariobasiclogin.UsuarioAccesso = UsuarioAccessoUpdate;
+                //var loginAtualiza = _db.Login.Where(d => d.Password == senhaRandom).SingleOrDefault();
 
-                _db.UserAccounts.Update(usuariobasiclogin);
-                _db.SaveChanges();
+                var account = _db.UserAccounts.Where(d => d.UsuarioAccesso.EmailUser == userong.Email && d.UsuarioAccesso.Password == senhaRandom).SingleOrDefault();
+                //usuariobasiclogin.IdLogin = loginAtualiza.Id;
 
-                _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
-                {
+                //_db.Login.Update(loginAtualiza);
+                //_db.SaveChanges();
+
+                //_db.UserAccounts.Update(account);
+                //_db.SaveChanges();
+
+                _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario {
                     CreateDate = DateTime.Now,
                     UpdateDate = DateTime.Now,
                     IdPerfil = model.Perfil,
                     IdSistema = "1",
-                    IdUsuario = LoginsConsulta.Id.ToString()
+                    IdUsuario = account.Id.ToString()
                 });
                 _db.SaveChanges();
 
