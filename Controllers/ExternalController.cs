@@ -57,6 +57,9 @@ namespace ROSESHIELD.WEB.Controllers
             public string HorarioTrabalho { get; set; }
             public string Id { get; set; }
             public string NomeVaga { get; set; }
+            public string EmailContato { get; set; }
+
+            
         }
 
         #endregion
@@ -72,11 +75,24 @@ namespace ROSESHIELD.WEB.Controllers
         }
 
 
+        [Route("externalemailusuario/{idusuario}")]
+        [HttpGet]
+        public async Task<IActionResult> GetUsuariosEmails(string IdUsuario)
+        {
+            List<VitimaBasic> ret = new List<VitimaBasic>();
+            var usuraccount = _db.VitimaBasic.Where(d => d.Id == int.Parse(IdUsuario)).SingleOrDefault();
+            ret.Add(usuraccount);
+            var jsonEntity = JsonConvert.SerializeObject(ret);
+            return Ok(jsonEntity);
+        }
+
+
         [Route("externalgerperfill/{idusuario}")]
         [HttpGet]
         public async Task<IActionResult> GetPerfil(string IdUsuario)
         {
-            var returnPerfiluser = _db.VinculoSistemaUsuario.Where(d => d.IdUsuario == IdUsuario).SingleOrDefault();
+            var usuraccount = _db.UserAccounts.Where(d => d.UsuarioAccesso.Id == int.Parse(IdUsuario)).SingleOrDefault();
+            var returnPerfiluser = _db.VinculoSistemaUsuario.Where(d => d.IdUsuario == usuraccount.Id.ToString()).SingleOrDefault();
             if (returnPerfiluser != null)
             {
                 var returns = _db.Perfil.ToList();
@@ -113,6 +129,20 @@ namespace ROSESHIELD.WEB.Controllers
             var jsonEntity = JsonConvert.SerializeObject(returns);
             return Ok(jsonEntity);
         }
+
+
+
+        [Route("externalvagasusuario/{idusuario}")]
+        [HttpGet]
+        public async Task<IActionResult> GetUsuariosVagasEmpresa(string idusuario)
+        {
+            List<Vagas> list = new List<Vagas>();
+            var usuraccount = _db.Vagas.Where(d => d.Id == int.Parse(idusuario)).SingleOrDefault();
+            list.Add(usuraccount);
+            var jsonEntity = JsonConvert.SerializeObject(list);
+            return Ok(jsonEntity);
+        }
+
 
         [Route("externalvitimasbasic")]
         [HttpGet]
@@ -167,7 +197,8 @@ namespace ROSESHIELD.WEB.Controllers
                 InformacoeAdicionais = "",
                 NomeVaga = model.NomeVaga,
                 Restricoes = "",
-                ValorSalario = model.FaixaSalarial
+                ValorSalario = model.FaixaSalarial,
+                EmailDeContato = model.EmailContato
             });
             var parceiroUpdate = _db.Parceiro.Where(d => d.Id == int.Parse(model.Id)).SingleOrDefault();
             parceiroUpdate.TOTAL_VAGAS_CADASTRADAS = (parceiroUpdate.TOTAL_VAGAS_CADASTRADAS == null ? (1).ToString() : (int.Parse(parceiroUpdate.TOTAL_VAGAS_CADASTRADAS) + 1).ToString());
@@ -250,8 +281,8 @@ namespace ROSESHIELD.WEB.Controllers
                 CreateDate = DateTime.Now
             };
 
-            //Notificacoes.SendEmail envio = new Notificacoes.SendEmail();
-            //envio.EnvioDeEmails("paulo000natale@gmail.com", model.Email, senhaRandom, model.Email);
+            Notificacoes.SendEmail envio = new Notificacoes.SendEmail();
+            envio.EnvioDeEmails("paulo000natale@gmail.com", model.Email, senhaRandom, model.Email);
 
             var ValidaConsulta = _db.Login.Where(d => d.EmailUser == login.EmailUser && d.Password == login.Password).ToList();
             if (ValidaConsulta.Count <= 0 && model.Email != "")
@@ -270,7 +301,11 @@ namespace ROSESHIELD.WEB.Controllers
 
                 #region UPDATE TOTAL FUNCIONARIOS ONG
                    var Ongs = _db.Ong.Where(d => d.Id == int.Parse(model.IdOng)).SingleOrDefault();
-                   Ongs.TotalFuncionarios = (Ongs.TotalFuncionarios == null ? (1).ToString() : (int.Parse(Ongs.TotalFuncionarios) + 1).ToString());
+
+                   Ongs.TotalFuncionarios = Ongs.TotalFuncionarios == "" ?
+                              (int.Parse(Ongs.TotalFuncionarios = "0") + 1).ToString()
+                              : Ongs.TotalFuncionarios = (int.Parse(Ongs.TotalFuncionarios) + 1).ToString();
+
                    _db.Ong.Update(Ongs);
                    _db.SaveChanges();
                 #endregion
@@ -293,20 +328,15 @@ namespace ROSESHIELD.WEB.Controllers
                          Password = senhaRandom
                     }
                 };
-                 _db.UserAccounts.AddAsync(usuariobasiclogin);
+                  _db.UserAccounts.AddAsync(usuariobasiclogin);
                  _db.SaveChanges();
                 #endregion
 
-                //var loginAtualiza = _db.Login.Where(d => d.Password == senhaRandom).SingleOrDefault();
-
                 var account = _db.UserAccounts.Where(d => d.UsuarioAccesso.EmailUser == userong.Email && d.UsuarioAccesso.Password == senhaRandom).SingleOrDefault();
-                //usuariobasiclogin.IdLogin = loginAtualiza.Id;
-
-                //_db.Login.Update(loginAtualiza);
-                //_db.SaveChanges();
-
-                //_db.UserAccounts.Update(account);
-                //_db.SaveChanges();
+                
+                userong.IdUsuario = account.Id.ToString();
+                _db.UsuarioOng.Update(userong);
+                _db.SaveChanges();
 
                 _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario {
                     CreateDate = DateTime.Now,

@@ -28,7 +28,7 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
             Latlngbounds: "",
             Map: "",
             geocoder: ""
-        }
+        };
         $scope.GoogleMaps = GoogleMaps;
 
         //ROADMAP(normal, default 2D map)
@@ -57,8 +57,8 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
 
         $scope.DataBairros = [
             {
-               
-                displayValue:"52",
+
+                displayValue: "52",
                 label: "Caetetuba",
                 value: "52",
                 //link: "http://fusioncharts.com"
@@ -68,24 +68,24 @@ app.controller("CtrlMapsInfracoes", ['$scope', '$http', '$location', '$window', 
                 displayValue: "32",
                 label: "Alvinopoles",
                 value: "32",
-               // link: "http://fusioncharts.com"
+                // link: "http://fusioncharts.com"
                 link: "P-detailsWin,width=400,height=300,toolbar=no,scrollbars=yes, resizable=no-http://fusioncharts.com"
             },
             {
                 displayValue: "85",
                 label: "Jardim Alvinopoles",
                 value: "85",
-               // link: "http://fusioncharts.com"
+                // link: "http://fusioncharts.com"
                 link: "P-detailsWin,width=400,height=300,toolbar=no,scrollbars=yes, resizable=no-http://fusioncharts.com"
             },
             {
                 displayValue: "23",
                 label: "Jardim Alvinopoles II",
                 value: "23",
-               // link: "http://fusioncharts.com"
+                // link: "http://fusioncharts.com"
                 link: "P-detailsWin,width=400,height=300,toolbar=no,scrollbars=yes, resizable=no-http://fusioncharts.com"
             }
-        ]
+        ];
         $scope.DataCidades = [
             {
                 marker: "-22.932925,7.073845",

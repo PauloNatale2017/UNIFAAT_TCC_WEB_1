@@ -49,7 +49,9 @@ app.controller("ctlrParceiro", ['$scope', '$http', '$location', '$window', 'bloc
                 "Cargo": document.getElementById("#Cargo_" + $scope.IdCadastro).value,
                 "Descricao": document.getElementById("#Descricao_" + $scope.IdCadastro).value,
                 "FaixaSalarial": document.getElementById("#FaixaSalarial_" + $scope.IdCadastro).value,
-                "HorarioTrabalho": document.getElementById("#HorarioTrabalho_" + $scope.IdCadastro).value
+                "HorarioTrabalho": document.getElementById("#HorarioTrabalho_" + $scope.IdCadastro).value,
+                "EmailContato": document.getElementById("#EmailContato_" + $scope.IdCadastro).value,
+                
             };
 
             console.log(request);

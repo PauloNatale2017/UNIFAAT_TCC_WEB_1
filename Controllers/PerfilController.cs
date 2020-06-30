@@ -66,14 +66,32 @@ namespace ROSESHIELD.WEB.Controllers
         [HttpPost]
         public async Task<IActionResult> PerfilVinculo(VinculoSistemaUsuario entityPerfil)
         {
-            _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
+            var retorno = _db.VinculoSistemaUsuario.Where(d => d.IdUsuario == entityPerfil.IdPerfil).SingleOrDefault();
+
+            if(retorno == null)
             {
-                CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now,
-                IdPerfil = entityPerfil.IdUsuario,
-                IdSistema = entityPerfil.IdSistema,
-                IdUsuario = entityPerfil.IdPerfil
-            });
+                _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
+                {
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    IdPerfil = entityPerfil.IdUsuario,
+                    IdSistema = entityPerfil.IdSistema,
+                    IdUsuario = entityPerfil.IdPerfil
+                });
+            }
+            else
+            {
+                var entityUpdate = new VinculoSistemaUsuario
+                {
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    IdPerfil = entityPerfil.IdUsuario,
+                    IdSistema = entityPerfil.IdSistema,
+                    IdUsuario = entityPerfil.IdPerfil
+                };
+                _db.VinculoSistemaUsuario.Update(entityUpdate);
+            }
+            
             _db.SaveChanges();
 
             return Ok("OK");

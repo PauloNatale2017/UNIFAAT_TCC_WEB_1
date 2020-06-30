@@ -54,17 +54,23 @@ namespace ROSESHIELD.WEB.Controllers
         {
             var loginEnt = _db.Login.ToList();
             var returns = _db.UserAccounts.ToList();
-            
+           
             List<retur> list = new List<retur>();
 
             foreach (var item in returns)
             {
-                var totalporcidade = returns.Where(d => d.Cidade == item.Cidade).Count();
+              
+                var totalporcidade = returns.Where(d => d.Cidade.ToUpper() == item.Cidade.ToUpper()).Count();
 
-                list.Add(new retur { 
-                   label = item.Cidade,
-                   value = (totalporcidade)
-                });
+                var filtrodescri = list.Where(d => d.label.ToUpper() == item.Cidade.ToUpper()).Count();
+
+                if(filtrodescri <= 0) {
+                    list.Add(new retur
+                    {
+                        label = item.Cidade,
+                        value = (totalporcidade)
+                    });
+                }              
             }
 
 

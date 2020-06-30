@@ -62,6 +62,19 @@ namespace ROSESHIELD.WEB
 
                 await _db.UserAccounts.AddAsync(UserAccounts);
                 await _db.SaveChangesAsync();
+
+
+                _db.VinculoSistemaUsuario.Add(new VinculoSistemaUsuario
+                {
+                    CreateDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    IdPerfil = "",
+                    IdSistema = "1",
+                    IdUsuario = UserAccounts.Id.ToString()
+                });
+                _db.SaveChanges();
+
+
                 return RedirectToPage("Index");
             }
             else
