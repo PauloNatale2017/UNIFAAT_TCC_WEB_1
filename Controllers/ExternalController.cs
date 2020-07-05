@@ -367,5 +367,52 @@ namespace ROSESHIELD.WEB.Controllers
             _db.SaveChangesAsync();
             return Ok(true);
         }
+
+        public class JoinGeoVitima {
+            public string Lat { get; set; }
+            public string Long { get; set; }
+            public string Endereco { get; set; }
+            public string Complemento { get; set; }
+            public string CEP { get; set; }
+            public string NomeCompleto { get; set; }
+            public string Contato { get; set; }
+            public string Email { get; set; }
+            public string ContatoRecado { get; set; }
+            public string Cidade { get; set; }
+
+        };
+
+
+        [Route("externalgeo")]
+        [HttpGet]
+        public async Task<IActionResult> GetGeo()
+        {
+
+            List<JoinGeoVitima> list = new List<JoinGeoVitima>();
+            var returnGeo = _db.Geo.ToList();          
+
+            foreach (var item in returnGeo)
+            {
+                var returnVitimas = _db.VitimaBasic.Where(d => d.Id == item.IdUsuario).SingleOrDefault();
+                list.Add(new JoinGeoVitima { 
+                      CEP = item.CEP,
+                      Complemento = item.Complemento,
+                      Contato = returnVitimas.Contato,
+                      ContatoRecado = returnVitimas.ContatoRecado,
+                      Email = returnVitimas.Email,
+                      Endereco = item.Endereco, 
+                      Lat = item.Lat,
+                      Long = item.Long,
+                      NomeCompleto = returnVitimas.NomeCompleto,
+                      Cidade = returnVitimas.Cidade
+                });
+
+            }
+           
+            var jsonEntity = JsonConvert.SerializeObject(list);
+            return Ok(jsonEntity);
+        }
+
+
     }
 }

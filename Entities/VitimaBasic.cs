@@ -18,6 +18,8 @@ namespace ROSESHIELD.WEB.Entities
         public string Email { get; set; }
         [Required]
         public string RedeSocial { get; set; }
+
+        public string Cidade { get; set; }
         public string ContatoRecado { get; set; }
         public bool Ativo { get; set; }
     }
