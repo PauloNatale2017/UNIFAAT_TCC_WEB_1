@@ -26,26 +26,67 @@ namespace ROSESHIELD.WEB
         {
             if (ModelState.IsValid)
             {
-                await _db.VitimaBasic.AddAsync(VitimaBasic);               
-                await _db.SaveChangesAsync();
 
-                var entity =  _db.VitimaBasic.Where(d=>d.Rg_CPF == VitimaBasic.Rg_CPF).SingleOrDefault();
+                var entity = _db.VitimaBasic.Where(d => d.Rg_CPF == VitimaBasic.Rg_CPF).SingleOrDefault();
 
-                var complevinco = new CadastroDeVitimasCompleto
+                if (entity != null)
                 {
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    IdCadastroBasico = entity.Id,
-                    IdCadastroComplementar = 0,
-                    IdCadastroDeOcorrencia = 0,
-                    IdCadastroFilhos = 0,
-                    IdCadastroIdosos = 0,
-                    IdCadastroSOS = 0
-                };
 
-                await _db.CadastroDeVitimasCompleto.AddAsync(complevinco);
-                await _db.SaveChangesAsync();
+                    _db.VitimaBasic.Update(entity);
+                    await _db.SaveChangesAsync();
 
+                    var oldCadastro = _db.VitimaBasic.Where(d => d.Rg_CPF == VitimaBasic.Rg_CPF).SingleOrDefault();
+                    var vinculoexist = _db.CadastroDeVitimasCompleto.Where(d => d.IdCadastroBasico == oldCadastro.Id).SingleOrDefault();
+                    var complevincoOld = new CadastroDeVitimasCompleto();
+
+                    if (vinculoexist.IdCadastroBasico == null)
+                    {
+                        complevincoOld = new CadastroDeVitimasCompleto
+                        {
+                            CreateDate = DateTime.Now,
+                            UpdateDate = DateTime.Now,
+                            IdCadastroBasico = oldCadastro.Id,
+                            IdCadastroComplementar = 0,
+                            IdCadastroDeOcorrencia = 0,
+                            IdCadastroFilhos = 0,
+                            IdCadastroIdosos = 0,
+                            IdCadastroSOS = 0
+                        };
+
+                        await _db.CadastroDeVitimasCompleto.AddAsync(complevincoOld);
+                    }
+                    else
+                    {
+
+                       vinculoexist.IdCadastroBasico = oldCadastro.Id;
+                       _db.CadastroDeVitimasCompleto.Update(vinculoexist);
+                    }
+
+                   
+                    await _db.SaveChangesAsync();
+                }
+                else
+                {
+                    await _db.VitimaBasic.AddAsync(VitimaBasic);
+                    await _db.SaveChangesAsync();
+
+                    var entityNew = _db.VitimaBasic.Where(d => d.Rg_CPF == VitimaBasic.Rg_CPF).SingleOrDefault();
+
+                    var complevinco = new CadastroDeVitimasCompleto
+                    {
+                        CreateDate = DateTime.Now,
+                        UpdateDate = DateTime.Now,
+                        IdCadastroBasico = entityNew.Id,
+                        IdCadastroComplementar = 0,
+                        IdCadastroDeOcorrencia = 0,
+                        IdCadastroFilhos = 0,
+                        IdCadastroIdosos = 0,
+                        IdCadastroSOS = 0
+                    };
+
+                    await _db.CadastroDeVitimasCompleto.AddAsync(complevinco);
+                    await _db.SaveChangesAsync();
+                }
                 return RedirectToPage("Vitimas");
             }
             else

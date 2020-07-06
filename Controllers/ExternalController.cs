@@ -75,6 +75,20 @@ namespace ROSESHIELD.WEB.Controllers
         }
 
 
+        
+
+
+        [Route("externalallvitimascompleto/{idusuario}")]
+        [HttpGet]
+        public async Task<IActionResult> GetAllVitimas(string IdUsuario)
+        {
+            List<VitimaBasic> ret = new List<VitimaBasic>();
+            ret =  _db.VitimaBasic.ToList();
+            var jsonEntity = JsonConvert.SerializeObject(ret);
+            return Ok(jsonEntity);
+        }
+
+
         [Route("externalemailusuario/{idusuario}")]
         [HttpGet]
         public async Task<IActionResult> GetUsuariosEmails(string IdUsuario)
